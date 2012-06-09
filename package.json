@@ -16,7 +16,7 @@
   },
   "main" : "./lib/opal",
   "bin":          {
-    "opal":     "./bin/opal-node"
+    "opal-node":     "./bin/opal-node"
   },
   "homepage":     "http://github.com/elia/opal-node",
   "bugs":         "https://github.com/elia/opal-node/issues",

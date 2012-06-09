@@ -2,18 +2,23 @@
 
 Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 
-> Use Node.js FOR SPEED
-*[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/57551756657303552)*
+<br>
+> Use Node.js FOR SPEED 
+>
+> — <cite>[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/57551756657303552)</cite>
 
 
-
+<br>
 > [@hipsterhacker](https://twitter.com/hipsterhacker) I approve of your choices of roflscale technologies, particularly Node. Your roflmillions of users will appreciate it.
-*[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/50320781162446848)*
+>
+> — <cite>[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/50320781162446848)</cite>
 
-
-
+<br>
 > mongodb should be ported to nodejs for improved scalability
-*[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/190291005138939904)*
+>
+> — <cite>[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/190291005138939904)</cite>
+
+
 
 
 ## Usage

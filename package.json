@@ -24,6 +24,9 @@
     "type": "git",
     "url": "git://github.com/elia/opal-node.git"
   },
+  "dependencies": {
+    "exec-sync": "latest"
+  },
   "devDependencies": {
   }
 }

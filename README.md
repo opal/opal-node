@@ -31,7 +31,7 @@ Run with `opal-node app.opal`
 A naive rack-like implementation for Opal-Ruby
 
 ```ruby
-# app.opal
+# server.rb
 class Server
   def initialize port
     @http = `require('http')`
@@ -48,7 +48,8 @@ class Server
   end
 end
 
-
+# app.rb
+require 'server'
 server = Server.new 3000
 server.start do
   [200, {'Content-Type' => 'text/plain'}, ["Hello World!\n"]]
@@ -72,9 +73,9 @@ http.createServer(function(req, res) {
 
 ## Requirements
 
-You need [Node.js](http://nodejs.org) and Opal (v0.3.18)
+You need [Node.js](http://nodejs.org) and Opal (v0.3.19)
 
-`gem install opal -v0.3.18`
+`gem install opal -v0.3.19`
 
 
 ## License

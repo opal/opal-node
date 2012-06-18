@@ -1,4 +1,4 @@
-version    = '0.3.18'
+version    = '0.3.19'
 extensions = ['.opal', '.rb']
 
 execSync     = require('exec-sync')

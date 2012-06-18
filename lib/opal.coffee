@@ -10,5 +10,7 @@ compile = (filename) ->
 
 for extension in extensions
   require.extensions[extension] = (module, filename) ->
-    content = "var Opal = require('opal').Opal;"+compile(filename)
+    content = "var Opal = require('opal').Opal;"+
+              "Opal.require = require;"+
+              compile(filename)
     module._compile(content, filename)

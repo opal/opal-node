@@ -5,7 +5,6 @@ execSync     = require('exec-sync')
 exports.Opal = require("./opal-#{version}").Opal
 
 compile = (filename) ->
-  console.info('loading: '+filename)
   return execSync("opal _#{version}_ #{filename}")
 
 for extension in extensions

@@ -1,8 +1,8 @@
-version = '0.3.18'
-extensions = ['opal', 'rb']
+version    = '0.3.18'
+extensions = ['.opal', '.rb']
 
-Opal = require("./opal-#{version}").Opal
-execSync = require('exec-sync')
+execSync     = require('exec-sync')
+exports.Opal = require("./opal-#{version}").Opal
 
 compile = (filename) ->
   console.info('loading: '+filename)
@@ -10,5 +10,5 @@ compile = (filename) ->
 
 for extension in extensions
   require.extensions[extension] = (module, filename) ->
-    content = compile(filename);
+    content = "var Opal = require('opal').Opal;"+compile(filename)
     module._compile(content, filename)

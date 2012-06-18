@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-var opal = require('../lib/opal-node');
-opal.require(process.argv[2]);
+require('../lib/opal');
+require(process.argv[2]);

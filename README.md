@@ -3,7 +3,7 @@
 Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 
 <br>
-> Use Node.js FOR SPEED 
+> Use Node.js FOR SPEED
 >
 > — <cite>[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/57551756657303552)</cite>
 
@@ -37,7 +37,7 @@ class Server
     @http = `require('http')`
     @port = port
   end
-  
+
   def start &block
     %x{
       this.http.createServer(function(req, res) {
@@ -69,13 +69,6 @@ http.createServer(function(req, res) {
   res.end('Hello World\n');
 }).listen(port);
 ```
-
-
-## Requirements
-
-You need [Node.js](http://nodejs.org) and Opal (v0.3.19)
-
-`gem install opal -v0.3.19`
 
 
 ## License

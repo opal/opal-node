@@ -3,7 +3,7 @@
   "description":  "CoffeeScript was so cool",
   "keywords":     ["javascript", "language", "opal", "compiler", "ruby"],
   "author":       "Elia Schito",
-  "version":      "0.1.4",
+  "version":      "0.2.0",
   "licenses":     [{
     "type":       "MIT",
     "url":        "https://raw.github.com/elia/opal-node/master/LICENSE"
@@ -25,8 +25,8 @@
     "url": "git://github.com/elia/opal-node.git"
   },
   "dependencies": {
-    "exec-sync": "latest"
   },
   "devDependencies": {
+    "coffee": "latest"
   }
 }

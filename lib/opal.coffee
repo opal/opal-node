@@ -1,19 +1,30 @@
-version    = '0.3.19'
+version    = '0.3.22'
 extensions = ['.opal', '.rb']
 
-execSync     = require('exec-sync')
-Opal = require("./opal-#{version}").Opal
+fs = require('fs')
+Opal = require("#{__dirname}/opal-#{version}").Opal
 exports.Opal = Opal
+require("#{__dirname}/opal-parser-#{version}")
 
-Opal.source = =>
-  @source ||= require('fs').readFileSync("#{__dirname}/opal-#{version}.js").toString()
+
+Opal.source = ->
+  @_source ||= fs.readFileSync("#{__dirname}/opal-#{version}.js").toString()
+
+Opal.parserSource = ->
+  @_parserSource ||= fs.readFileSync("#{__dirname}/opal-parser-#{version}.js").toString()
+
+# eval(Opal.parserSource())
 
 Opal.parse = (filename) ->
-  return execSync("opal _#{version}_ #{filename}")
+  fileSource = fs.readFileSync("#{filename}").toString()
+  return Opal.Opal.Parser.$new().$parse(fileSource)
 
 for extension in extensions
   require.extensions[extension] = (module, filename) ->
-    content = "var Opal = require('opal').Opal;"+
-              "Opal.require = require;"+
-              Opal.parse(filename)
+    source = Opal.parse(filename)
+    source = source.replace(/\/\/= require ([^;]+);/, 'require("$1");')
+    content = """
+      var Opal = require('opal').Opal;
+      (#{source})();
+    """
     module._compile(content, filename)

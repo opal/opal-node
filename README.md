@@ -1,5 +1,7 @@
 # Opal for Node.js
 
+[![Build Status](https://secure.travis-ci.org/elia/opal-node.png)](http://travis-ci.org/elia/opal-node)
+
 Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 
 <br>

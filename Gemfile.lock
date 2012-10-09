@@ -18,4 +18,5 @@ PLATFORMS
 
 DEPENDENCIES
   opal
+  rake
   rspec

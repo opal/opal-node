@@ -23,40 +23,21 @@ Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 
 ## Usage
 
-Run with `opal-node app.opal`
+Run with `opal-node app.rb`
+
+Install with `npm install -g opal`
 
 
 ## Example
 
-A naive rack-like implementation for Opal-Ruby
 
 ```ruby
-# server.rb
-class Server
-  def initialize port
-    @http = `require('http')`
-    @port = port
-  end
-
-  def start &block
-    %x{
-      this.http.createServer(function(req, res) {
-        var rackResponse = (block.call(block._s, req, res));
-        res.end(rackResponse[2].join(' '));
-      }).listen(this.port);
-    }
-  end
-end
-
 # app.rb
-require 'server'
-server = Server.new 3000
-server.start do
+require 'http/server'
+HTTP::Server.start 3000 do
   [200, {'Content-Type' => 'text/plain'}, ["Hello World!\n"]]
 end
 ```
-
-
 
 This is the original Node.js example:
 
@@ -71,7 +52,32 @@ http.createServer(function(req, res) {
 ```
 
 
-## Development
+Here's the (naive) rack-like implementation of `http/server.rb`
+
+```ruby
+# http/server.rb
+module HTTP
+  `_http = require('http')`
+  class Server < `_http.Server`
+    alias_native :listen, :listen
+
+    def self.start port, &block
+      server = new `function(request, response) {
+        request.on('end', function(chunk) {
+          var rackResponse = #{ block.call(`request`, `response`) };
+          response.writeHead(rackResponse[0], #{ `rackResponse[1]`.to_native });
+          response.end( rackResponse[2].join(' ') );
+        })
+      }`
+      server.listen(port)
+      server
+    end
+  end
+end
+```
+
+
+## Developing
 
 Start a coffe watcher to keep opal.js in sync with opal.coffee
 

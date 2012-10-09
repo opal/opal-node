@@ -1,30 +1,28 @@
-version    = '0.3.22'
+version    = '0.3.27'
 extensions = ['.opal', '.rb']
 
 fs = require('fs')
-Opal = require("#{__dirname}/opal-#{version}").Opal
-exports.Opal = Opal
-require("#{__dirname}/opal-parser-#{version}")
 
+source       = fs.readFileSync("#{__dirname}/opal-#{version}.js").toString()
+parserSource = fs.readFileSync("#{__dirname}/opal-parser-#{version}.js").toString()
 
-Opal.source = ->
-  @_source ||= fs.readFileSync("#{__dirname}/opal-#{version}.js").toString()
+# Being Ruby classes and modules are global constants, hence it makes sense to
+# break loose from the nodejs module system chains and just live in the GLOBAL
+# object.
+GLOBAL.eval(source)
+GLOBAL.eval(parserSource)
 
-Opal.parserSource = ->
-  @_parserSource ||= fs.readFileSync("#{__dirname}/opal-parser-#{version}.js").toString()
-
-# eval(Opal.parserSource())
-
-Opal.parse = (filename) ->
-  fileSource = fs.readFileSync("#{filename}").toString()
-  return Opal.Opal.Parser.$new().$parse(fileSource)
+# Alias the opal-parser method call as `Opal.parse(source, file)`
+Opal.parse = (ruby, filename)=>
+  Opal.Opal.Parser.$new().$parse(ruby, filename)
 
 for extension in extensions
   require.extensions[extension] = (module, filename) ->
-    source = Opal.parse(filename)
-    source = source.replace(/\/\/= require ([^;]+);/, 'require("$1");')
-    content = """
-      var Opal = require('opal').Opal;
-      (#{source})();
-    """
-    module._compile(content, filename)
+    ruby   = fs.readFileSync("#{filename}").toString()
+    source = Opal.parse(ruby, filename)
+
+    # By default opal outputs commented requires, but we need to hook
+    # them to the nodejs require system
+    source = source.replace(/\/\/= require ([^]+?)\n/g, 'require("$1");')
+
+    module._compile(source, filename)

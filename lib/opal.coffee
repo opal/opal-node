@@ -1,4 +1,4 @@
-version    = '0.3.22'
+version    = '0.3.27'
 extensions = ['.opal', '.rb']
 
 fs = require('fs')

@@ -71,6 +71,13 @@ http.createServer(function(req, res) {
 ```
 
 
+## Development
+
+Start a coffe watcher to keep opal.js in sync with opal.coffee
+
+    coffee -cwo lib/ lib/*.coffee
+
+
 ## License
 
 This project rocks and uses MIT-LICENSE.

@@ -44,7 +44,7 @@ end
 This is the original Node.js example:
 
 ```js
-# the original nodejs example
+// the original nodejs example
 http = require('http')
 var port = process.env.port || 1337;
 http.createServer(function(req, res) {

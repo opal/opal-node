@@ -22,7 +22,7 @@ for extension in extensions
     source = Opal.parse(ruby, filename)
 
     # By default opal outputs commented requires, but we need to hook
-    # them to the nodejs require system
-    source = source.replace(/\/\/= require ([^]+?)\n/g, 'require("$1");')
-
+    # them to the nodejs require system, also remove any leading './'
+    # which is unnecessary in node
+    source = source.replace(/\/\/= require +(?:\.\/)?([^;]+)[\n;]/g, 'require("$1");')
     module._compile(source, filename)

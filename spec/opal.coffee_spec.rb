@@ -12,6 +12,12 @@ describe 'opal-node' do
     opal_node(requiring).should eq("hello world!\n")
   end
 
+  it 'can require .rb files with explicit extension' do
+    hello_world = a_file_with_name 'hello_world.rb', and_contents: "puts 'hello world!'\n"
+    requiring   = a_file_with_name 'requiring.rb',   and_contents: "require './hello_world.rb'\n"
+    opal_node(requiring).should eq("hello world!\n")
+  end
+
 
 
   def opal_node path

@@ -27,6 +27,6 @@
   "dependencies": {
   },
   "devDependencies": {
-    "coffee": "latest"
+    "coffee-script": "latest"
   }
 }

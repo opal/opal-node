@@ -29,5 +29,7 @@ for extension in extensions
     # By default opal outputs commented requires, but we need to hook
     # them to the nodejs require system, also remove any leading './'
     # which is unnecessary in node
-    source = source.replace(/\/\/= require +(?:\.\/)?([^;]+)[\n;]/g, 'require("$1");')
+    source = source.replace /\/\/= require +(\.\/)?([^;\n]+)(;|\n)/g, (_, lead, required, semicolon_or_return)->
+      "require(\"#{required}\")#{semicolon_or_return}"
+
     module._compile(source, filename)

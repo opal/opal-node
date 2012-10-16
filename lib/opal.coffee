@@ -3,14 +3,19 @@ extensions = ['.opal', '.rb']
 
 fs = require('fs')
 
-source       = fs.readFileSync("#{__dirname}/opal-#{version}.js").toString()
-parserSource = fs.readFileSync("#{__dirname}/opal-parser-#{version}.js").toString()
+sourceFile = "#{__dirname}/opal-#{version}.js"
+parserFile = "#{__dirname}/opal-parser-#{version}.js"
+
+source = fs.readFileSync(sourceFile).toString()
+parser = fs.readFileSync(parserFile).toString()
 
 # Being Ruby classes and modules are global constants, hence it makes sense to
 # break loose from the nodejs module system chains and just live in the GLOBAL
 # object.
-GLOBAL.eval(source)
-GLOBAL.eval(parserSource)
+vm = require 'vm'
+vm.runInThisContext(source, sourceFile)
+vm.runInThisContext(parser, parserFile)
+
 
 # Alias the opal-parser method call as `Opal.parse(source, file)`
 Opal.parse = (ruby, filename)=>

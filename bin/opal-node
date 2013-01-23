@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
 require('../lib/opal');
-// Remove any ./ since in node is unnecessary
-require(process.argv[2].replace(/\A\.\//,''));
+scriptPath = require('path').resolve(process.argv[2]);
+require(scriptPath);

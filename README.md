@@ -88,7 +88,7 @@ Start a coffe watcher to keep opal.js in sync with opal.coffee
 
 ## Testing
 
-To keep the specs running while developing just install and use [spectator][https://github.com/elia/spectator#readme]
+To keep the specs running while developing just install and use [spectator](https://github.com/elia/spectator#readme)
 that will compile `opal.coffee` to `opal.js` before every run of the spec.
 
 	$ gem install spectator

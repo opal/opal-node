@@ -1,7 +1,12 @@
 language:
   - ruby
   - node_js
-script: npm install coffee-script && bundle exec rspec spec
+
+before_install:
+  - npm install
+
+script: bundle exec rspec spec
+
 rvm:
   - 1.9.3
 

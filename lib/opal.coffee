@@ -1,10 +1,9 @@
-version    = '0.3.27'
+sourceFile = "#{__dirname}/../opal/opal.js"
+parserFile = "#{__dirname}/../opal/opal-parser.js"
+
 extensions = ['.opal', '.rb']
 
 fs = require('fs')
-
-sourceFile = "#{__dirname}/opal-#{version}.js"
-parserFile = "#{__dirname}/opal-parser-#{version}.js"
 
 source = fs.readFileSync(sourceFile).toString()
 parser = fs.readFileSync(parserFile).toString()

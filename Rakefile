@@ -18,11 +18,24 @@ RSpec::Core::RakeTask.new :default
 
 # OPAL
 
-# Rakefile
-require 'opal/rake_task'
+desc "Build all js files to ./build"
+task :build do
+  require 'fileutils'
+  require 'opal'
+  Opal::Processor.arity_check_enabled = false
+  env = Sprockets::Environment.new
 
-Opal::RakeTask.new do |t|
-  t.build_dir    = 'lib/assets/javascripts'
-  t.dependencies = %w[opal-jquery opal-spec]
-  t.files        = []
+  base_dir = 'opal'
+  Opal.paths.each { |p| env.append_path p }
+  version = Opal::VERSION
+
+  puts "Building version #{version}"
+  File.open("#{base_dir}/opal-version", 'w') { |f| f << version}
+  %w[opal opal-parser].each do |file|
+    path = "#{base_dir}/#{file}.js"
+    puts "Building #{file.ljust 20} to: #{path}"
+    File.open(path, 'w') { |f| f << env[file].to_s}
+  end
+  puts 'Done.'
 end
+

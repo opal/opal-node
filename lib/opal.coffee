@@ -18,17 +18,17 @@ vm.runInThisContext(parser, parserFile)
 
 # Alias the opal-parser method call as `Opal.parse(source, file)`
 Opal.parse = (ruby, filename)=>
-  Opal.Opal.Parser.$new().$parse(ruby, filename)
+  parser = Opal.Opal.Parser.$new()
+  source = parser.$parse(ruby, filename)
+  requires = ''
+  for required in parser.requires
+    requires += "require('#{required}');\n"
+  source = "#{requires}#{source}"
+
 
 for extension in extensions
   require.extensions[extension] = (module, filename) ->
     ruby   = fs.readFileSync("#{filename}").toString()
     source = Opal.parse(ruby, filename)
-
-    # By default opal outputs commented requires, but we need to hook
-    # them to the nodejs require system, also remove any leading './'
-    # which is unnecessary in node
-    source = source.replace /\/\/= require +(\.\/)?([^;\n]+)(;|\n)/g, (_, lead, required, semicolon_or_return)->
-      "require(\"#{required}\")#{semicolon_or_return}"
-
+    # console?.log source
     module._compile(source, filename)

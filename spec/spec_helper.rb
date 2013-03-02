@@ -1,5 +1,5 @@
 RSpec.configure do |c|
-  c.before :all do
+  c.before :suite do
     compile_opal_coffee.should be_true
   end
 
@@ -27,3 +27,5 @@ RSpec.configure do |c|
     opal_node(rb_file, File.dirname(rb_file))
   end
 end
+
+

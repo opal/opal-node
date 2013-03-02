@@ -32,3 +32,8 @@ for extension in extensions
     source = Opal.parse(ruby, filename)
     # console?.log source
     module._compile(source, filename)
+
+
+require 'opal_node'
+require 'file'
+require 'dir'

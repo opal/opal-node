@@ -27,7 +27,8 @@ Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 
 Run with `opal-node app.rb`
 
-Install with `npm install -g opal`
+Install with NPM: `npm install -g opal`
+or via RVM: `rvm install opal`
 
 
 ## Example

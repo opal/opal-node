@@ -9,7 +9,7 @@
     "url":        "https://raw.github.com/opal/opal-node/master/MIT-LICENSE"
   }],
   "engines":      {
-    "node":       "0.8.x"
+    "node":       "0.10.x"
   },
   "directories" : {
     "lib" : "./lib"

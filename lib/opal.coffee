@@ -15,25 +15,20 @@ vm = require 'vm'
 vm.runInThisContext(source, sourceFile)
 vm.runInThisContext(parser, parserFile)
 
-
-# Alias the opal-parser method call as `Opal.parse(source, file)`
-Opal.parse = (ruby, filename)=>
-  parser = Opal.Opal.Parser.$new()
-  source = parser.$parse(ruby, filename)
-  requires = ''
-  for required in parser.requires
-    requires += "require('#{required}');\n"
-  source = "#{requires}#{source}"
-
+Opal.compile = (ruby, options = undefined) -> # Override function for now
+  # Options can be Hash or plain JS
+  if options and options.klass isnt Opal.Hash
+    keys = (key for key, value of options)
+    options = Opal.hash2(keys, options)
+  Opal.Opal.$compile(ruby, options)
 
 for extension in extensions
   require.extensions[extension] = (module, filename) ->
     ruby   = fs.readFileSync("#{filename}").toString()
-    source = Opal.parse(ruby, filename)
+    source = Opal.compile(ruby, file: filename)
     # console?.log source
     module._compile(source, filename)
 
-
-require 'opal_node'
-require 'file'
-require 'dir'
+require './opal_node'
+require './file'
+require './dir'

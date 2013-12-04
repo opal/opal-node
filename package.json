@@ -3,7 +3,7 @@
   "description":  "CoffeeScript was so cool",
   "keywords":     ["javascript", "language", "opal", "compiler", "ruby"],
   "author":       "Elia Schito",
-  "version":      "0.3.3",
+  "version":      "0.5.5",
   "licenses":     [{
     "type":       "MIT",
     "url":        "https://raw.github.com/opal/opal-node/master/MIT-LICENSE"

@@ -6,9 +6,9 @@
     function $Set(){};
     var self = $Set = $klass($base, $super, 'Set', $Set);
 
-    var def = $Set._proto, $scope = $Set._scope, $a, TMP_1, TMP_4, TMP_6;
+    var def = $Set._proto, $scope = $Set._scope, TMP_1, TMP_4, TMP_6;
     def.hash = nil;
-    self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+    self.$include($scope.Enumerable);
 
     $opal.defs(self, '$[]', function(ary) {
       var self = this;
@@ -22,7 +22,7 @@
         enum$ = nil
       }
       TMP_1._p = null;
-      self.hash = (($a = $scope.Hash) == null ? $opal.cm('Hash') : $a).$new();
+      self.hash = $scope.Hash.$new();
       if (($a = enum$['$nil?']()) !== false && $a !== nil) {
         return nil};
       if (block !== false && block !== nil) {
@@ -34,12 +34,12 @@
     };
 
     def['$=='] = function(other) {
-      var $a, $b, $c, TMP_3, self = this;
+      var $a, $b, TMP_3, self = this;
       if (($a = self['$equal?'](other)) !== false && $a !== nil) {
         return true
       } else if (($a = other['$instance_of?'](self.$class())) !== false && $a !== nil) {
         return self.hash['$=='](other.$instance_variable_get("@hash"))
-      } else if (($a = ($b = other['$is_a?']((($c = $scope.Set) == null ? $opal.cm('Set') : $c)), $b !== false && $b !== nil ?self.$size()['$=='](other.$size()) : $b)) !== false && $a !== nil) {
+      } else if (($a = ($b = other['$is_a?']($scope.Set), $b !== false && $b !== nil ?self.$size()['$=='](other.$size()) : $b)) !== false && $a !== nil) {
         return ($a = ($b = other)['$all?'], $a._p = (TMP_3 = function(o){var self = TMP_3._s || this;
           if (self.hash == null) self.hash = nil;
 if (o == null) o = nil;
@@ -126,7 +126,7 @@ if (o == null) o = nil;
       var $a, $b, self = this, $iter = TMP_7._p, block = $iter || nil;
       args = $slice.call(arguments, 1);
       if (klass == null) {
-        klass = (($a = $scope.Set) == null ? $opal.cm('Set') : $a)
+        klass = $scope.Set
       }
       TMP_7._p = null;
       return ($a = ($b = klass).$new, $a._p = block.$to_proc(), $a).apply($b, [self].concat(args));
@@ -203,13 +203,13 @@ if (o == null) o = nil;
       };
 
       def.$dup = function() {
-        var $a, self = this;
-        return (($a = $scope.Sexp) == null ? $opal.cm('Sexp') : $a).$new(self.array.$dup());
+        var self = this;
+        return $scope.Sexp.$new(self.array.$dup());
       };
 
       def['$=='] = function(other) {
-        var $a, $b, self = this;
-        if (($a = other['$is_a?']((($b = $scope.Sexp) == null ? $opal.cm('Sexp') : $b))) !== false && $a !== nil) {
+        var $a, self = this;
+        if (($a = other['$is_a?']($scope.Sexp)) !== false && $a !== nil) {
           return self.array['$=='](other.$array())
           } else {
           return self.array['$=='](other)
@@ -433,16 +433,16 @@ if (o == null) o = nil;
         }, nil);
       })(self, null);
 
-      $opal.cdecl($scope, 'KEYWORDS', ($a = ($b = [["__LINE__", ["k__LINE__", "k__LINE__"], "expr_end"], ["__FILE__", ["k__FILE__", "k__FILE__"], "expr_end"], ["alias", ["kALIAS", "kALIAS"], "expr_fname"], ["and", ["kAND", "kAND"], "expr_beg"], ["begin", ["kBEGIN", "kBEGIN"], "expr_beg"], ["break", ["kBREAK", "kBREAK"], "expr_mid"], ["case", ["kCASE", "kCASE"], "expr_beg"], ["class", ["kCLASS", "kCLASS"], "expr_class"], ["def", ["kDEF", "kDEF"], "expr_fname"], ["defined?", ["kDEFINED", "kDEFINED"], "expr_arg"], ["do", ["kDO", "kDO"], "expr_beg"], ["else", ["kELSE", "kELSE"], "expr_beg"], ["elsif", ["kELSIF", "kELSIF"], "expr_beg"], ["end", ["kEND", "kEND"], "expr_end"], ["ensure", ["kENSURE", "kENSURE"], "expr_beg"], ["false", ["kFALSE", "kFALSE"], "expr_end"], ["if", ["kIF", "kIF_MOD"], "expr_beg"], ["module", ["kMODULE", "kMODULE"], "expr_beg"], ["nil", ["kNIL", "kNIL"], "expr_end"], ["next", ["kNEXT", "kNEXT"], "expr_mid"], ["not", ["kNOT", "kNOT"], "expr_beg"], ["or", ["kOR", "kOR"], "expr_beg"], ["redo", ["kREDO", "kREDO"], "expr_end"], ["rescue", ["kRESCUE", "kRESCUE_MOD"], "expr_mid"], ["return", ["kRETURN", "kRETURN"], "expr_mid"], ["self", ["kSELF", "kSELF"], "expr_end"], ["super", ["kSUPER", "kSUPER"], "expr_arg"], ["then", ["kTHEN", "kTHEN"], "expr_beg"], ["true", ["kTRUE", "kTRUE"], "expr_end"], ["undef", ["kUNDEF", "kUNDEF"], "expr_fname"], ["unless", ["kUNLESS", "kUNLESS_MOD"], "expr_beg"], ["until", ["kUNTIL", "kUNTIL_MOD"], "expr_beg"], ["when", ["kWHEN", "kWHEN"], "expr_beg"], ["while", ["kWHILE", "kWHILE_MOD"], "expr_beg"], ["yield", ["kYIELD", "kYIELD"], "expr_arg"]]).$map, $a._p = (TMP_1 = function(decl){var self = TMP_1._s || this, $a, $b;if (decl == null) decl = nil;
-      return ($a = (($b = $scope.KeywordTable) == null ? $opal.cm('KeywordTable') : $b)).$new.apply($a, [].concat(decl))}, TMP_1._s = self, TMP_1), $a).call($b));
+      $opal.cdecl($scope, 'KEYWORDS', ($a = ($b = [["__LINE__", ["k__LINE__", "k__LINE__"], "expr_end"], ["__FILE__", ["k__FILE__", "k__FILE__"], "expr_end"], ["alias", ["kALIAS", "kALIAS"], "expr_fname"], ["and", ["kAND", "kAND"], "expr_beg"], ["begin", ["kBEGIN", "kBEGIN"], "expr_beg"], ["break", ["kBREAK", "kBREAK"], "expr_mid"], ["case", ["kCASE", "kCASE"], "expr_beg"], ["class", ["kCLASS", "kCLASS"], "expr_class"], ["def", ["kDEF", "kDEF"], "expr_fname"], ["defined?", ["kDEFINED", "kDEFINED"], "expr_arg"], ["do", ["kDO", "kDO"], "expr_beg"], ["else", ["kELSE", "kELSE"], "expr_beg"], ["elsif", ["kELSIF", "kELSIF"], "expr_beg"], ["end", ["kEND", "kEND"], "expr_end"], ["ensure", ["kENSURE", "kENSURE"], "expr_beg"], ["false", ["kFALSE", "kFALSE"], "expr_end"], ["if", ["kIF", "kIF_MOD"], "expr_beg"], ["module", ["kMODULE", "kMODULE"], "expr_beg"], ["nil", ["kNIL", "kNIL"], "expr_end"], ["next", ["kNEXT", "kNEXT"], "expr_mid"], ["not", ["kNOT", "kNOT"], "expr_beg"], ["or", ["kOR", "kOR"], "expr_beg"], ["redo", ["kREDO", "kREDO"], "expr_end"], ["rescue", ["kRESCUE", "kRESCUE_MOD"], "expr_mid"], ["return", ["kRETURN", "kRETURN"], "expr_mid"], ["self", ["kSELF", "kSELF"], "expr_end"], ["super", ["kSUPER", "kSUPER"], "expr_arg"], ["then", ["kTHEN", "kTHEN"], "expr_beg"], ["true", ["kTRUE", "kTRUE"], "expr_end"], ["undef", ["kUNDEF", "kUNDEF"], "expr_fname"], ["unless", ["kUNLESS", "kUNLESS_MOD"], "expr_beg"], ["until", ["kUNTIL", "kUNTIL_MOD"], "expr_beg"], ["when", ["kWHEN", "kWHEN"], "expr_beg"], ["while", ["kWHILE", "kWHILE_MOD"], "expr_beg"], ["yield", ["kYIELD", "kYIELD"], "expr_arg"]]).$map, $a._p = (TMP_1 = function(decl){var self = TMP_1._s || this, $a;if (decl == null) decl = nil;
+      return ($a = $scope.KeywordTable).$new.apply($a, [].concat(decl))}, TMP_1._s = self, TMP_1), $a).call($b));
 
       $opal.defs(self, '$map', function() {
-        var $a, $b, TMP_2, $c, self = this;
+        var $a, $b, TMP_2, self = this;
         if (self.map == null) self.map = nil;
 
         if (($a = self.map) === false || $a === nil) {
           self.map = $hash2([], {});
-          ($a = ($b = (($c = $scope.KEYWORDS) == null ? $opal.cm('KEYWORDS') : $c)).$each, $a._p = (TMP_2 = function(k){var self = TMP_2._s || this;
+          ($a = ($b = $scope.KEYWORDS).$each, $a._p = (TMP_2 = function(k){var self = TMP_2._s || this;
             if (self.map == null) self.map = nil;
 if (k == null) k = nil;
           return self.map['$[]='](k.$name(), k)}, TMP_2._s = self, TMP_2), $a).call($b);};
@@ -482,13 +482,13 @@ if (k == null) k = nil;
       self.$attr_accessor("lex_state", "strterm", "scanner");
 
       def.$initialize = function(source, file) {
-        var $a, self = this;
+        var self = this;
         self.lex_state = "expr_beg";
         self.cond = 0;
         self.cmdarg = 0;
         self.line = 1;
         self.file = file;
-        self.scanner = (($a = $scope.StringScanner) == null ? $opal.cm('StringScanner') : $a).$new(source);
+        self.scanner = $scope.StringScanner.$new(source);
         return self.scanner_stack = [self.scanner];
       };
 
@@ -629,16 +629,16 @@ if (k == null) k = nil;
           space = true};
         str_buffer = [];
         if (str_parse['$[]']("type")['$==']("heredoc")) {
-          eos_regx = (new RegExp("[ \\t]*" + (($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$escape(str_parse['$[]']("end")) + "(\\r*\\n|$)"));
+          eos_regx = (new RegExp("[ \\t]*" + $scope.Regexp.$escape(str_parse['$[]']("end")) + "(\\r*\\n|$)"));
           if (($a = self.$check(eos_regx)) !== false && $a !== nil) {
-            self.$scan((new RegExp("[ \\t]*" + (($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$escape(str_parse['$[]']("end")))));
+            self.$scan((new RegExp("[ \\t]*" + $scope.Regexp.$escape(str_parse['$[]']("end")))));
             self['$strterm='](nil);
             if (($a = str_parse['$[]']("scanner")) !== false && $a !== nil) {
               self.scanner_stack['$<<'](str_parse['$[]']("scanner"));
               self.scanner = str_parse['$[]']("scanner");};
             self.lex_state = "expr_end";
             return ["tSTRING_END", scanner.$matched()];};};
-        if (($a = self.$scan((($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$new((($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$escape(str_parse['$[]']("end"))))) !== false && $a !== nil) {
+        if (($a = self.$scan($scope.Regexp.$new($scope.Regexp.$escape(str_parse['$[]']("end"))))) !== false && $a !== nil) {
           if (($a = (($b = words !== false && words !== nil) ? ($c = str_parse['$[]']("done_last_space"), ($c === nil || $c === false)) : $b)) !== false && $a !== nil) {
             str_parse['$[]=']("done_last_space", true);
             ($a = scanner, $a['$pos=']($a.$pos()['$-'](1)));
@@ -675,7 +675,7 @@ if (k == null) k = nil;
           };};
         if (space !== false && space !== nil) {
           return ["tSPACE", " "]};
-        if (($a = ($b = str_parse['$[]']("balance"), $b !== false && $b !== nil ?self.$scan((($c = $scope.Regexp) == null ? $opal.cm('Regexp') : $c).$new((($c = $scope.Regexp) == null ? $opal.cm('Regexp') : $c).$escape(str_parse['$[]']("beg")))) : $b)) !== false && $a !== nil) {
+        if (($a = ($b = str_parse['$[]']("balance"), $b !== false && $b !== nil ?self.$scan($scope.Regexp.$new($scope.Regexp.$escape(str_parse['$[]']("beg")))) : $b)) !== false && $a !== nil) {
           str_buffer['$<<'](scanner.$matched());
           ($a = "nesting", $b = str_parse, $b['$[]=']($a, $b['$[]']($a)['$+'](1)));
         } else if (($a = self.$check(/#[@$]/)) !== false && $a !== nil) {
@@ -706,7 +706,7 @@ if (k == null) k = nil;
       def.$add_heredoc_content = function(str_buffer, str_parse) {
         var $a, $b, $c, self = this, scanner = nil, eos_regx = nil, expand = nil, c = nil, handled = nil, reg = nil;
         scanner = self.scanner;
-        eos_regx = (new RegExp("[ \\t]*" + (($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$escape(str_parse['$[]']("end")) + "(\\r*\\n|$)"));
+        eos_regx = (new RegExp("[ \\t]*" + $scope.Regexp.$escape(str_parse['$[]']("end")) + "(\\r*\\n|$)"));
         expand = true;
         while (!(($b = scanner['$eos?']()) !== false && $b !== nil)) {
         c = nil;
@@ -739,7 +739,7 @@ if (k == null) k = nil;
           handled = false
         };
         if (($b = handled) === false || $b === nil) {
-          reg = (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$new("[^" + ((($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$escape(str_parse['$[]']("end"))) + "#0\\\\\n]+|.");
+          reg = $scope.Regexp.$new("[^" + ($scope.Regexp.$escape(str_parse['$[]']("end"))) + "#0\\\\\n]+|.");
           self.$scan(reg);
           c = scanner.$matched();};
         ((($b = c) !== false && $b !== nil) ? $b : c = scanner.$matched());
@@ -754,7 +754,7 @@ if (k == null) k = nil;
       def.$add_string_content = function(str_buffer, str_parse) {
         var $a, $b, $c, $d, self = this, scanner = nil, end_str_re = nil, expand = nil, words = nil, c = nil, handled = nil, reg = nil;
         scanner = self.scanner;
-        end_str_re = (($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$new((($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$escape(str_parse['$[]']("end")));
+        end_str_re = $scope.Regexp.$new($scope.Regexp.$escape(str_parse['$[]']("end")));
         expand = self['$strterm_expand?'](str_parse);
         words = ["W", "w"]['$include?'](str_parse['$[]']("beg"));
         while (!(($b = scanner['$eos?']()) !== false && $b !== nil)) {
@@ -768,7 +768,7 @@ if (k == null) k = nil;
             } else {
             break;
           }
-        } else if (($b = ($c = str_parse['$[]']("balance"), $c !== false && $c !== nil ?self.$scan((($d = $scope.Regexp) == null ? $opal.cm('Regexp') : $d).$new((($d = $scope.Regexp) == null ? $opal.cm('Regexp') : $d).$escape(str_parse['$[]']("beg")))) : $c)) !== false && $b !== nil) {
+        } else if (($b = ($c = str_parse['$[]']("balance"), $c !== false && $c !== nil ?self.$scan($scope.Regexp.$new($scope.Regexp.$escape(str_parse['$[]']("beg")))) : $c)) !== false && $b !== nil) {
           ($b = "nesting", $c = str_parse, $c['$[]=']($b, $c['$[]']($b)['$+'](1)));
           c = scanner.$matched();
         } else if (($b = (($c = words !== false && words !== nil) ? self.$scan(/\s/) : $c)) !== false && $b !== nil) {
@@ -799,11 +799,11 @@ if (k == null) k = nil;
         };
         if (($b = handled) === false || $b === nil) {
           reg = (function() {if (words !== false && words !== nil) {
-            return (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$new("[^" + ((($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$escape(str_parse['$[]']("end"))) + "#0\n \\\\]+|.")
+            return $scope.Regexp.$new("[^" + ($scope.Regexp.$escape(str_parse['$[]']("end"))) + "#0\n \\\\]+|.")
           } else if (($b = str_parse['$[]']("balance")) !== false && $b !== nil) {
-            return (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$new("[^" + ((($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$escape(str_parse['$[]']("end"))) + ((($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$escape(str_parse['$[]']("beg"))) + "#0\\\\]+|.")
+            return $scope.Regexp.$new("[^" + ($scope.Regexp.$escape(str_parse['$[]']("end"))) + ($scope.Regexp.$escape(str_parse['$[]']("beg"))) + "#0\\\\]+|.")
             } else {
-            return (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$new("[^" + ((($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b).$escape(str_parse['$[]']("end"))) + "#0\\\\]+|.")
+            return $scope.Regexp.$new("[^" + ($scope.Regexp.$escape(str_parse['$[]']("end"))) + "#0\\\\]+|.")
           }; return nil; })();
           self.$scan(reg);
           c = scanner.$matched();};
@@ -823,7 +823,7 @@ if (k == null) k = nil;
           self['$strterm='](self.$new_strterm("heredoc", heredoc, heredoc));
           end_of_line = self.scanner.$scan(/.*\n/);
           if (($a = ($b = end_of_line['$==']("\n"), ($b === nil || $b === false))) !== false && $a !== nil) {
-            self.$strterm()['$[]=']("scanner", (($a = $scope.StringScanner) == null ? $opal.cm('StringScanner') : $a).$new(end_of_line))};
+            self.$strterm()['$[]=']("scanner", $scope.StringScanner.$new(end_of_line))};
           return ["tSTRING_BEG", heredoc];
           } else {
           return nil
@@ -854,7 +854,7 @@ if (k == null) k = nil;
           } else {
           result = "tIDENTIFIER"
         };
-        if (($a = ($b = ($c = self.lex_state['$==']("expr_dot"), ($c === nil || $c === false)), $b !== false && $b !== nil ?kw = (($c = $scope.Keywords) == null ? $opal.cm('Keywords') : $c).$keyword(matched) : $b)) !== false && $a !== nil) {
+        if (($a = ($b = ($c = self.lex_state['$==']("expr_dot"), ($c === nil || $c === false)), $b !== false && $b !== nil ?kw = $scope.Keywords.$keyword(matched) : $b)) !== false && $a !== nil) {
           old_state = self.lex_state;
           self.lex_state = kw.$state();
           if (old_state['$==']("expr_fname")) {
@@ -1121,7 +1121,7 @@ if (k == null) k = nil;
           if (($b = self.$scan(/\r?\n/)) !== false && $b !== nil) {
             self.space_seen = true;
             continue;;};
-          self.$raise((($b = $scope.SyntaxError) == null ? $opal.cm('SyntaxError') : $b), "backslash must appear before newline :" + (self.file) + ":" + (self.line));
+          self.$raise($scope.SyntaxError, "backslash must appear before newline :" + (self.file) + ":" + (self.line));
         } else if (($b = self.$scan(/\(/)) !== false && $b !== nil) {
           result = self.$scanner().$matched();
           if (($b = ["expr_beg", "expr_mid"]['$include?'](self.lex_state)) !== false && $b !== nil) {
@@ -1398,8 +1398,8 @@ if (k == null) k = nil;
       var def = $Parser._proto, $scope = $Parser._scope;
       def.yydebug = nil;
       def.$_racc_setup = function() {
-        var $a, self = this;
-        return (($a = (self.$class())._scope).Racc_arg == null ? $a.cm('Racc_arg') : $a.Racc_arg);
+        var self = this;
+        return (self.$class())._scope.Racc_arg;
       };
 
       def.$do_parse = function() {
@@ -1507,7 +1507,7 @@ if (k == null) k = nil;
         } else if (act['$=='](shift_n)) {
           return racc_vstack['$[]'](0)
         } else if (act['$=='](reduce_n['$-@']())) {
-          self.$raise((($b = $scope.SyntaxError) == null ? $opal.cm('SyntaxError') : $b), "unexpected '" + (racc_tok.$inspect()) + "'")
+          self.$raise($scope.SyntaxError, "unexpected '" + (racc_tok.$inspect()) + "'")
           } else {
           self.$raise("Rac: unknown action: " + (act))
         };
@@ -1548,8 +1548,8 @@ if (k == null) k = nil;
       };
 
       def.$racc_token2str = function(tok) {
-        var $a, self = this;
-        return (($a = (self.$class())._scope).Racc_token_to_s_table == null ? $a.cm('Racc_token_to_s_table') : $a.Racc_token_to_s_table)['$[]'](tok);
+        var self = this;
+        return (self.$class())._scope.Racc_token_to_s_table['$[]'](tok);
       };
 
       def.$racc_print_stacks = function(t, v) {
@@ -1582,7 +1582,7 @@ if (k == null) k = nil;
   return (function($base) {
     var self = $module($base, 'Opal');
 
-    var def = self._proto, $scope = self._scope, $a, $b;
+    var def = self._proto, $scope = self._scope;
     (function($base, $super) {
       function $Parser(){};
       var self = $Parser = $klass($base, $super, 'Parser', $Parser);
@@ -3707,7 +3707,7 @@ if (k == null) k = nil;
         var self = this;
         return val['$[]'](0);
       }, nil);
-    })(self, (($a = ((($b = $scope.Racc) == null ? $opal.cm('Racc') : $b))._scope).Parser == null ? $a.cm('Parser') : $a.Parser))
+    })(self, ($scope.Racc)._scope.Parser)
     
   })(self);
 })(Opal);
@@ -3770,7 +3770,7 @@ if (k == null) k = nil;
   return (function($base) {
     var self = $module($base, 'Opal');
 
-    var def = self._proto, $scope = self._scope, $a, $b;
+    var def = self._proto, $scope = self._scope;
     (function($base, $super) {
       function $Parser(){};
       var self = $Parser = $klass($base, $super, 'Parser', $Parser);
@@ -3780,11 +3780,11 @@ if (k == null) k = nil;
       self.$attr_reader("lexer", "file", "scope");
 
       def.$parse = function(source, file) {
-        var $a, self = this;
+        var self = this;
         if (file == null) {
           file = "(string)"
         }
-        self.lexer = (($a = $scope.Lexer) == null ? $opal.cm('Lexer') : $a).$new(source, file);
+        self.lexer = $scope.Lexer.$new(source, file);
         self.file = file;
         self.scopes = [];
         return self.$parse_to_sexp();
@@ -3804,20 +3804,20 @@ if (k == null) k = nil;
       };
 
       def.$s = function(parts) {
-        var $a, self = this, sexp = nil;
+        var self = this, sexp = nil;
         parts = $slice.call(arguments, 0);
-        sexp = (($a = $scope.Sexp) == null ? $opal.cm('Sexp') : $a).$new(parts);
+        sexp = $scope.Sexp.$new(parts);
         sexp['$line='](self.lexer.$line());
         return sexp;
       };
 
       def.$push_scope = function(type) {
-        var $a, self = this, top = nil, scope = nil;
+        var self = this, top = nil, scope = nil;
         if (type == null) {
           type = nil
         }
         top = self.scopes.$last();
-        scope = (($a = $scope.ParserScope) == null ? $opal.cm('ParserScope') : $a).$new(type);
+        scope = $scope.ParserScope.$new(type);
         scope['$parent='](top);
         self.scopes['$<<'](scope);
         return self.scope = scope;
@@ -3947,8 +3947,8 @@ if (k == null) k = nil;
         var $a, $b, TMP_4, $c, TMP_5, $d, self = this, res = nil, r = nil, b = nil, args = nil;
         res = self.$s("array");
         if (norm !== false && norm !== nil) {
-          ($a = ($b = norm).$each, $a._p = (TMP_4 = function(arg){var self = TMP_4._s || this, $a, $b;if (arg == null) arg = nil;
-          if (($a = arg['$is_a?']((($b = $scope.Symbol) == null ? $opal.cm('Symbol') : $b))) !== false && $a !== nil) {
+          ($a = ($b = norm).$each, $a._p = (TMP_4 = function(arg){var self = TMP_4._s || this, $a;if (arg == null) arg = nil;
+          if (($a = arg['$is_a?']($scope.Symbol)) !== false && $a !== nil) {
               self.$scope().$add_local(arg);
               return res['$<<'](self.$s("lasgn", arg));
               } else {
@@ -4105,7 +4105,7 @@ if (k == null) k = nil;
         var $a, self = this, $case = nil;
         if (($a = reg) === false || $a === nil) {
           return self.$s("regexp", /^/)};
-        return (function() {$case = reg.$type();if ("str"['$===']($case)) {return self.$s("regexp", (($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$new(reg['$[]'](1), ending))}else if ("evstr"['$===']($case)) {return self.$s("dregx", "", reg)}else if ("dstr"['$===']($case)) {reg['$type=']("dregx");
+        return (function() {$case = reg.$type();if ("str"['$===']($case)) {return self.$s("regexp", $scope.Regexp.$new(reg['$[]'](1), ending))}else if ("evstr"['$===']($case)) {return self.$s("dregx", "", reg)}else if ("dstr"['$===']($case)) {reg['$type=']("dregx");
         return reg;}else { return nil }})();
       };
 
@@ -4122,7 +4122,7 @@ if (k == null) k = nil;
         str['$<<'](str2);
         return str;
       }, nil);
-    })(self, (($a = ((($b = $scope.Racc) == null ? $opal.cm('Racc') : $b))._scope).Parser == null ? $a.cm('Parser') : $a.Parser))
+    })(self, ($scope.Racc)._scope.Parser)
     
   })(self);
 })(Opal);
@@ -4211,8 +4211,8 @@ if (k == null) k = nil;
         };
 
         def['$reserved?'] = function(name) {
-          var $a, self = this;
-          return (($a = $scope.RESERVED) == null ? $opal.cm('RESERVED') : $a)['$include?'](name);
+          var self = this;
+          return $scope.RESERVED['$include?'](name);
         };
 
         def.$variable = function(name) {
@@ -4225,8 +4225,8 @@ if (k == null) k = nil;
         };
 
         def.$lvar_to_js = function(var$) {
-          var $a, $b, self = this;
-          if (($a = (($b = $scope.RESERVED) == null ? $opal.cm('RESERVED') : $b)['$include?'](var$.$to_s())) !== false && $a !== nil) {
+          var $a, self = this;
+          if (($a = $scope.RESERVED['$include?'](var$.$to_s())) !== false && $a !== nil) {
             var$ = "" + (var$) + "$"};
           return var$.$to_sym();
         };
@@ -4283,12 +4283,12 @@ if (k == null) k = nil;
         };
 
         def.$js_truthy_optimize = function(sexp) {
-          var $a, $b, $c, self = this, mid = nil;
+          var $a, self = this, mid = nil;
           if (sexp.$type()['$==']("call")) {
             mid = sexp['$[]'](2);
             if (mid['$==']("block_given?")) {
               return self.$expr(sexp)
-            } else if (($a = (($b = ((($c = $scope.Compiler) == null ? $opal.cm('Compiler') : $c))._scope).COMPARE == null ? $b.cm('COMPARE') : $b.COMPARE)['$include?'](mid.$to_s())) !== false && $a !== nil) {
+            } else if (($a = ($scope.Compiler)._scope.COMPARE['$include?'](mid.$to_s())) !== false && $a !== nil) {
               return self.$expr(sexp)
             } else if (mid['$==']("==")) {
               return self.$expr(sexp)
@@ -4328,9 +4328,9 @@ if (k == null) k = nil;
         function $Base(){};
         var self = $Base = $klass($base, $super, 'Base', $Base);
 
-        var def = $Base._proto, $scope = $Base._scope, $a, TMP_6;
+        var def = $Base._proto, $scope = $Base._scope, TMP_6;
         def.sexp = def.fragments = def.compiler = def.level = nil;
-        self.$include((($a = $scope.Helpers) == null ? $opal.cm('Helpers') : $a));
+        self.$include($scope.Helpers);
 
         $opal.defs(self, '$handlers', function() {
           var $a, self = this;
@@ -4342,8 +4342,8 @@ if (k == null) k = nil;
         $opal.defs(self, '$handle', function(types) {
           var $a, $b, TMP_1, self = this;
           types = $slice.call(arguments, 0);
-          return ($a = ($b = types).$each, $a._p = (TMP_1 = function(type){var self = TMP_1._s || this, $a;if (type == null) type = nil;
-          return (($a = $scope.Base) == null ? $opal.cm('Base') : $a).$handlers()['$[]='](type, self)}, TMP_1._s = self, TMP_1), $a).call($b);
+          return ($a = ($b = types).$each, $a._p = (TMP_1 = function(type){var self = TMP_1._s || this;if (type == null) type = nil;
+          return $scope.Base.$handlers()['$[]='](type, self)}, TMP_1._s = self, TMP_1), $a).call($b);
         });
 
         $opal.defs(self, '$children', function(names) {
@@ -4388,10 +4388,10 @@ if (k == null) k = nil;
         def.$push = function(strs) {
           var $a, $b, TMP_4, self = this;
           strs = $slice.call(arguments, 0);
-          return ($a = ($b = strs).$each, $a._p = (TMP_4 = function(str){var self = TMP_4._s || this, $a, $b;
+          return ($a = ($b = strs).$each, $a._p = (TMP_4 = function(str){var self = TMP_4._s || this, $a;
             if (self.fragments == null) self.fragments = nil;
 if (str == null) str = nil;
-          if (($a = str['$is_a?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+          if (($a = str['$is_a?']($scope.String)) !== false && $a !== nil) {
               str = self.$fragment(str)};
             return self.fragments['$<<'](str);}, TMP_4._s = self, TMP_4), $a).call($b);
         };
@@ -4399,10 +4399,10 @@ if (str == null) str = nil;
         def.$unshift = function(strs) {
           var $a, $b, TMP_5, self = this;
           strs = $slice.call(arguments, 0);
-          return ($a = ($b = strs.$reverse()).$each, $a._p = (TMP_5 = function(str){var self = TMP_5._s || this, $a, $b;
+          return ($a = ($b = strs.$reverse()).$each, $a._p = (TMP_5 = function(str){var self = TMP_5._s || this, $a;
             if (self.fragments == null) self.fragments = nil;
 if (str == null) str = nil;
-          if (($a = str['$is_a?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+          if (($a = str['$is_a?']($scope.String)) !== false && $a !== nil) {
               str = self.$fragment(str)};
             return self.fragments.$unshift(str);}, TMP_5._s = self, TMP_5), $a).call($b);
         };
@@ -4414,8 +4414,8 @@ if (str == null) str = nil;
         };
 
         def.$fragment = function(str) {
-          var $a, $b, self = this;
-          return (($a = ((($b = $scope.Opal) == null ? $opal.cm('Opal') : $b))._scope).Fragment == null ? $a.cm('Fragment') : $a.Fragment).$new(str, self.sexp);
+          var self = this;
+          return ($scope.Opal)._scope.Fragment.$new(str, self.sexp);
         };
 
         def.$error = function(msg) {
@@ -4537,7 +4537,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $ValueNode(){};
         var self = $ValueNode = $klass($base, $super, 'ValueNode', $ValueNode);
@@ -4549,7 +4549,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push(self.$type().$to_s());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $NumericNode(){};
@@ -4569,7 +4569,7 @@ if (str == null) str = nil;
             return nil
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $StringNode(){};
@@ -4584,7 +4584,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push(self.$value().$inspect());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $SymbolNode(){};
@@ -4599,7 +4599,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push(self.$value().$to_s().$inspect());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $RegexpNode(){};
@@ -4618,7 +4618,7 @@ if (str == null) str = nil;
             return self.$value()
           }; return nil; })()).$inspect());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $XStringNode(){};
@@ -4645,7 +4645,7 @@ if (str == null) str = nil;
             return nil
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $DynamicStringNode(){};
@@ -4656,10 +4656,10 @@ if (str == null) str = nil;
 
         return (def.$compile = function() {
           var $a, $b, TMP_1, self = this;
-          return ($a = ($b = self.$children()).$each_with_index, $a._p = (TMP_1 = function(part, idx){var self = TMP_1._s || this, $a, $b;if (part == null) part = nil;if (idx == null) idx = nil;
+          return ($a = ($b = self.$children()).$each_with_index, $a._p = (TMP_1 = function(part, idx){var self = TMP_1._s || this, $a;if (part == null) part = nil;if (idx == null) idx = nil;
           if (($a = idx['$=='](0)) === false || $a === nil) {
               self.$push(" + ")};
-            if (($a = (($b = $scope.String) == null ? $opal.cm('String') : $b)['$==='](part)) !== false && $a !== nil) {
+            if (($a = $scope.String['$==='](part)) !== false && $a !== nil) {
               self.$push(part.$inspect())
             } else if (part.$type()['$==']("evstr")) {
               self.$push("(");
@@ -4676,7 +4676,7 @@ if (str == null) str = nil;
               return nil
             };}, TMP_1._s = self, TMP_1), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $DynamicSymbolNode(){};
@@ -4687,10 +4687,10 @@ if (str == null) str = nil;
 
         return (def.$compile = function() {
           var $a, $b, TMP_2, self = this;
-          ($a = ($b = self.$children()).$each_with_index, $a._p = (TMP_2 = function(part, idx){var self = TMP_2._s || this, $a, $b;if (part == null) part = nil;if (idx == null) idx = nil;
+          ($a = ($b = self.$children()).$each_with_index, $a._p = (TMP_2 = function(part, idx){var self = TMP_2._s || this, $a;if (part == null) part = nil;if (idx == null) idx = nil;
           if (($a = idx['$=='](0)) === false || $a === nil) {
               self.$push(" + ")};
-            if (($a = (($b = $scope.String) == null ? $opal.cm('String') : $b)['$==='](part)) !== false && $a !== nil) {
+            if (($a = $scope.String['$==='](part)) !== false && $a !== nil) {
               return self.$push(part.$inspect())
             } else if (part.$type()['$==']("evstr")) {
               return self.$push(self.$expr(self.$s("call", part.$last(), "to_s", self.$s("arglist"))))
@@ -4701,7 +4701,7 @@ if (str == null) str = nil;
             };}, TMP_2._s = self, TMP_2), $a).call($b);
           return self.$wrap("(", ")");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $DynamicXStringNode(){};
@@ -4718,8 +4718,8 @@ if (str == null) str = nil;
         return (def.$compile = function() {
           var $a, $b, TMP_3, self = this, needs_semicolon = nil;
           needs_semicolon = false;
-          ($a = ($b = self.$children()).$each, $a._p = (TMP_3 = function(part){var self = TMP_3._s || this, $a, $b;if (part == null) part = nil;
-          if (($a = (($b = $scope.String) == null ? $opal.cm('String') : $b)['$==='](part)) !== false && $a !== nil) {
+          ($a = ($b = self.$children()).$each, $a._p = (TMP_3 = function(part){var self = TMP_3._s || this, $a;if (part == null) part = nil;
+          if (($a = $scope.String['$==='](part)) !== false && $a !== nil) {
               self.$push(part.$to_s());
               if (($a = self.$requires_semicolon(part.$to_s())) !== false && $a !== nil) {
                 return needs_semicolon = true
@@ -4746,7 +4746,7 @@ if (str == null) str = nil;
             return nil
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $DynamicRegexpNode(){};
@@ -4757,10 +4757,10 @@ if (str == null) str = nil;
 
         return (def.$compile = function() {
           var $a, $b, TMP_4, self = this;
-          ($a = ($b = self.$children()).$each_with_index, $a._p = (TMP_4 = function(part, idx){var self = TMP_4._s || this, $a, $b;if (part == null) part = nil;if (idx == null) idx = nil;
+          ($a = ($b = self.$children()).$each_with_index, $a._p = (TMP_4 = function(part, idx){var self = TMP_4._s || this, $a;if (part == null) part = nil;if (idx == null) idx = nil;
           if (($a = idx['$=='](0)) === false || $a === nil) {
               self.$push(" + ")};
-            if (($a = (($b = $scope.String) == null ? $opal.cm('String') : $b)['$==='](part)) !== false && $a !== nil) {
+            if (($a = $scope.String['$==='](part)) !== false && $a !== nil) {
               return self.$push(part.$inspect())
             } else if (part.$type()['$==']("str")) {
               return self.$push(part['$[]'](1).$inspect())
@@ -4769,7 +4769,7 @@ if (str == null) str = nil;
             };}, TMP_4._s = self, TMP_4), $a).call($b);
           return self.$wrap("(new RegExp(", "))");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $InclusiveRangeNode(){};
@@ -4785,7 +4785,7 @@ if (str == null) str = nil;
           self.$helper("range");
           return self.$push("$range(", self.$expr(self.$start()), ", ", self.$expr(self.$finish()), ", false)");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ExclusiveRangeNode(){};
@@ -4801,7 +4801,7 @@ if (str == null) str = nil;
           self.$helper("range");
           return self.$push("$range(", self.$expr(self.$start()), ", ", self.$expr(self.$finish()), ", true)");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -4822,7 +4822,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $LocalVariableNode(){};
         var self = $LocalVariableNode = $klass($base, $super, 'LocalVariableNode', $LocalVariableNode);
@@ -4845,7 +4845,7 @@ if (str == null) str = nil;
           self.$push(self.$property(self.$var_name().$to_s()));
             return self.$wrap("((" + (tmp) + " = $opal.irb_vars", ") == null ? nil : " + (tmp) + ")");}, TMP_1._s = self, TMP_1), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $LocalAssignNode(){};
@@ -4877,7 +4877,7 @@ if (str == null) str = nil;
             return nil
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $InstanceVariableNode(){};
@@ -4899,7 +4899,7 @@ if (str == null) str = nil;
           self.$add_ivar(name);
           return self.$push("self" + (name));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $InstanceAssignNode(){};
@@ -4921,7 +4921,7 @@ if (str == null) str = nil;
           self.$push("self" + (name) + " = ");
           return self.$push(self.$expr(self.$value()));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $GlobalVariableNode(){};
@@ -4942,7 +4942,7 @@ if (str == null) str = nil;
           self.$helper("gvars");
           return self.$push("$gvars[" + (self.$var_name().$inspect()) + "]");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $GlobalAssignNode(){};
@@ -4964,7 +4964,7 @@ if (str == null) str = nil;
           self.$push("$gvars[" + (self.$var_name().$inspect()) + "] = ");
           return self.$push(self.$expr(self.$value()));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $BackrefNode(){};
@@ -4977,7 +4977,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push("nil");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ClassVariableNode(){};
@@ -4993,7 +4993,7 @@ if (str == null) str = nil;
           return ($a = ($b = self).$with_temp, $a._p = (TMP_2 = function(tmp){var self = TMP_2._s || this;if (tmp == null) tmp = nil;
           return self.$push("((" + (tmp) + " = $opal.cvars['" + (self.$name()) + "']) == null ? nil : " + (tmp) + ")")}, TMP_2._s = self, TMP_2), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ClassVarAssignNode(){};
@@ -5010,7 +5010,7 @@ if (str == null) str = nil;
           self.$push(self.$expr(self.$value()));
           return self.$push(")");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ClassVarDeclNode(){};
@@ -5027,7 +5027,7 @@ if (str == null) str = nil;
           self.$push(self.$expr(self.$value()));
           return self.$push(")");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -5048,7 +5048,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $ConstNode(){};
         var self = $ConstNode = $klass($base, $super, 'ConstNode', $ConstNode);
@@ -5067,7 +5067,7 @@ if (str == null) str = nil;
             return self.$push("$scope." + (self.$name()))
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ConstDeclarationNode(){};
@@ -5083,7 +5083,7 @@ if (str == null) str = nil;
           self.$push(self.$expr(self.$base()));
           return self.$wrap("$opal.cdecl($scope, '" + (self.$name()) + "', ", ")");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ConstAssignNode(){};
@@ -5102,7 +5102,7 @@ if (str == null) str = nil;
           self.$push(self.$expr(self.$value()));
           return self.$push(")");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ConstGetNode(){};
@@ -5126,7 +5126,7 @@ if (str == null) str = nil;
             return self.$wrap("(", ")._scope." + (self.$name()));
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $TopConstNode(){};
@@ -5143,7 +5143,7 @@ if (str == null) str = nil;
           self.$push("((" + (tmp) + " = $opal.Object._scope." + (self.$name()) + ") == null ? ");
             return self.$push("$opal.cm('" + (self.$name()) + "') : " + (tmp) + ")");}, TMP_3._s = self, TMP_3), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $TopConstAssignNode(){};
@@ -5160,7 +5160,7 @@ if (str == null) str = nil;
           self.$push(self.$expr(self.$value()));
           return self.$push(")");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -5182,31 +5182,31 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $RuntimeHelpers(){};
         var self = $RuntimeHelpers = $klass($base, $super, 'RuntimeHelpers', $RuntimeHelpers);
 
-        var def = $RuntimeHelpers._proto, $scope = $RuntimeHelpers._scope, $a, TMP_1, $b, TMP_2, $c, TMP_3;
-        $opal.cdecl($scope, 'HELPERS', (($a = $scope.Set) == null ? $opal.cm('Set') : $a).$new());
+        var def = $RuntimeHelpers._proto, $scope = $RuntimeHelpers._scope, TMP_1, $a, $b, TMP_2, $c, TMP_3;
+        $opal.cdecl($scope, 'HELPERS', $scope.Set.$new());
 
         self.$children("recvr", "meth", "arglist");
 
         $opal.defs(self, '$compatible?', function(recvr, meth, arglist) {
-          var $a, $b, self = this;
-          return (($a = recvr['$=='](["const", "Opal"])) ? (($b = $scope.HELPERS) == null ? $opal.cm('HELPERS') : $b)['$include?'](meth.$to_sym()) : $a);
+          var $a, self = this;
+          return (($a = recvr['$=='](["const", "Opal"])) ? $scope.HELPERS['$include?'](meth.$to_sym()) : $a);
         });
 
         $opal.defs(self, '$helper', TMP_1 = function(name) {
           var $a, $b, self = this, $iter = TMP_1._p, block = $iter || nil;
           TMP_1._p = null;
-          (($a = $scope.HELPERS) == null ? $opal.cm('HELPERS') : $a)['$<<'](name);
+          $scope.HELPERS['$<<'](name);
           return ($a = ($b = self).$define_method, $a._p = block.$to_proc(), $a).call($b, "compile_" + (name));
         });
 
         def.$compile = function() {
-          var $a, $b, self = this;
-          if (($a = (($b = $scope.HELPERS) == null ? $opal.cm('HELPERS') : $b)['$include?'](self.$meth().$to_sym())) !== false && $a !== nil) {
+          var $a, self = this;
+          if (($a = $scope.HELPERS['$include?'](self.$meth().$to_sym())) !== false && $a !== nil) {
             return self.$__send__("compile_" + (self.$meth()))
             } else {
             return self.$raise("Helper not supported: " + (self.$meth()))
@@ -5222,7 +5222,7 @@ if (str == null) str = nil;
         if (($a = sexp = self.$arglist()['$[]'](1)) === false || $a === nil) {
             self.$raise("falsy? requires an object")};
           return self.$js_falsy(sexp);}, TMP_3._s = self, TMP_3), $a).call($c, "falsy?");
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -5245,23 +5245,23 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $CallNode(){};
         var self = $CallNode = $klass($base, $super, 'CallNode', $CallNode);
 
-        var def = $CallNode._proto, $scope = $CallNode._scope, $a, TMP_1, $b, TMP_4, $c, TMP_5, $d, TMP_6, $e, TMP_7, $f, TMP_8;
+        var def = $CallNode._proto, $scope = $CallNode._scope, TMP_1, $a, $b, TMP_4, $c, TMP_5, $d, TMP_6, $e, TMP_7, $f, TMP_8;
         def.compiler = def.sexp = def.level = nil;
         self.$handle("call");
 
         self.$children("recvr", "meth", "arglist", "iter");
 
-        $opal.cdecl($scope, 'SPECIALS', (($a = $scope.Set) == null ? $opal.cm('Set') : $a).$new());
+        $opal.cdecl($scope, 'SPECIALS', $scope.Set.$new());
 
         $opal.defs(self, '$add_special', TMP_1 = function(name) {
           var $a, $b, self = this, $iter = TMP_1._p, handler = $iter || nil;
           TMP_1._p = null;
-          (($a = $scope.SPECIALS) == null ? $opal.cm('SPECIALS') : $a)['$<<'](name);
+          $scope.SPECIALS['$<<'](name);
           return ($a = ($b = self).$define_method, $a._p = handler.$to_proc(), $a).call($b, "handle_" + (name));
         });
 
@@ -5275,7 +5275,7 @@ if (str == null) str = nil;
           mid = self.$mid_to_jsid(self.$meth().$to_s());
           splat = ($a = ($b = self.$arglist()['$[]']($range(1, -1, false)))['$any?'], $a._p = (TMP_2 = function(a){var self = TMP_2._s || this;if (a == null) a = nil;
           return a.$first()['$==']("splat")}, TMP_2._s = self, TMP_2), $a).call($b);
-          if (($a = ($c = (($d = $scope.Sexp) == null ? $opal.cm('Sexp') : $d)['$==='](self.$arglist().$last()), $c !== false && $c !== nil ?self.$arglist().$last().$type()['$==']("block_pass") : $c)) !== false && $a !== nil) {
+          if (($a = ($c = $scope.Sexp['$==='](self.$arglist().$last()), $c !== false && $c !== nil ?self.$arglist().$last().$type()['$==']("block_pass") : $c)) !== false && $a !== nil) {
             block = self.$arglist().$pop()
           } else if (($a = self.$iter()) !== false && $a !== nil) {
             block = self.$iter()};
@@ -5331,16 +5331,16 @@ if (str == null) str = nil;
         };
 
         def.$handle_special = function() {
-          var $a, $b, self = this, result = nil;
-          if (($a = (($b = $scope.SPECIALS) == null ? $opal.cm('SPECIALS') : $b)['$include?'](self.$meth())) !== false && $a !== nil) {
+          var $a, self = this, result = nil;
+          if (($a = $scope.SPECIALS['$include?'](self.$meth())) !== false && $a !== nil) {
             if (($a = result = self.$__send__("handle_" + (self.$meth()))) !== false && $a !== nil) {
               self.$push(result);
               return true;
               } else {
               return nil
             }
-          } else if (($a = (($b = $scope.RuntimeHelpers) == null ? $opal.cm('RuntimeHelpers') : $b)['$compatible?'](self.$recvr(), self.$meth(), self.$arglist())) !== false && $a !== nil) {
-            self.$push((($a = $scope.RuntimeHelpers) == null ? $opal.cm('RuntimeHelpers') : $a).$new(self.sexp, self.level, self.compiler).$compile());
+          } else if (($a = $scope.RuntimeHelpers['$compatible?'](self.$recvr(), self.$meth(), self.$arglist())) !== false && $a !== nil) {
+            self.$push($scope.RuntimeHelpers.$new(self.sexp, self.level, self.compiler).$compile());
             return true;
             } else {
             return nil
@@ -5348,7 +5348,7 @@ if (str == null) str = nil;
         };
 
         ($a = ($b = self).$add_special, $a._p = (TMP_4 = function(){var self = TMP_4._s || this, $a, str = nil;
-        str = (($a = $scope.DependencyResolver) == null ? $opal.cm('DependencyResolver') : $a).$new(self.$compiler(), self.$arglist()['$[]'](1)).$resolve();
+        str = $scope.DependencyResolver.$new(self.$compiler(), self.$arglist()['$[]'](1)).$resolve();
           if (($a = str['$nil?']()) === false || $a === nil) {
             self.$compiler().$requires()['$<<'](str)};
           if (($a = self['$stmt?']()) !== false && $a !== nil) {
@@ -5359,7 +5359,7 @@ if (str == null) str = nil;
 
         ($a = ($c = self).$add_special, $a._p = (TMP_5 = function(){var self = TMP_5._s || this, $a, str = nil;
         if (($a = self.$scope()['$class_scope?']()) !== false && $a !== nil) {
-            str = (($a = $scope.DependencyResolver) == null ? $opal.cm('DependencyResolver') : $a).$new(self.$compiler(), self.$arglist()['$[]'](2)).$resolve();
+            str = $scope.DependencyResolver.$new(self.$compiler(), self.$arglist()['$[]'](2)).$resolve();
             if (($a = str['$nil?']()) === false || $a === nil) {
               self.$compiler().$requires()['$<<'](str)};
             return self.$fragment("");
@@ -5438,7 +5438,7 @@ if (str == null) str = nil;
               return p;}, TMP_10._s = self, TMP_10), $a).call($b, []).$join("/");
           }, nil);
         })(self, null);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -5459,7 +5459,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $AttrAssignNode(){};
         var self = $AttrAssignNode = $klass($base, $super, 'AttrAssignNode', $AttrAssignNode);
@@ -5475,7 +5475,7 @@ if (str == null) str = nil;
           sexp = self.$s("call", self.$recvr(), self.$mid(), self.$arglist());
           return self.$push(self.$process(sexp, self.level));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $Match3Node(){};
@@ -5492,7 +5492,7 @@ if (str == null) str = nil;
           sexp = self.$s("call", self.$lhs(), "=~", self.$s("arglist", self.$rhs()));
           return self.$push(self.$process(sexp, self.level));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $OpAsgnOrNode(){};
@@ -5508,7 +5508,7 @@ if (str == null) str = nil;
           sexp = self.$s("or", self.$recvr(), self.$rhs());
           return self.$push(self.$expr(sexp));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $OpAsgnAndNode(){};
@@ -5524,7 +5524,7 @@ if (str == null) str = nil;
           sexp = self.$s("and", self.$recvr(), self.$rhs());
           return self.$push(self.$expr(sexp));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $OpAsgn1Node(){};
@@ -5566,7 +5566,7 @@ if (str == null) str = nil;
               self.$push("(" + (a) + " = ", self.$expr(self.$first_arg()), ", " + (r) + " = ", self.$expr(self.$lhs()));
               return self.$push(", ", self.$expr(orop), ")");}, TMP_4._s = self, TMP_4), $a).call($b)}, TMP_3._s = self, TMP_3), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $OpAsgn2Node(){};
@@ -5613,7 +5613,7 @@ if (str == null) str = nil;
             asgn = self.$s("call", self.$s("js_tmp", tmp), self.$mid(), self.$s("arglist", oper));
             return self.$push("(" + (tmp) + " = ", self.$expr(self.$lhs()), ", ", self.$expr(asgn), ")");}, TMP_7._s = self, TMP_7), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -5634,7 +5634,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $ScopeNode(){};
         var self = $ScopeNode = $klass($base, $super, 'ScopeNode', $ScopeNode);
@@ -5927,7 +5927,7 @@ if (str == null) str = nil;
           var self = this;
           return self.uses_block;
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -5948,7 +5948,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $ModuleNode(){};
         var self = $ModuleNode = $klass($base, $super, 'ModuleNode', $ModuleNode);
@@ -5977,8 +5977,8 @@ if (str == null) str = nil;
         };
 
         return (def.$name_and_base = function() {
-          var $a, $b, $c, self = this;
-          if (($a = ((($b = (($c = $scope.Symbol) == null ? $opal.cm('Symbol') : $c)['$==='](self.$cid())) !== false && $b !== nil) ? $b : (($c = $scope.String) == null ? $opal.cm('String') : $c)['$==='](self.$cid()))) !== false && $a !== nil) {
+          var $a, $b, self = this;
+          if (($a = ((($b = $scope.Symbol['$==='](self.$cid())) !== false && $b !== nil) ? $b : $scope.String['$==='](self.$cid()))) !== false && $a !== nil) {
             return [self.$cid().$to_s(), "self"]
           } else if (self.$cid().$type()['$==']("colon2")) {
             return [self.$cid()['$[]'](2).$to_s(), self.$expr(self.$cid()['$[]'](1))]
@@ -5988,7 +5988,7 @@ if (str == null) str = nil;
             return self.$raise("Bad receiver in module")
           };
         }, nil);
-      })(self, (($a = $scope.ScopeNode) == null ? $opal.cm('ScopeNode') : $a))
+      })(self, $scope.ScopeNode)
       
     })(self)
     
@@ -6009,7 +6009,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $ClassNode(){};
         var self = $ClassNode = $klass($base, $super, 'ClassNode', $ClassNode);
@@ -6050,7 +6050,7 @@ if (str == null) str = nil;
           var $a, self = this;
           return self.$stmt(self.$compiler().$returns(((($a = self.$body()) !== false && $a !== nil) ? $a : self.$s("nil"))));
         }, nil);
-      })(self, (($a = $scope.ModuleNode) == null ? $opal.cm('ModuleNode') : $a))
+      })(self, $scope.ModuleNode)
       
     })(self)
     
@@ -6071,7 +6071,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $SingletonClassNode(){};
         var self = $SingletonClassNode = $klass($base, $super, 'SingletonClassNode', $SingletonClassNode);
@@ -6091,7 +6091,7 @@ if (str == null) str = nil;
             return self.$line(self.$stmt(self.$compiler().$returns(self.$body())));}, TMP_1._s = self, TMP_1), $a).call($b);
           return self.$line("})(", self.$recv(self.$object()), ".$singleton_class())");
         }, nil);
-      })(self, (($a = $scope.ScopeNode) == null ? $opal.cm('ScopeNode') : $a))
+      })(self, $scope.ScopeNode)
       
     })(self)
     
@@ -6112,7 +6112,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $IterNode(){};
         var self = $IterNode = $klass($base, $super, 'IterNode', $IterNode);
@@ -6123,10 +6123,10 @@ if (str == null) str = nil;
         self.$children("args_sexp", "body_sexp");
 
         def.$compile = function() {
-          var $a, $b, $c, TMP_1, self = this, opt_args = nil, block_arg = nil, splat = nil, len = nil, params = nil, to_vars = nil, identity = nil, body_code = nil;
+          var $a, $b, TMP_1, self = this, opt_args = nil, block_arg = nil, splat = nil, len = nil, params = nil, to_vars = nil, identity = nil, body_code = nil;
           opt_args = self.$extract_opt_args();
           block_arg = self.$extract_block_arg();
-          if (($a = ($b = self.$args().$last()['$is_a?']((($c = $scope.Sexp) == null ? $opal.cm('Sexp') : $c)), $b !== false && $b !== nil ?self.$args().$last().$type()['$==']("splat") : $b)) !== false && $a !== nil) {
+          if (($a = ($b = self.$args().$last()['$is_a?']($scope.Sexp), $b !== false && $b !== nil ?self.$args().$last().$type()['$==']("splat") : $b)) !== false && $a !== nil) {
             splat = self.$args().$last()['$[]'](1)['$[]'](1);
             self.$args().$pop();
             len = self.$args().$length();};
@@ -6175,8 +6175,8 @@ if (str == null) str = nil;
         };
 
         def.$extract_opt_args = function() {
-          var $a, $b, $c, self = this, opt_args = nil;
-          if (($a = ($b = self.$args().$last()['$is_a?']((($c = $scope.Sexp) == null ? $opal.cm('Sexp') : $c)), $b !== false && $b !== nil ?self.$args().$last().$type()['$==']("block") : $b)) !== false && $a !== nil) {
+          var $a, $b, self = this, opt_args = nil;
+          if (($a = ($b = self.$args().$last()['$is_a?']($scope.Sexp), $b !== false && $b !== nil ?self.$args().$last().$type()['$==']("block") : $b)) !== false && $a !== nil) {
             opt_args = self.$args().$pop();
             opt_args.$shift();
             return opt_args;
@@ -6186,8 +6186,8 @@ if (str == null) str = nil;
         };
 
         def.$extract_block_arg = function() {
-          var $a, $b, $c, self = this, block_arg = nil;
-          if (($a = ($b = self.$args().$last()['$is_a?']((($c = $scope.Sexp) == null ? $opal.cm('Sexp') : $c)), $b !== false && $b !== nil ?self.$args().$last().$type()['$==']("block_pass") : $b)) !== false && $a !== nil) {
+          var $a, $b, self = this, block_arg = nil;
+          if (($a = ($b = self.$args().$last()['$is_a?']($scope.Sexp), $b !== false && $b !== nil ?self.$args().$last().$type()['$==']("block_pass") : $b)) !== false && $a !== nil) {
             block_arg = self.$args().$pop();
             return block_arg = block_arg['$[]'](1)['$[]'](1).$to_sym();
             } else {
@@ -6196,8 +6196,8 @@ if (str == null) str = nil;
         };
 
         def.$args = function() {
-          var $a, $b, $c, self = this;
-          if (($a = ((($b = (($c = $scope.Fixnum) == null ? $opal.cm('Fixnum') : $c)['$==='](self.$args_sexp())) !== false && $b !== nil) ? $b : self.$args_sexp()['$nil?']())) !== false && $a !== nil) {
+          var $a, $b, self = this;
+          if (($a = ((($b = $scope.Fixnum['$==='](self.$args_sexp())) !== false && $b !== nil) ? $b : self.$args_sexp()['$nil?']())) !== false && $a !== nil) {
             return self.$s("array")
           } else if (self.$args_sexp().$type()['$==']("lasgn")) {
             return self.$s("array", self.$args_sexp())
@@ -6226,7 +6226,7 @@ if (str == null) str = nil;
             }}, TMP_5._s = self, TMP_5), $a).call($b);
           return result;
         }, nil);
-      })(self, (($a = $scope.ScopeNode) == null ? $opal.cm('ScopeNode') : $a))
+      })(self, $scope.ScopeNode)
       
     })(self)
     
@@ -6247,7 +6247,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $DefNode(){};
         var self = $DefNode = $klass($base, $super, 'DefNode', $DefNode);
@@ -6262,7 +6262,7 @@ if (str == null) str = nil;
           jsid = self.$mid_to_jsid(self.$mid().$to_s());
           params = nil;
           scope_name = nil;
-          if (($a = (($b = $scope.Sexp) == null ? $opal.cm('Sexp') : $b)['$==='](self.$args().$last())) !== false && $a !== nil) {
+          if (($a = $scope.Sexp['$==='](self.$args().$last())) !== false && $a !== nil) {
             opt = self.$args().$pop()};
           argc = self.$args().$length()['$-'](1);
           if (($a = self.$args().$last().$to_s()['$start_with?']("&")) !== false && $a !== nil) {
@@ -6365,7 +6365,7 @@ if (str == null) str = nil;
             return aritycode['$+']("if ($arity !== " + (arity) + ") { $opal.ac($arity, " + (arity) + ", this, " + (meth) + "); }")
           };
         }, nil);
-      })(self, (($a = $scope.ScopeNode) == null ? $opal.cm('ScopeNode') : $a));
+      })(self, $scope.ScopeNode);
 
       (function($base, $super) {
         function $ArgsNode(){};
@@ -6386,7 +6386,7 @@ if (str == null) str = nil;
             self.$scope().$add_arg(child.$to_sym());
             return self.$push(child.$to_s());}, TMP_3._s = self, TMP_3), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -6407,7 +6407,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $IfNode(){};
         var self = $IfNode = $klass($base, $super, 'IfNode', $IfNode);
@@ -6473,7 +6473,7 @@ if (str == null) str = nil;
           var $a, self = this;
           return ((($a = self['$expr?']()) !== false && $a !== nil) ? $a : self['$recv?']());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -6494,7 +6494,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $NextNode(){};
         var self = $NextNode = $klass($base, $super, 'NextNode', $NextNode);
@@ -6511,7 +6511,7 @@ if (str == null) str = nil;
           self.$push(self.$expr_or_nil(self.$value()));
           return self.$wrap("return ", ";");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $BreakNode(){};
@@ -6549,7 +6549,7 @@ if (str == null) str = nil;
           self.$push(self.$expr_or_nil(self.$value()));
           return self.$wrap("return ($breaker.$v = ", ", $breaker)");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $RedoNode(){};
@@ -6579,7 +6579,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push("return " + (self.$scope().$identity()) + ".apply(null, $slice.call(arguments))");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $NotNode(){};
@@ -6596,7 +6596,7 @@ if (str == null) str = nil;
           self.$push(self.$expr(self.$value()));
             return self.$wrap("(" + (tmp) + " = ", ", (" + (tmp) + " === nil || " + (tmp) + " === false))");}, TMP_1._s = self, TMP_1), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $SplatNode(){};
@@ -6622,7 +6622,7 @@ if (str == null) str = nil;
             return self.$push(self.$recv(self.$value()))
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $OrNode(){};
@@ -6642,7 +6642,7 @@ if (str == null) str = nil;
             self.$push(self.$expr(self.$rhs()));
             return self.$push(")");}, TMP_2._s = self, TMP_2), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $AndNode(){};
@@ -6670,7 +6670,7 @@ if (str == null) str = nil;
               return self.$push(" : " + (tmp) + ")");
             }}, TMP_3._s = self, TMP_3), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ReturnNode(){};
@@ -6717,10 +6717,10 @@ if (str == null) str = nil;
           } else if (($a = self['$stmt?']()) !== false && $a !== nil) {
             return self.$push("return ", self.$return_val())
             } else {
-            return self.$raise((($a = $scope.SyntaxError) == null ? $opal.cm('SyntaxError') : $a), "void value expression: cannot return as an expression")
+            return self.$raise($scope.SyntaxError, "void value expression: cannot return as an expression")
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $JSReturnNode(){};
@@ -6736,7 +6736,7 @@ if (str == null) str = nil;
           self.$push("return ");
           return self.$push(self.$expr(self.$value()));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $JSTempNode(){};
@@ -6751,7 +6751,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push(self.$value().$to_s());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $BlockPassNode(){};
@@ -6766,7 +6766,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push(self.$expr(self.$s("call", self.$value(), "to_proc", self.$s("arglist"))));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -6787,7 +6787,7 @@ if (str == null) str = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $SvalueNode(){};
         var self = $SvalueNode = $klass($base, $super, 'SvalueNode', $SvalueNode);
@@ -6802,7 +6802,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push(self.$process(self.$value(), self.level));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $UndefNode(){};
@@ -6817,7 +6817,7 @@ if (str == null) str = nil;
           var self = this;
           return self.$push("delete " + (self.$scope().$proto()) + (self.$mid_to_jsid(self.$mid()['$[]'](1).$to_s())));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $AliasNode(){};
@@ -6847,7 +6847,7 @@ if (str == null) str = nil;
             return self.$push("self._proto" + (self.$new_mid()) + " = self._proto" + (self.$old_mid()))
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $BeginNode(){};
@@ -6868,7 +6868,7 @@ if (str == null) str = nil;
             return self.$push(self.$process(self.$body(), self.level))
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ParenNode(){};
@@ -6897,7 +6897,7 @@ if (str == null) str = nil;
             };
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $BlockNode(){};
@@ -6972,7 +6972,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             return nil
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -6993,7 +6993,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $BaseYieldNode(){};
         var self = $BaseYieldNode = $klass($base, $super, 'BaseYieldNode', $BaseYieldNode);
@@ -7037,7 +7037,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           return ($a = ($b = children)['$any?'], $a._p = (TMP_1 = function(child){var self = TMP_1._s || this;if (child == null) child = nil;
           return child.$type()['$==']("splat")}, TMP_1._s = self, TMP_1), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $YieldNode(){};
@@ -7057,7 +7057,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             return self.$wrap("(((" + (tmp) + " = ", ") === $breaker) ? $breaker.$v : " + (tmp) + ")")}, TMP_2._s = self, TMP_2), $a).call($b)
           };
         }, nil);
-      })(self, (($a = $scope.BaseYieldNode) == null ? $opal.cm('BaseYieldNode') : $a));
+      })(self, $scope.BaseYieldNode);
 
       (function($base, $super) {
         function $YasgnNode(){};
@@ -7073,7 +7073,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           self.$compile_call(($a = self).$s.apply($a, [].concat(self.$yield_args()['$[]']($range(1, -1, false)))), "stmt");
           return self.$wrap("if ((" + (self.$var_name()) + " = ", ") === $breaker) return $breaker.$v");
         }, nil);
-      })(self, (($a = $scope.BaseYieldNode) == null ? $opal.cm('BaseYieldNode') : $a));
+      })(self, $scope.BaseYieldNode);
 
       (function($base, $super) {
         function $ReturnableYieldNode(){};
@@ -7089,7 +7089,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           return ($a = ($b = self).$with_temp, $a._p = (TMP_3 = function(tmp){var self = TMP_3._s || this;if (tmp == null) tmp = nil;
           return self.$wrap("return " + (tmp) + " = ", ", " + (tmp) + " === $breaker ? " + (tmp) + " : " + (tmp))}, TMP_3._s = self, TMP_3), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.BaseYieldNode) == null ? $opal.cm('BaseYieldNode') : $a));
+      })(self, $scope.BaseYieldNode);
       
     })(self)
     
@@ -7110,7 +7110,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $RescueModNode(){};
         var self = $RescueModNode = $klass($base, $super, 'RescueModNode', $RescueModNode);
@@ -7147,7 +7147,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             return self.$wrap("(function() {", "})()")
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $EnsureNode(){};
@@ -7191,7 +7191,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var $a, self = this;
           return ((($a = self['$recv?']()) !== false && $a !== nil) ? $a : self['$expr?']());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $RescueNode(){};
@@ -7238,7 +7238,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             return self.$body()
           };
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $ResBodyNode(){};
@@ -7269,9 +7269,9 @@ if (child == null) child = nil;if (idx == null) idx = nil;
         };
 
         def.$rescue_variable = function() {
-          var $a, $b, $c, self = this, variable = nil;
+          var $a, $b, self = this, variable = nil;
           variable = self.$args().$last();
-          if (($a = ($b = (($c = $scope.Sexp) == null ? $opal.cm('Sexp') : $c)['$==='](variable), $b !== false && $b !== nil ?["lasgn", "iasgn"]['$include?'](variable.$type()) : $b)) !== false && $a !== nil) {
+          if (($a = ($b = $scope.Sexp['$==='](variable), $b !== false && $b !== nil ?["lasgn", "iasgn"]['$include?'](variable.$type()) : $b)) !== false && $a !== nil) {
             return variable.$dup()
             } else {
             return nil
@@ -7290,7 +7290,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var $a, self = this;
           return ((($a = self.$body()) !== false && $a !== nil) ? $a : self.$s("nil"));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -7311,7 +7311,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $CaseNode(){};
         var self = $CaseNode = $klass($base, $super, 'CaseNode', $CaseNode);
@@ -7367,7 +7367,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var self = this;
           return self.$compiler().$case_stmt();
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $WhenNode(){};
@@ -7412,7 +7412,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var $a, self = this;
           return ((($a = self.$body()) !== false && $a !== nil) ? $a : self.$s("nil"));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
       
     })(self)
     
@@ -7433,7 +7433,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $BaseSuperNode(){};
         var self = $BaseSuperNode = $klass($base, $super, 'BaseSuperNode', $BaseSuperNode);
@@ -7485,7 +7485,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var $a, self = this;
           return ((($a = self.$iter()) !== false && $a !== nil) ? $a : self.$s("js_tmp", "null"));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $DefinedSuperNode(){};
@@ -7499,7 +7499,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           self.$compile_dispatcher();
           return self.$wrap("((", ") != null ? \"super\" : nil)");
         }, nil);
-      })(self, (($a = $scope.BaseSuperNode) == null ? $opal.cm('BaseSuperNode') : $a));
+      })(self, $scope.BaseSuperNode);
 
       (function($base, $super) {
         function $SuperNode(){};
@@ -7534,7 +7534,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           return ($a = ($b = self.$args().$children())['$any?'], $a._p = (TMP_2 = function(child){var self = TMP_2._s || this;if (child == null) child = nil;
           return child.$type()['$==']("splat")}, TMP_2._s = self, TMP_2), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.BaseSuperNode) == null ? $opal.cm('BaseSuperNode') : $a));
+      })(self, $scope.BaseSuperNode);
       
     })(self)
     
@@ -7571,7 +7571,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $TopNode(){};
         var self = $TopNode = $klass($base, $super, 'TopNode', $TopNode);
@@ -7585,9 +7585,9 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var $a, $b, TMP_1, self = this;
           self.$push(self.$version_comment());
           self.$line("(function($opal) {");
-          ($a = ($b = self).$in_scope, $a._p = (TMP_1 = function(){var self = TMP_1._s || this, $a, $b, body_code = nil;
+          ($a = ($b = self).$in_scope, $a._p = (TMP_1 = function(){var self = TMP_1._s || this, $a, body_code = nil;
           body_code = self.$stmt(self.$stmts());
-            if (($a = body_code['$is_a?']((($b = $scope.Array) == null ? $opal.cm('Array') : $b))) === false || $a === nil) {
+            if (($a = body_code['$is_a?']($scope.Array)) === false || $a === nil) {
               body_code = [body_code]};
             self.$add_temp("self = $opal.top");
             self.$add_temp("$scope = $opal");
@@ -7634,10 +7634,10 @@ if (child == null) child = nil;if (idx == null) idx = nil;
         };
 
         return (def.$version_comment = function() {
-          var $a, $b, self = this;
-          return "/* Generated by Opal " + ((($a = ((($b = $scope.Opal) == null ? $opal.cm('Opal') : $b))._scope).VERSION == null ? $a.cm('VERSION') : $a.VERSION)) + " */";
+          var self = this;
+          return "/* Generated by Opal " + (($scope.Opal)._scope.VERSION) + " */";
         }, nil);
-      })(self, (($a = $scope.ScopeNode) == null ? $opal.cm('ScopeNode') : $a))
+      })(self, $scope.ScopeNode)
       
     })(self)
     
@@ -7658,7 +7658,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $WhileNode(){};
         var self = $WhileNode = $klass($base, $super, 'WhileNode', $WhileNode);
@@ -7713,7 +7713,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var $a, self = this;
           return ((($a = self['$expr?']()) !== false && $a !== nil) ? $a : self['$recv?']());
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a));
+      })(self, $scope.Base);
 
       (function($base, $super) {
         function $UntilNode(){};
@@ -7731,7 +7731,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           var self = this;
           return ")) {";
         }, nil);
-      })(self, (($a = $scope.WhileNode) == null ? $opal.cm('WhileNode') : $a));
+      })(self, $scope.WhileNode);
       
     })(self)
     
@@ -7752,7 +7752,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $HashNode(){};
         var self = $HashNode = $klass($base, $super, 'HashNode', $HashNode);
@@ -7814,7 +7814,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             return self.$push(hash_obj['$[]'](key));}, TMP_5._s = self, TMP_5), $a).call($c);
           return self.$wrap("$hash2([" + (hash_keys.$join(", ")) + "], {", "})");
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -7835,7 +7835,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $ArrayNode(){};
         var self = $ArrayNode = $klass($base, $super, 'ArrayNode', $ArrayNode);
@@ -7881,7 +7881,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             };};
           return self.$push(code);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -7902,7 +7902,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $DefinedNode(){};
         var self = $DefinedNode = $klass($base, $super, 'DefinedNode', $DefinedNode);
@@ -8006,7 +8006,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           self.$push("((" + (tmp) + " = $gvars['~'], " + (tmp) + " != null && " + (tmp) + " != nil) ? ");
             return self.$push("'global-variable' : nil)");}, TMP_4._s = self, TMP_4), $a).call($b);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -8027,7 +8027,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $MassAssignNode(){};
         var self = $MassAssignNode = $klass($base, $super, 'MassAssignNode', $MassAssignNode);
@@ -8083,7 +8083,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             };}, TMP_1._s = self, TMP_1), $a).call($b);
           return self.$scope().$queue_temp(tmp);
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -8104,7 +8104,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     (function($base) {
       var self = $module($base, 'Nodes');
 
-      var def = self._proto, $scope = self._scope, $a;
+      var def = self._proto, $scope = self._scope;
       (function($base, $super) {
         function $ArglistNode(){};
         var self = $ArglistNode = $klass($base, $super, 'ArglistNode', $ArglistNode);
@@ -8150,7 +8150,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
             };};
           return ($a = self).$push.apply($a, [].concat(code));
         }, nil);
-      })(self, (($a = $scope.Base) == null ? $opal.cm('Base') : $a))
+      })(self, $scope.Base)
       
     })(self)
     
@@ -8205,11 +8205,11 @@ if (child == null) child = nil;if (idx == null) idx = nil;
 
     var def = self._proto, $scope = self._scope;
     $opal.defs(self, '$compile', function(source, options) {
-      var $a, self = this;
+      var self = this;
       if (options == null) {
         options = $hash2([], {})
       }
-      return (($a = $scope.Compiler) == null ? $opal.cm('Compiler') : $a).$new().$compile(source, options);
+      return $scope.Compiler.$new().$compile(source, options);
     });
 
     (function($base, $super) {
@@ -8267,32 +8267,32 @@ if (child == null) child = nil;if (idx == null) idx = nil;
         }
         self.source = source;
         self.options.$update(options);
-        self.sexp = self.$s("top", ((($a = (($b = $scope.Parser) == null ? $opal.cm('Parser') : $b).$new().$parse(self.source, self.$file())) !== false && $a !== nil) ? $a : self.$s("nil")));
+        self.sexp = self.$s("top", ((($a = $scope.Parser.$new().$parse(self.source, self.$file())) !== false && $a !== nil) ? $a : self.$s("nil")));
         self.fragments = self.$process(self.sexp).$flatten();
         return self.result = ($a = ($b = self.fragments).$map, $a._p = "code".$to_proc(), $a).call($b).$join("");
       };
 
       def.$source_map = function(source_file) {
-        var $a, $b, self = this;
+        var $a, self = this;
         if (source_file == null) {
           source_file = nil
         }
-        return (($a = ((($b = $scope.Opal) == null ? $opal.cm('Opal') : $b))._scope).SourceMap == null ? $a.cm('SourceMap') : $a.SourceMap).$new(self.fragments, ((($a = source_file) !== false && $a !== nil) ? $a : self.$file()));
+        return ($scope.Opal)._scope.SourceMap.$new(self.fragments, ((($a = source_file) !== false && $a !== nil) ? $a : self.$file()));
       };
 
       def.$helpers = function() {
-        var $a, $b, self = this;
-        return ((($a = self.helpers) !== false && $a !== nil) ? $a : self.helpers = (($b = $scope.Set) == null ? $opal.cm('Set') : $b).$new(["breaker", "slice"]));
+        var $a, self = this;
+        return ((($a = self.helpers) !== false && $a !== nil) ? $a : self.helpers = $scope.Set.$new(["breaker", "slice"]));
       };
 
       def.$method_calls = function() {
-        var $a, $b, self = this;
-        return ((($a = self.method_calls) !== false && $a !== nil) ? $a : self.method_calls = (($b = $scope.Set) == null ? $opal.cm('Set') : $b).$new());
+        var $a, self = this;
+        return ((($a = self.method_calls) !== false && $a !== nil) ? $a : self.method_calls = $scope.Set.$new());
       };
 
       def.$error = function(msg) {
-        var $a, self = this;
-        return self.$raise((($a = $scope.SyntaxError) == null ? $opal.cm('SyntaxError') : $a), "" + (msg) + " :" + (self.$file()) + ":" + (self.line));
+        var self = this;
+        return self.$raise($scope.SyntaxError, "" + (msg) + " :" + (self.$file()) + ":" + (self.line));
       };
 
       def.$warning = function(msg) {
@@ -8306,19 +8306,19 @@ if (child == null) child = nil;if (idx == null) idx = nil;
       };
 
       def.$s = function(parts) {
-        var $a, self = this, sexp = nil;
+        var self = this, sexp = nil;
         parts = $slice.call(arguments, 0);
-        sexp = (($a = $scope.Sexp) == null ? $opal.cm('Sexp') : $a).$new(parts);
+        sexp = $scope.Sexp.$new(parts);
         sexp['$line='](self.line);
         return sexp;
       };
 
       def.$fragment = function(str, sexp) {
-        var $a, self = this;
+        var self = this;
         if (sexp == null) {
           sexp = nil
         }
-        return (($a = $scope.Fragment) == null ? $opal.cm('Fragment') : $a).$new(str, sexp);
+        return $scope.Fragment.$new(str, sexp);
       };
 
       def.$unique_temp = function() {
@@ -8335,7 +8335,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
         var $a, self = this, $iter = TMP_3._p, block = $iter || nil, indent = nil, res = nil;
         TMP_3._p = null;
         indent = self.indent;
-        self.indent = self.indent['$+']((($a = $scope.INDENT) == null ? $opal.cm('INDENT') : $a));
+        self.indent = self.indent['$+']($scope.INDENT);
         self.space = "\n" + (self.indent);
         res = ((($a = $opal.$yieldX(block, [])) === $breaker) ? $breaker.$v : $a);
         self.indent = indent;
@@ -8393,8 +8393,8 @@ if (child == null) child = nil;if (idx == null) idx = nil;
       };
 
       def.$handlers = function() {
-        var $a, $b, $c, $d, self = this;
-        return ((($a = self.handlers) !== false && $a !== nil) ? $a : self.handlers = (($b = ((($c = ((($d = $scope.Opal) == null ? $opal.cm('Opal') : $d))._scope).Nodes == null ? $c.cm('Nodes') : $c.Nodes))._scope).Base == null ? $b.cm('Base') : $b.Base).$handlers());
+        var $a, self = this;
+        return ((($a = self.handlers) !== false && $a !== nil) ? $a : self.handlers = (($scope.Opal)._scope.Nodes)._scope.Base.$handlers());
       };
 
       def.$requires = function() {
@@ -8492,7 +8492,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
       var $a, self = this, $iter = TMP_1._p, body = $iter || nil;
       TMP_1._p = null;
       $a = [name, body], self.name = $a[0], self.body = $a[1];
-      return (($a = $scope.Template) == null ? $opal.cm('Template') : $a)['$[]='](name, self);
+      return $scope.Template['$[]='](name, self);
     };
 
     def.$inspect = function() {
@@ -8501,11 +8501,11 @@ if (child == null) child = nil;if (idx == null) idx = nil;
     };
 
     def.$render = function(ctx) {
-      var $a, $b, $c, self = this;
+      var $a, $b, self = this;
       if (ctx == null) {
         ctx = self
       }
-      return ($a = ($b = ctx).$instance_exec, $a._p = self.body.$to_proc(), $a).call($b, (($c = $scope.OutputBuffer) == null ? $opal.cm('OutputBuffer') : $c).$new());
+      return ($a = ($b = ctx).$instance_exec, $a._p = self.body.$to_proc(), $a).call($b, $scope.OutputBuffer.$new());
     };
 
     return (function($base, $super) {
@@ -8593,16 +8593,16 @@ if (child == null) child = nil;if (idx == null) idx = nil;
       $opal.cdecl($scope, 'BUILDERS', $hash2([".rb", ".js", ".erb"], {".rb": "build_ruby", ".js": "build_js", ".erb": "build_erb"}));
 
       $opal.defs(self, '$build', function(name) {
-        var $a, self = this;
-        return (($a = $scope.Builder) == null ? $opal.cm('Builder') : $a).$new().$build(name);
+        var self = this;
+        return $scope.Builder.$new().$build(name);
       });
 
       def.$initialize = function(options) {
-        var $a, $b, self = this;
+        var $a, self = this;
         if (options == null) {
           options = $hash2([], {})
         }
-        self.paths = ((($a = options.$delete("paths")) !== false && $a !== nil) ? $a : (($b = $scope.Opal) == null ? $opal.cm('Opal') : $b).$paths().$clone());
+        self.paths = ((($a = options.$delete("paths")) !== false && $a !== nil) ? $a : $scope.Opal.$paths().$clone());
         self.options = options;
         return self.handled = $hash2([], {});
       };
@@ -8647,9 +8647,9 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           path.$untaint()};
         file_types = [".rb", ".js", ".js.erb"];
         ($a = ($b = self.paths).$each, $a._p = (TMP_1 = function(root){var self = TMP_1._s || this, $a, $b, TMP_2;if (root == null) root = nil;
-        return ($a = ($b = file_types).$each, $a._p = (TMP_2 = function(type){var self = TMP_2._s || this, $a, $b, test = nil;if (type == null) type = nil;
-          test = (($a = $scope.File) == null ? $opal.cm('File') : $a).$join(root, "" + (path) + (type));
-            if (($a = (($b = $scope.File) == null ? $opal.cm('File') : $b)['$exist?'](test)) !== false && $a !== nil) {
+        return ($a = ($b = file_types).$each, $a._p = (TMP_2 = function(type){var self = TMP_2._s || this, $a, test = nil;if (type == null) type = nil;
+          test = $scope.File.$join(root, "" + (path) + (type));
+            if (($a = $scope.File['$exist?'](test)) !== false && $a !== nil) {
               $opal.$return(test)
               } else {
               return nil
@@ -8659,9 +8659,9 @@ if (child == null) child = nil;if (idx == null) idx = nil;
       };
 
       def.$build_asset = function(path) {
-        var $a, $b, self = this, ext = nil, builder = nil;
-        ext = (($a = $scope.File) == null ? $opal.cm('File') : $a).$extname(path);
-        if (($a = builder = (($b = $scope.BUILDERS) == null ? $opal.cm('BUILDERS') : $b)['$[]'](ext)) === false || $a === nil) {
+        var $a, self = this, ext = nil, builder = nil;
+        ext = $scope.File.$extname(path);
+        if (($a = builder = $scope.BUILDERS['$[]'](ext)) === false || $a === nil) {
           self.$raise("Unknown builder for " + (ext))};
         return self.segments['$<<'](self.$__send__(builder, path));
       };
@@ -8672,7 +8672,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           options = nil
         }
         ((($a = options) !== false && $a !== nil) ? $a : options = self.options.$clone());
-        compiler = (($a = $scope.Compiler) == null ? $opal.cm('Compiler') : $a).$new();
+        compiler = $scope.Compiler.$new();
         result = compiler.$compile(str, options);
         ($a = ($b = compiler.$requires()).$each, $a._p = (TMP_3 = function(r){var self = TMP_3._s || this;if (r == null) r = nil;
         return self.$require_asset(r)}, TMP_3._s = self, TMP_3), $a).call($b);
@@ -8680,18 +8680,18 @@ if (child == null) child = nil;if (idx == null) idx = nil;
       };
 
       def.$build_ruby = function(path) {
-        var $a, self = this;
-        return self.$compile_ruby((($a = $scope.File) == null ? $opal.cm('File') : $a).$read(path), self.options.$clone());
+        var self = this;
+        return self.$compile_ruby($scope.File.$read(path), self.options.$clone());
       };
 
       def.$build_js = function(path) {
-        var $a, self = this;
-        return (($a = $scope.File) == null ? $opal.cm('File') : $a).$read(path);
+        var self = this;
+        return $scope.File.$read(path);
       };
 
       def.$build_erb = function(path) {
         var $a, self = this;
-        return (($a = $opal.Object._scope.ERB) == null ? $opal.cm('ERB') : $a).$new((($a = $scope.File) == null ? $opal.cm('File') : $a).$read(path)).$result(self.$binding());
+        return (($a = $opal.Object._scope.ERB) == null ? $opal.cm('ERB') : $a).$new($scope.File.$read(path)).$result(self.$binding());
       };
 
       return (function($base) {
@@ -8702,9 +8702,9 @@ if (child == null) child = nil;if (idx == null) idx = nil;
 
         def.$uglify = function(str) {try {
 
-          var $a, $b, TMP_4, $c, self = this;
+          var $a, $b, TMP_4, self = this;
           try {
-          return ($a = ($b = (($c = $scope.IO) == null ? $opal.cm('IO') : $c)).$popen, $a._p = (TMP_4 = function(i){var self = TMP_4._s || this;if (i == null) i = nil;
+          return ($a = ($b = $scope.IO).$popen, $a._p = (TMP_4 = function(i){var self = TMP_4._s || this;if (i == null) i = nil;
             i.$puts(str);
               i.$close_write();
               $opal.$return(i.$read());}, TMP_4._s = self, TMP_4), $a).call($b, "uglifyjs 2> /dev/null", "r+")
@@ -8718,9 +8718,9 @@ if (child == null) child = nil;if (idx == null) idx = nil;
 
         def.$gzip = function(str) {try {
 
-          var $a, $b, TMP_5, $c, self = this;
+          var $a, $b, TMP_5, self = this;
           try {
-          return ($a = ($b = (($c = $scope.IO) == null ? $opal.cm('IO') : $c)).$popen, $a._p = (TMP_5 = function(i){var self = TMP_5._s || this;if (i == null) i = nil;
+          return ($a = ($b = $scope.IO).$popen, $a._p = (TMP_5 = function(i){var self = TMP_5._s || this;if (i == null) i = nil;
             i.$puts(str);
               i.$close_write();
               $opal.$return(i.$read());}, TMP_5._s = self, TMP_5), $a).call($b, "gzip -f 2> /dev/null", "r+")
@@ -8754,11 +8754,11 @@ if (child == null) child = nil;if (idx == null) idx = nil;
 
       var def = self._proto, $scope = self._scope;
       $opal.defs(self, '$compile', function(source, file_name) {
-        var $a, self = this;
+        var self = this;
         if (file_name == null) {
           file_name = "(erb)"
         }
-        return (($a = $scope.Compiler) == null ? $opal.cm('Compiler') : $a).$new().$compile(source, file_name);
+        return $scope.Compiler.$new().$compile(source, file_name);
       });
 
       (function($base, $super) {
@@ -8777,7 +8777,7 @@ if (child == null) child = nil;if (idx == null) idx = nil;
           self.$find_contents();
           self.$find_code();
           self.$wrap_compiled();
-          return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$compile(self.result);
+          return $scope.Opal.$compile(self.result);
         };
 
         def.$fix_quotes = function() {
@@ -8789,9 +8789,9 @@ if (child == null) child = nil;if (idx == null) idx = nil;
 
         def.$find_contents = function() {
           var $a, $b, TMP_1, self = this;
-          return self.result = ($a = ($b = self.result).$gsub, $a._p = (TMP_1 = function(){var self = TMP_1._s || this, $a, $b, inner = nil;
+          return self.result = ($a = ($b = self.result).$gsub, $a._p = (TMP_1 = function(){var self = TMP_1._s || this, $a, inner = nil;
           inner = nil.$gsub(/\\'/, "'").$gsub(/\\"/, "\"");
-            if (($a = inner['$=~']((($b = $scope.BLOCK_EXPR) == null ? $opal.cm('BLOCK_EXPR') : $b))) !== false && $a !== nil) {
+            if (($a = inner['$=~']($scope.BLOCK_EXPR)) !== false && $a !== nil) {
               return "\")\noutput_buffer.append= " + (inner) + "\noutput_buffer.append(\""
               } else {
               return "\")\noutput_buffer.append=(" + (inner) + ")\noutput_buffer.append(\""
@@ -8830,8 +8830,8 @@ if (child == null) child = nil;if (idx == null) idx = nil;
 
     var def = self._proto, $scope = self._scope;
     def.$eval = function(str) {
-      var $a, self = this, code = nil;
-      code = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$compile(str);
+      var self = this, code = nil;
+      code = $scope.Opal.$compile(str);
       return eval(code);
     }
         ;$opal.donate(self, ["$eval"]);

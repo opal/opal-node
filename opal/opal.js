@@ -889,7 +889,7 @@
       if (($a = type['$==='](object)) !== false && $a !== nil) {
         return object};
       if (($a = object['$respond_to?'](method)) === false || $a === nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "no implicit conversion of " + (object.$class()) + " into " + (type))};
+        self.$raise($scope.TypeError, "no implicit conversion of " + (object.$class()) + " into " + (type))};
       return object.$__send__(method);
     });
 
@@ -897,7 +897,7 @@
       var $a, self = this, coerced = nil;
       coerced = self.$coerce_to(object, type, method);
       if (($a = type['$==='](coerced)) === false || $a === nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "can't convert " + (object.$class()) + " into " + (type) + " (" + (object.$class()) + "#" + (method) + " gives " + (coerced.$class()))};
+        self.$raise($scope.TypeError, "can't convert " + (object.$class()) + " into " + (type) + " (" + (object.$class()) + "#" + (method) + " gives " + (coerced.$class()))};
       return coerced;
     });
 
@@ -916,14 +916,14 @@
       var $a, self = this, compare = nil;
       compare = a['$<=>'](b);
       if (($a = compare === nil) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison of " + (a.$class().$name()) + " with " + (b.$class().$name()) + " failed")};
+        self.$raise($scope.ArgumentError, "comparison of " + (a.$class().$name()) + " with " + (b.$class().$name()) + " failed")};
       return compare;
     });
 
     $opal.defs(self, '$fits_fixnum!', function(value) {
       var $a, self = this;
       if (($a = value > 2147483648) !== false && $a !== nil) {
-        return self.$raise((($a = $scope.RangeError) == null ? $opal.cm('RangeError') : $a), "bignum too big to convert into `long'")
+        return self.$raise($scope.RangeError, "bignum too big to convert into `long'")
         } else {
         return nil
       };
@@ -932,7 +932,7 @@
     $opal.defs(self, '$fits_array!', function(value) {
       var $a, self = this;
       if (($a = value >= 536870910) !== false && $a !== nil) {
-        return self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "argument too big")
+        return self.$raise($scope.ArgumentError, "argument too big")
         } else {
         return nil
       };
@@ -1174,7 +1174,7 @@
         inherit = true
       }
       if (($a = name['$=~'](/^[A-Z]\w*$/)) === false || $a === nil) {
-        self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "wrong constant name " + (name))};
+        self.$raise($scope.NameError, "wrong constant name " + (name))};
       
       scopes = [self._scope];
       if (inherit || self === Opal.Object) {
@@ -1201,7 +1201,7 @@
         inherit = true
       }
       if (($a = name['$=~'](/^[A-Z]\w*$/)) === false || $a === nil) {
-        self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "wrong constant name " + (name))};
+        self.$raise($scope.NameError, "wrong constant name " + (name))};
       
       var scopes = [self._scope];
       if (inherit || self == Opal.Object) {
@@ -1223,19 +1223,19 @@
     };
 
     def.$const_missing = function(const$) {
-      var $a, self = this, name = nil;
+      var self = this, name = nil;
       name = self._name;
-      return self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "uninitialized constant " + (name) + "::" + (const$));
+      return self.$raise($scope.NameError, "uninitialized constant " + (name) + "::" + (const$));
     };
 
     def.$const_set = function(name, value) {
       var $a, self = this;
       if (($a = name['$=~'](/^[A-Z]\w*$/)) === false || $a === nil) {
-        self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "wrong constant name " + (name))};
+        self.$raise($scope.NameError, "wrong constant name " + (name))};
       try {
       name = name.$to_str()
       } catch ($err) {if (true) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "conversion with #to_str failed")
+        self.$raise($scope.TypeError, "conversion with #to_str failed")
         }else { throw $err; }
       };
       
@@ -1303,15 +1303,15 @@
     };
 
     def.$instance_method = function(name) {
-      var $a, self = this;
+      var self = this;
       
       var meth = self._proto['$' + name];
 
       if (!meth || meth.rb_stub) {
-        self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "undefined method `" + (name) + "' for class `" + (self.$name()) + "'");
+        self.$raise($scope.NameError, "undefined method `" + (name) + "' for class `" + (self.$name()) + "'");
       }
 
-      return (($a = $scope.UnboundMethod) == null ? $opal.cm('UnboundMethod') : $a).$new(self, meth, name);
+      return $scope.UnboundMethod.$new(self, meth, name);
     
     };
 
@@ -1503,14 +1503,14 @@
 
     var def = $Class._proto, $scope = $Class._scope, TMP_1, TMP_2;
     $opal.defs(self, '$new', TMP_1 = function(sup) {
-      var $a, self = this, $iter = TMP_1._p, block = $iter || nil;
+      var self = this, $iter = TMP_1._p, block = $iter || nil;
       if (sup == null) {
-        sup = (($a = $scope.Object) == null ? $opal.cm('Object') : $a)
+        sup = $scope.Object
       }
       TMP_1._p = null;
       
       if (!sup._isClass || sup.__mod__) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "superclass must be a Class");
+        self.$raise($scope.TypeError, "superclass must be a Class");
       }
 
       function AnonClass(){};
@@ -1625,7 +1625,7 @@
       var $a, self = this, $iter = TMP_2._p, block = $iter || nil;
       TMP_2._p = null;
       if (($a = block) === false || $a === nil) {
-        (($a = $scope.Kernel) == null ? $opal.cm('Kernel') : $a).$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "no block given")};
+        $scope.Kernel.$raise($scope.ArgumentError, "no block given")};
       
       var block_self = block._s,
           result;
@@ -1643,7 +1643,7 @@
       args = $slice.call(arguments, 0);
       TMP_3._p = null;
       if (($a = block) === false || $a === nil) {
-        (($a = $scope.Kernel) == null ? $opal.cm('Kernel') : $a).$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "no block given")};
+        $scope.Kernel.$raise($scope.ArgumentError, "no block given")};
       
       var block_self = block._s,
           result;
@@ -1657,10 +1657,10 @@
     });
 
     return ($opal.defn(self, '$method_missing', TMP_4 = function(symbol, args) {
-      var $a, self = this, $iter = TMP_4._p, block = $iter || nil;
+      var self = this, $iter = TMP_4._p, block = $iter || nil;
       args = $slice.call(arguments, 1);
       TMP_4._p = null;
-      return (($a = $scope.Kernel) == null ? $opal.cm('Kernel') : $a).$raise((($a = $scope.NoMethodError) == null ? $opal.cm('NoMethodError') : $a), "undefined method `" + (symbol) + "' for BasicObject instance");
+      return $scope.Kernel.$raise($scope.NoMethodError, "undefined method `" + (symbol) + "' for BasicObject instance");
     }), nil);
   })(self, null)
 })(Opal);
@@ -1676,10 +1676,10 @@
 
     var def = self._proto, $scope = self._scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_9;
     def.$method_missing = TMP_1 = function(symbol, args) {
-      var $a, self = this, $iter = TMP_1._p, block = $iter || nil;
+      var self = this, $iter = TMP_1._p, block = $iter || nil;
       args = $slice.call(arguments, 1);
       TMP_1._p = null;
-      return self.$raise((($a = $scope.NoMethodError) == null ? $opal.cm('NoMethodError') : $a), "undefined method `" + (symbol) + "' for " + (self.$inspect()));
+      return self.$raise($scope.NoMethodError, "undefined method `" + (symbol) + "' for " + (self.$inspect()));
     };
 
     def['$=~'] = function(obj) {
@@ -1704,15 +1704,15 @@
     };
 
     def.$method = function(name) {
-      var $a, self = this;
+      var self = this;
       
       var meth = self['$' + name];
 
       if (!meth || meth.rb_stub) {
-        self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "undefined method `" + (name) + "' for class `" + (self.$class().$name()) + "'");
+        self.$raise($scope.NameError, "undefined method `" + (name) + "' for class `" + (self.$class().$name()) + "'");
       }
 
-      return (($a = $scope.Method) == null ? $opal.cm('Method') : $a).$new(self, meth, name);
+      return $scope.Method.$new(self, meth, name);
     
     };
 
@@ -1802,7 +1802,7 @@
       var $a, self = this, $iter = TMP_3._p, body = $iter || nil;
       TMP_3._p = null;
       if (($a = body) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to create Proc object without a block")};
+        self.$raise($scope.ArgumentError, "tried to create Proc object without a block")};
       
       var jsid   = '$' + name;
       body._jsid = name;
@@ -1831,13 +1831,13 @@
     self.$private("initialize_dup");
 
     def.$enum_for = TMP_4 = function(method, args) {
-      var $a, $b, $c, self = this, $iter = TMP_4._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_4._p, block = $iter || nil;
       args = $slice.call(arguments, 1);
       if (method == null) {
         method = "each"
       }
       TMP_4._p = null;
-      return ($a = ($b = (($c = $scope.Enumerator) == null ? $opal.cm('Enumerator') : $c)).$for, $a._p = block.$to_proc(), $a).apply($b, [self, method].concat(args));
+      return ($a = ($b = $scope.Enumerator).$for, $a._p = block.$to_proc(), $a).apply($b, [self, method].concat(args));
     };
 
     def['$equal?'] = function(other) {
@@ -2049,31 +2049,31 @@
       if (base == null) {
         base = nil
       }
-      if (($a = (($b = $scope.String) == null ? $opal.cm('String') : $b)['$==='](value)) !== false && $a !== nil) {
+      if (($a = $scope.String['$==='](value)) !== false && $a !== nil) {
         if (($a = value['$empty?']()) !== false && $a !== nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "invalid value for Integer: (empty string)")};
+          self.$raise($scope.ArgumentError, "invalid value for Integer: (empty string)")};
         return parseInt(value, ((($a = base) !== false && $a !== nil) ? $a : undefined));};
       if (base !== false && base !== nil) {
         self.$raise(self.$ArgumentError("base is only valid for String values"))};
-      return (function() {$case = value;if ((($a = $scope.Integer) == null ? $opal.cm('Integer') : $a)['$===']($case)) {return value}else if ((($a = $scope.Float) == null ? $opal.cm('Float') : $a)['$===']($case)) {if (($a = ((($b = value['$nan?']()) !== false && $b !== nil) ? $b : value['$infinite?']())) !== false && $a !== nil) {
-        self.$raise((($a = $scope.FloatDomainError) == null ? $opal.cm('FloatDomainError') : $a), "unable to coerce " + (value) + " to Integer")};
-      return value.$to_int();}else if ((($a = $scope.NilClass) == null ? $opal.cm('NilClass') : $a)['$===']($case)) {return self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "can't convert nil into Integer")}else {if (($a = value['$respond_to?']("to_int")) !== false && $a !== nil) {
+      return (function() {$case = value;if ($scope.Integer['$===']($case)) {return value}else if ($scope.Float['$===']($case)) {if (($a = ((($b = value['$nan?']()) !== false && $b !== nil) ? $b : value['$infinite?']())) !== false && $a !== nil) {
+        self.$raise($scope.FloatDomainError, "unable to coerce " + (value) + " to Integer")};
+      return value.$to_int();}else if ($scope.NilClass['$===']($case)) {return self.$raise($scope.TypeError, "can't convert nil into Integer")}else {if (($a = value['$respond_to?']("to_int")) !== false && $a !== nil) {
         return value.$to_int()
       } else if (($a = value['$respond_to?']("to_i")) !== false && $a !== nil) {
         return value.$to_i()
         } else {
-        return self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "can't convert " + (value.$class()) + " into Integer")
+        return self.$raise($scope.TypeError, "can't convert " + (value.$class()) + " into Integer")
       }}})();
     };
 
     def.$Float = function(value) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.String) == null ? $opal.cm('String') : $b)['$==='](value)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.String['$==='](value)) !== false && $a !== nil) {
         return parseFloat(value);
       } else if (($a = value['$respond_to?']("to_f")) !== false && $a !== nil) {
         return value.$to_f()
         } else {
-        return self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "can't convert " + (value.$class()) + " into Float")
+        return self.$raise($scope.TypeError, "can't convert " + (value.$class()) + " into Float")
       };
     };
 
@@ -2128,7 +2128,7 @@
       var $a, self = this, $iter = TMP_7._p, block = $iter || nil;
       TMP_7._p = null;
       if (($a = block) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to create Proc object without a block")};
+        self.$raise($scope.ArgumentError, "tried to create Proc object without a block")};
       block.is_lambda = false;
       return block;
     };
@@ -2162,15 +2162,15 @@
     };
 
     def.$raise = function(exception, string) {
-      var $a, self = this;
+      var self = this;
       
       if (exception == null && $gvars["!"]) {
         exception = $gvars["!"];
       }
       else if (exception._isString) {
-        exception = (($a = $scope.RuntimeError) == null ? $opal.cm('RuntimeError') : $a).$new(exception);
+        exception = $scope.RuntimeError.$new(exception);
       }
-      else if (!exception['$is_a?']((($a = $scope.Exception) == null ? $opal.cm('Exception') : $a))) {
+      else if (!exception['$is_a?']($scope.Exception)) {
         exception = exception.$new(string);
       }
 
@@ -2181,7 +2181,7 @@
     $opal.defn(self, '$fail', def.$raise);
 
     def.$rand = function(max) {
-      var $a, self = this;
+      var self = this;
       
       if (max === undefined) {
         return Math.random();
@@ -2193,7 +2193,7 @@
       }
       else {
         return Math.floor(Math.random() *
-          Math.abs((($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(max, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")));
+          Math.abs($scope.Opal.$coerce_to(max, $scope.Integer, "to_int")));
       }
     
     };
@@ -2342,8 +2342,8 @@
     };
 
     def.$dup = function() {
-      var $a, self = this;
-      return self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a));
+      var self = this;
+      return self.$raise($scope.TypeError);
     };
 
     def.$inspect = function() {
@@ -2357,8 +2357,8 @@
     };
 
     def.$singleton_class = function() {
-      var $a, self = this;
-      return (($a = $scope.NilClass) == null ? $opal.cm('NilClass') : $a);
+      var self = this;
+      return $scope.NilClass;
     };
 
     def.$to_a = function() {
@@ -2384,8 +2384,8 @@
     };
 
     def.$object_id = function() {
-      var $a, self = this;
-      return (($a = $scope.NilClass) == null ? $opal.cm('NilClass') : $a)._id || ((($a = $scope.NilClass) == null ? $opal.cm('NilClass') : $a)._id = $opal.uid());
+      var self = this;
+      return $scope.NilClass._id || ($scope.NilClass._id = $opal.uid());
     };
 
     return $opal.defn(self, '$hash', def.$object_id);
@@ -2397,7 +2397,7 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass;
   $opal.add_stubs(['$undef_method']);
   (function($base, $super) {
     function $Boolean(){};
@@ -2440,8 +2440,8 @@
       return (self == true) ? 'true' : 'false';
     }, nil);
   })(self, null);
-  $opal.cdecl($scope, 'TrueClass', (($a = $scope.Boolean) == null ? $opal.cm('Boolean') : $a));
-  $opal.cdecl($scope, 'FalseClass', (($a = $scope.Boolean) == null ? $opal.cm('Boolean') : $a));
+  $opal.cdecl($scope, 'TrueClass', $scope.Boolean);
+  $opal.cdecl($scope, 'FalseClass', $scope.Boolean);
   $opal.cdecl($scope, 'TRUE', true);
   return $opal.cdecl($scope, 'FALSE', false);
 })(Opal);
@@ -2450,7 +2450,7 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $module = $opal.module;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $module = $opal.module;
   $opal.add_stubs(['$attr_reader', '$name', '$class']);
   (function($base, $super) {
     function $Exception(){};
@@ -2502,130 +2502,130 @@
 
     var def = $StandardError._proto, $scope = $StandardError._scope;
     return nil;
-  })(self, (($a = $scope.Exception) == null ? $opal.cm('Exception') : $a));
+  })(self, $scope.Exception);
   (function($base, $super) {
     function $SystemCallError(){};
     var self = $SystemCallError = $klass($base, $super, 'SystemCallError', $SystemCallError);
 
     var def = $SystemCallError._proto, $scope = $SystemCallError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $NameError(){};
     var self = $NameError = $klass($base, $super, 'NameError', $NameError);
 
     var def = $NameError._proto, $scope = $NameError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $NoMethodError(){};
     var self = $NoMethodError = $klass($base, $super, 'NoMethodError', $NoMethodError);
 
     var def = $NoMethodError._proto, $scope = $NoMethodError._scope;
     return nil;
-  })(self, (($a = $scope.NameError) == null ? $opal.cm('NameError') : $a));
+  })(self, $scope.NameError);
   (function($base, $super) {
     function $RuntimeError(){};
     var self = $RuntimeError = $klass($base, $super, 'RuntimeError', $RuntimeError);
 
     var def = $RuntimeError._proto, $scope = $RuntimeError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $LocalJumpError(){};
     var self = $LocalJumpError = $klass($base, $super, 'LocalJumpError', $LocalJumpError);
 
     var def = $LocalJumpError._proto, $scope = $LocalJumpError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $TypeError(){};
     var self = $TypeError = $klass($base, $super, 'TypeError', $TypeError);
 
     var def = $TypeError._proto, $scope = $TypeError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $ArgumentError(){};
     var self = $ArgumentError = $klass($base, $super, 'ArgumentError', $ArgumentError);
 
     var def = $ArgumentError._proto, $scope = $ArgumentError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $IndexError(){};
     var self = $IndexError = $klass($base, $super, 'IndexError', $IndexError);
 
     var def = $IndexError._proto, $scope = $IndexError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $StopIteration(){};
     var self = $StopIteration = $klass($base, $super, 'StopIteration', $StopIteration);
 
     var def = $StopIteration._proto, $scope = $StopIteration._scope;
     return nil;
-  })(self, (($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a));
+  })(self, $scope.IndexError);
   (function($base, $super) {
     function $KeyError(){};
     var self = $KeyError = $klass($base, $super, 'KeyError', $KeyError);
 
     var def = $KeyError._proto, $scope = $KeyError._scope;
     return nil;
-  })(self, (($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a));
+  })(self, $scope.IndexError);
   (function($base, $super) {
     function $RangeError(){};
     var self = $RangeError = $klass($base, $super, 'RangeError', $RangeError);
 
     var def = $RangeError._proto, $scope = $RangeError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $FloatDomainError(){};
     var self = $FloatDomainError = $klass($base, $super, 'FloatDomainError', $FloatDomainError);
 
     var def = $FloatDomainError._proto, $scope = $FloatDomainError._scope;
     return nil;
-  })(self, (($a = $scope.RangeError) == null ? $opal.cm('RangeError') : $a));
+  })(self, $scope.RangeError);
   (function($base, $super) {
     function $IOError(){};
     var self = $IOError = $klass($base, $super, 'IOError', $IOError);
 
     var def = $IOError._proto, $scope = $IOError._scope;
     return nil;
-  })(self, (($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a));
+  })(self, $scope.StandardError);
   (function($base, $super) {
     function $ScriptError(){};
     var self = $ScriptError = $klass($base, $super, 'ScriptError', $ScriptError);
 
     var def = $ScriptError._proto, $scope = $ScriptError._scope;
     return nil;
-  })(self, (($a = $scope.Exception) == null ? $opal.cm('Exception') : $a));
+  })(self, $scope.Exception);
   (function($base, $super) {
     function $SyntaxError(){};
     var self = $SyntaxError = $klass($base, $super, 'SyntaxError', $SyntaxError);
 
     var def = $SyntaxError._proto, $scope = $SyntaxError._scope;
     return nil;
-  })(self, (($a = $scope.ScriptError) == null ? $opal.cm('ScriptError') : $a));
+  })(self, $scope.ScriptError);
   (function($base, $super) {
     function $NotImplementedError(){};
     var self = $NotImplementedError = $klass($base, $super, 'NotImplementedError', $NotImplementedError);
 
     var def = $NotImplementedError._proto, $scope = $NotImplementedError._scope;
     return nil;
-  })(self, (($a = $scope.ScriptError) == null ? $opal.cm('ScriptError') : $a));
+  })(self, $scope.ScriptError);
   (function($base, $super) {
     function $SystemExit(){};
     var self = $SystemExit = $klass($base, $super, 'SystemExit', $SystemExit);
 
     var def = $SystemExit._proto, $scope = $SystemExit._scope;
     return nil;
-  })(self, (($a = $scope.Exception) == null ? $opal.cm('Exception') : $a));
+  })(self, $scope.Exception);
   return (function($base) {
     var self = $module($base, 'Errno');
 
-    var def = self._proto, $scope = self._scope, $a;
+    var def = self._proto, $scope = self._scope;
     (function($base, $super) {
       function $EINVAL(){};
       var self = $EINVAL = $klass($base, $super, 'EINVAL', $EINVAL);
@@ -2636,7 +2636,7 @@
         TMP_1._p = null;
         return $opal.find_super_dispatcher(self, 'new', TMP_1, null, $EINVAL).apply(self, ["Invalid argument"]);
       }), nil)
-    })(self, (($a = $scope.SystemCallError) == null ? $opal.cm('SystemCallError') : $a))
+    })(self, $scope.SystemCallError)
     
   })(self);
 })(Opal);
@@ -2689,7 +2689,7 @@
       if (($a = string === nil) !== false && $a !== nil) {
         $gvars["~"] = $gvars["`"] = $gvars["'"] = nil;
         return nil;};
-      string = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(string, (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str").$to_s();
+      string = $scope.Opal.$coerce_to(string, $scope.String, "to_str").$to_s();
       
       var re = self;
 
@@ -2705,7 +2705,7 @@
       var result = re.exec(string);
 
       if (result) {
-        $gvars["~"] = (($a = $scope.MatchData) == null ? $opal.cm('MatchData') : $a).$new(re, result);
+        $gvars["~"] = $scope.MatchData.$new(re, result);
       }
       else {
         $gvars["~"] = $gvars["`"] = $gvars["'"] = nil;
@@ -2729,7 +2729,7 @@
         return nil;};
       if (($a = string._isString == null) !== false && $a !== nil) {
         if (($a = string['$respond_to?']("to_str")) === false || $a === nil) {
-          self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "no implicit conversion of " + (string.$class()) + " into String")};
+          self.$raise($scope.TypeError, "no implicit conversion of " + (string.$class()) + " into String")};
         string = string.$to_str();};
       
       var re = self;
@@ -2745,7 +2745,7 @@
       var result = re.exec(string);
 
       if (result) {
-        return $gvars["~"] = (($a = $scope.MatchData) == null ? $opal.cm('MatchData') : $a).$new(re, result);
+        return $gvars["~"] = $scope.MatchData.$new(re, result);
       }
       else {
         return $gvars["~"] = $gvars["`"] = $gvars["'"] = nil;
@@ -2773,8 +2773,8 @@
 
     var def = self._proto, $scope = self._scope;
     $opal.defs(self, '$normalize', function(what) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Integer) == null ? $opal.cm('Integer') : $b)['$==='](what)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Integer['$==='](what)) !== false && $a !== nil) {
         return what};
       if (what['$>'](0)) {
         return 1};
@@ -2790,8 +2790,8 @@
           return true};
         if (($a = cmp = (self['$<=>'](other))) === false || $a === nil) {
           return false};
-        return (($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a).$normalize(cmp)['$=='](0);
-      } catch ($err) {if ((($a = $scope.StandardError) == null ? $opal.cm('StandardError') : $a)['$===']($err)) {
+        return $scope.Comparable.$normalize(cmp)['$=='](0);
+      } catch ($err) {if ($scope.StandardError['$===']($err)) {
         return false
         }else { throw $err; }
       };
@@ -2800,29 +2800,29 @@
     def['$>'] = function(other) {
       var $a, self = this, cmp = nil;
       if (($a = cmp = (self['$<=>'](other))) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
-      return (($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a).$normalize(cmp)['$>'](0);
+        self.$raise($scope.ArgumentError, "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
+      return $scope.Comparable.$normalize(cmp)['$>'](0);
     };
 
     def['$>='] = function(other) {
       var $a, self = this, cmp = nil;
       if (($a = cmp = (self['$<=>'](other))) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
-      return (($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a).$normalize(cmp)['$>='](0);
+        self.$raise($scope.ArgumentError, "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
+      return $scope.Comparable.$normalize(cmp)['$>='](0);
     };
 
     def['$<'] = function(other) {
       var $a, self = this, cmp = nil;
       if (($a = cmp = (self['$<=>'](other))) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
-      return (($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a).$normalize(cmp)['$<'](0);
+        self.$raise($scope.ArgumentError, "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
+      return $scope.Comparable.$normalize(cmp)['$<'](0);
     };
 
     def['$<='] = function(other) {
       var $a, self = this, cmp = nil;
       if (($a = cmp = (self['$<=>'](other))) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
-      return (($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a).$normalize(cmp)['$<='](0);
+        self.$raise($scope.ArgumentError, "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")};
+      return $scope.Comparable.$normalize(cmp)['$<='](0);
     };
 
     def['$between?'] = function(min, max) {
@@ -2920,9 +2920,9 @@
     };
 
     def.$chunk = TMP_3 = function(state) {
-      var $a, self = this, $iter = TMP_3._p, block = $iter || nil;
+      var self = this, $iter = TMP_3._p, block = $iter || nil;
       TMP_3._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$collect = TMP_4 = function() {
@@ -2951,9 +2951,9 @@
     };
 
     def.$collect_concat = TMP_5 = function() {
-      var $a, self = this, $iter = TMP_5._p, block = $iter || nil;
+      var self = this, $iter = TMP_5._p, block = $iter || nil;
       TMP_5._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$count = TMP_6 = function(object) {
@@ -2964,7 +2964,7 @@
 
       if (object != null) {
         block = function() {
-          return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments)['$=='](object);
+          return $scope.Opal.$destructure(arguments)['$=='](object);
         };
       }
       else if (block === nil) {
@@ -2999,7 +2999,7 @@
       if (($a = block) === false || $a === nil) {
         return self.$enum_for("cycle", n)};
       if (($a = n['$nil?']()) === false || $a === nil) {
-        n = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$coerce_to!'](n, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        n = $scope.Opal['$coerce_to!'](n, $scope.Integer, "to_int");
         if (($a = n <= 0) !== false && $a !== nil) {
           return nil};};
       
@@ -3007,7 +3007,7 @@
           all  = [];
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = $opal.$yield1(block, param);
 
         if (value === $breaker) {
@@ -3066,7 +3066,7 @@
       var result = undefined;
 
       self.$each._p = function() {
-        var params = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var params = $scope.Opal.$destructure(arguments),
             value  = $opal.$yield1(block, params);
 
         if (value === $breaker) {
@@ -3097,16 +3097,16 @@
 
     def.$drop = function(number) {
       var $a, self = this;
-      number = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(number, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+      number = $scope.Opal.$coerce_to(number, $scope.Integer, "to_int");
       if (($a = number < 0) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "attempt to drop negative size")};
+        self.$raise($scope.ArgumentError, "attempt to drop negative size")};
       
       var result  = [],
           current = 0;
 
       self.$each._p = function() {
         if (number <= current) {
-          result.push((($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments));
+          result.push($scope.Opal.$destructure(arguments));
         }
 
         current++;
@@ -3128,7 +3128,7 @@
           dropping = true;
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+        var param = $scope.Opal.$destructure(arguments);
 
         if (dropping) {
           var value = $opal.$yield1(block, param);
@@ -3155,23 +3155,23 @@
     };
 
     def.$each_cons = TMP_10 = function(n) {
-      var $a, self = this, $iter = TMP_10._p, block = $iter || nil;
+      var self = this, $iter = TMP_10._p, block = $iter || nil;
       TMP_10._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$each_entry = TMP_11 = function() {
-      var $a, self = this, $iter = TMP_11._p, block = $iter || nil;
+      var self = this, $iter = TMP_11._p, block = $iter || nil;
       TMP_11._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$each_slice = TMP_12 = function(n) {
       var $a, self = this, $iter = TMP_12._p, block = $iter || nil;
       TMP_12._p = null;
-      n = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(n, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+      n = $scope.Opal.$coerce_to(n, $scope.Integer, "to_int");
       if (($a = n <= 0) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "invalid slice size")};
+        self.$raise($scope.ArgumentError, "invalid slice size")};
       if (block === nil) {
         return self.$enum_for("each_slice", n)};
       
@@ -3179,7 +3179,7 @@
           slice = []
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+        var param = $scope.Opal.$destructure(arguments);
 
         slice.push(param);
 
@@ -3210,7 +3210,7 @@
     };
 
     def.$each_with_index = TMP_13 = function(args) {
-      var $a, $b, self = this, $iter = TMP_13._p, block = $iter || nil;
+      var $a, self = this, $iter = TMP_13._p, block = $iter || nil;
       args = $slice.call(arguments, 0);
       TMP_13._p = null;
       if (block === nil) {
@@ -3220,7 +3220,7 @@
           index = 0;
 
       self.$each._p = function() {
-        var param = (($b = $scope.Opal) == null ? $opal.cm('Opal') : $b).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = block(param, index);
 
         if (value === $breaker) {
@@ -3241,7 +3241,7 @@
     };
 
     def.$each_with_object = TMP_14 = function(object) {
-      var $a, self = this, $iter = TMP_14._p, block = $iter || nil;
+      var self = this, $iter = TMP_14._p, block = $iter || nil;
       TMP_14._p = null;
       if (block === nil) {
         return self.$enum_for("each_with_object", object)};
@@ -3249,7 +3249,7 @@
       var result;
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = block(param, object);
 
         if (value === $breaker) {
@@ -3268,13 +3268,13 @@
     };
 
     def.$entries = function(args) {
-      var $a, self = this;
+      var self = this;
       args = $slice.call(arguments, 0);
       
       var result = [];
 
       self.$each._p = function() {
-        result.push((($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments));
+        result.push($scope.Opal.$destructure(arguments));
       };
 
       self.$each.apply(self, args);
@@ -3294,7 +3294,7 @@
       var result = [];
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = $opal.$yield1(block, param);
 
         if (value === $breaker) {
@@ -3324,7 +3324,7 @@
 
       if (object != null) {
         self.$each._p = function() {
-          var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var param = $scope.Opal.$destructure(arguments);
 
           if ((param)['$=='](object)) {
             result = index;
@@ -3364,7 +3364,7 @@
         result = nil;
         
         self.$each._p = function() {
-          result = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          result = $scope.Opal.$destructure(arguments);
 
           return $breaker;
         };
@@ -3373,17 +3373,17 @@
       ;
         } else {
         result = [];
-        number = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(number, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        number = $scope.Opal.$coerce_to(number, $scope.Integer, "to_int");
         if (($a = number < 0) !== false && $a !== nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "attempt to take negative size")};
+          self.$raise($scope.ArgumentError, "attempt to take negative size")};
         if (($a = number == 0) !== false && $a !== nil) {
           return []};
         
         var current = 0,
-            number  = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(number, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+            number  = $scope.Opal.$coerce_to(number, $scope.Integer, "to_int");
 
         self.$each._p = function() {
-          result.push((($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments));
+          result.push($scope.Opal.$destructure(arguments));
 
           if (number <= ++current) {
             return $breaker;
@@ -3406,7 +3406,7 @@
 
       if (block !== nil) {
         self.$each._p = function() {
-          var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+          var param = $scope.Opal.$destructure(arguments),
               value = pattern['$==='](param);
 
           if (($a = value) !== false && $a !== nil) {
@@ -3423,7 +3423,7 @@
       }
       else {
         self.$each._p = function() {
-          var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+          var param = $scope.Opal.$destructure(arguments),
               value = pattern['$==='](param);
 
           if (($a = value) !== false && $a !== nil) {
@@ -3443,12 +3443,12 @@
       TMP_18._p = null;
       if (block === nil) {
         return self.$enum_for("group_by")};
-      hash = (($a = $scope.Hash) == null ? $opal.cm('Hash') : $a).$new();
+      hash = $scope.Hash.$new();
       
       var result;
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = $opal.$yield1(block, param);
 
         if (value === $breaker) {
@@ -3469,12 +3469,12 @@
     };
 
     def['$include?'] = function(obj) {
-      var $a, self = this;
+      var self = this;
       
       var result = false;
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+        var param = $scope.Opal.$destructure(arguments);
 
         if ((param)['$=='](obj)) {
           result = true;
@@ -3489,14 +3489,14 @@
     };
 
     def.$inject = TMP_19 = function(object, sym) {
-      var $a, self = this, $iter = TMP_19._p, block = $iter || nil;
+      var self = this, $iter = TMP_19._p, block = $iter || nil;
       TMP_19._p = null;
       
       var result = object;
 
       if (block !== nil && sym === undefined) {
         self.$each._p = function() {
-          var value = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var value = $scope.Opal.$destructure(arguments);
 
           if (result === undefined) {
             result = value;
@@ -3515,8 +3515,8 @@
       }
       else {
         if (sym === undefined) {
-          if (!(($a = $scope.Symbol) == null ? $opal.cm('Symbol') : $a)['$==='](object)) {
-            self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "" + (object.$inspect()) + " is not a Symbol");
+          if (!$scope.Symbol['$==='](object)) {
+            self.$raise($scope.TypeError, "" + (object.$inspect()) + " is not a Symbol");
           }
 
           sym    = object;
@@ -3524,7 +3524,7 @@
         }
 
         self.$each._p = function() {
-          var value = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var value = $scope.Opal.$destructure(arguments);
 
           if (result === undefined) {
             result = value;
@@ -3542,8 +3542,8 @@
     };
 
     def.$lazy = function() {
-      var $a, $b, TMP_20, $c, $d, self = this;
-      return ($a = ($b = (($c = ((($d = $scope.Enumerator) == null ? $opal.cm('Enumerator') : $d))._scope).Lazy == null ? $c.cm('Lazy') : $c.Lazy)).$new, $a._p = (TMP_20 = function(enum$, args){var self = TMP_20._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+      var $a, $b, TMP_20, self = this;
+      return ($a = ($b = ($scope.Enumerator)._scope.Lazy).$new, $a._p = (TMP_20 = function(enum$, args){var self = TMP_20._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
       return ($a = enum$).$yield.apply($a, [].concat(args))}, TMP_20._s = self, TMP_20), $a).call($b, self, self.$enumerator_size());
     };
 
@@ -3561,14 +3561,14 @@
     $opal.defn(self, '$map', def.$collect);
 
     def.$max = TMP_21 = function() {
-      var $a, self = this, $iter = TMP_21._p, block = $iter || nil;
+      var self = this, $iter = TMP_21._p, block = $iter || nil;
       TMP_21._p = null;
       
       var result;
 
       if (block !== nil) {
         self.$each._p = function() {
-          var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var param = $scope.Opal.$destructure(arguments);
 
           if (result === undefined) {
             result = param;
@@ -3583,7 +3583,7 @@
           }
 
           if (value === nil) {
-            self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison failed");
+            self.$raise($scope.ArgumentError, "comparison failed");
           }
 
           if (value > 0) {
@@ -3593,14 +3593,14 @@
       }
       else {
         self.$each._p = function() {
-          var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var param = $scope.Opal.$destructure(arguments);
 
           if (result === undefined) {
             result = param;
             return;
           }
 
-          if ((($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$compare(param, result) > 0) {
+          if ($scope.Opal.$compare(param, result) > 0) {
             result = param;
           }
         };
@@ -3622,7 +3622,7 @@
           by;
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = $opal.$yield1(block, param);
 
         if (result === undefined) {
@@ -3651,14 +3651,14 @@
     $opal.defn(self, '$member?', def['$include?']);
 
     def.$min = TMP_23 = function() {
-      var $a, self = this, $iter = TMP_23._p, block = $iter || nil;
+      var self = this, $iter = TMP_23._p, block = $iter || nil;
       TMP_23._p = null;
       
       var result;
 
       if (block !== nil) {
         self.$each._p = function() {
-          var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var param = $scope.Opal.$destructure(arguments);
 
           if (result === undefined) {
             result = param;
@@ -3673,7 +3673,7 @@
           }
 
           if (value === nil) {
-            self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison failed");
+            self.$raise($scope.ArgumentError, "comparison failed");
           }
 
           if (value < 0) {
@@ -3683,14 +3683,14 @@
       }
       else {
         self.$each._p = function() {
-          var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var param = $scope.Opal.$destructure(arguments);
 
           if (result === undefined) {
             result = param;
             return;
           }
 
-          if ((($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$compare(param, result) < 0) {
+          if ($scope.Opal.$compare(param, result) < 0) {
             result = param;
           }
         };
@@ -3712,7 +3712,7 @@
           by;
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = $opal.$yield1(block, param);
 
         if (result === undefined) {
@@ -3739,15 +3739,15 @@
     };
 
     def.$minmax = TMP_25 = function() {
-      var $a, self = this, $iter = TMP_25._p, block = $iter || nil;
+      var self = this, $iter = TMP_25._p, block = $iter || nil;
       TMP_25._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$minmax_by = TMP_26 = function() {
-      var $a, self = this, $iter = TMP_26._p, block = $iter || nil;
+      var self = this, $iter = TMP_26._p, block = $iter || nil;
       TMP_26._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def['$none?'] = TMP_27 = function() {
@@ -3773,7 +3773,7 @@
       }
       else {
         self.$each._p = function() {
-          var value = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var value = $scope.Opal.$destructure(arguments);
 
           if (($a = value) !== false && $a !== nil) {
             result = false;
@@ -3815,7 +3815,7 @@
       }
       else {
         self.$each._p = function() {
-          var value = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+          var value = $scope.Opal.$destructure(arguments);
 
           if (($a = value) !== false && $a !== nil) {
             if (result === true) {
@@ -3835,34 +3835,34 @@
     };
 
     def.$partition = TMP_29 = function() {
-      var $a, self = this, $iter = TMP_29._p, block = $iter || nil;
+      var self = this, $iter = TMP_29._p, block = $iter || nil;
       TMP_29._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     $opal.defn(self, '$reduce', def.$inject);
 
     def.$reverse_each = TMP_30 = function() {
-      var $a, self = this, $iter = TMP_30._p, block = $iter || nil;
+      var self = this, $iter = TMP_30._p, block = $iter || nil;
       TMP_30._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     $opal.defn(self, '$select', def.$find_all);
 
     def.$slice_before = TMP_31 = function(pattern) {
-      var $a, $b, TMP_32, $c, self = this, $iter = TMP_31._p, block = $iter || nil;
+      var $a, $b, TMP_32, self = this, $iter = TMP_31._p, block = $iter || nil;
       TMP_31._p = null;
       if (($a = pattern === undefined && block === nil || arguments.length > 1) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "wrong number of arguments (" + (arguments.length) + " for 1)")};
-      return ($a = ($b = (($c = $scope.Enumerator) == null ? $opal.cm('Enumerator') : $c)).$new, $a._p = (TMP_32 = function(e){var self = TMP_32._s || this, $a;if (e == null) e = nil;
+        self.$raise($scope.ArgumentError, "wrong number of arguments (" + (arguments.length) + " for 1)")};
+      return ($a = ($b = $scope.Enumerator).$new, $a._p = (TMP_32 = function(e){var self = TMP_32._s || this, $a;if (e == null) e = nil;
       
         var slice = [];
 
         if (block !== nil) {
           if (pattern === undefined) {
             self.$each._p = function() {
-              var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+              var param = $scope.Opal.$destructure(arguments),
                   value = $opal.$yield1(block, param);
 
               if (($a = value) !== false && $a !== nil && slice.length > 0) {
@@ -3875,7 +3875,7 @@
           }
           else {
             self.$each._p = function() {
-              var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+              var param = $scope.Opal.$destructure(arguments),
                   value = block(param, pattern.$dup());
 
               if (($a = value) !== false && $a !== nil && slice.length > 0) {
@@ -3889,7 +3889,7 @@
         }
         else {
           self.$each._p = function() {
-            var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+            var param = $scope.Opal.$destructure(arguments),
                 value = pattern['$==='](param);
 
             if (($a = value) !== false && $a !== nil && slice.length > 0) {
@@ -3910,9 +3910,9 @@
     };
 
     def.$sort = TMP_33 = function() {
-      var $a, self = this, $iter = TMP_33._p, block = $iter || nil;
+      var self = this, $iter = TMP_33._p, block = $iter || nil;
       TMP_33._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$sort_by = TMP_34 = function() {
@@ -3920,8 +3920,8 @@
       TMP_34._p = null;
       if (block === nil) {
         return self.$enum_for("sort_by")};
-      return ($a = ($b = ($c = ($d = ($e = ($f = self).$map, $e._p = (TMP_37 = function(){var self = TMP_37._s || this, $a;
-      arg = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments);
+      return ($a = ($b = ($c = ($d = ($e = ($f = self).$map, $e._p = (TMP_37 = function(){var self = TMP_37._s || this;
+      arg = $scope.Opal.$destructure(arguments);
         return [block.$call(arg), arg];}, TMP_37._s = self, TMP_37), $e).call($f)).$sort, $c._p = (TMP_36 = function(a, b){var self = TMP_36._s || this;if (a == null) a = nil;if (b == null) b = nil;
       return a['$[]'](0)['$<=>'](b['$[]'](0))}, TMP_36._s = self, TMP_36), $c).call($d)).$map, $a._p = (TMP_35 = function(arg){var self = TMP_35._s || this;if (arg == null) arg = nil;
       return arg[1];}, TMP_35._s = self, TMP_35), $a).call($b);
@@ -3941,7 +3941,7 @@
       var result = [];
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = $opal.$yield1(block, param);
 
         if (value === $breaker) {
@@ -3965,10 +3965,10 @@
     $opal.defn(self, '$to_a', def.$entries);
 
     def.$zip = TMP_39 = function(lists) {
-      var $a, self = this, $iter = TMP_39._p, block = $iter || nil;
+      var self = this, $iter = TMP_39._p, block = $iter || nil;
       lists = $slice.call(arguments, 0);
       TMP_39._p = null;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
         ;$opal.donate(self, ["$all?", "$any?", "$chunk", "$collect", "$collect_concat", "$count", "$cycle", "$detect", "$drop", "$drop_while", "$each_cons", "$each_entry", "$each_slice", "$each_with_index", "$each_with_object", "$entries", "$find", "$find_all", "$find_index", "$first", "$flat_map", "$grep", "$group_by", "$include?", "$inject", "$lazy", "$enumerator_size", "$map", "$max", "$max_by", "$member?", "$min", "$min_by", "$minmax", "$minmax_by", "$none?", "$one?", "$partition", "$reduce", "$reverse_each", "$select", "$slice_before", "$sort", "$sort_by", "$take", "$take_while", "$to_a", "$zip"]);
   })(self)
@@ -3984,9 +3984,9 @@
     function $Enumerator(){};
     var self = $Enumerator = $klass($base, $super, 'Enumerator', $Enumerator);
 
-    var def = $Enumerator._proto, $scope = $Enumerator._scope, $a, TMP_1, TMP_2, TMP_3, TMP_4;
+    var def = $Enumerator._proto, $scope = $Enumerator._scope, TMP_1, TMP_2, TMP_3, TMP_4;
     def.size = def.object = def.method = def.args = nil;
-    self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+    self.$include($scope.Enumerable);
 
     $opal.defs(self, '$for', TMP_1 = function(object, method, args) {
       var self = this, $iter = TMP_1._p, block = $iter || nil;
@@ -4008,15 +4008,15 @@
     });
 
     def.$initialize = TMP_2 = function() {
-      var $a, $b, $c, self = this, $iter = TMP_2._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_2._p, block = $iter || nil;
       TMP_2._p = null;
       if (block !== false && block !== nil) {
-        self.object = ($a = ($b = (($c = $scope.Generator) == null ? $opal.cm('Generator') : $c)).$new, $a._p = block.$to_proc(), $a).call($b);
+        self.object = ($a = ($b = $scope.Generator).$new, $a._p = block.$to_proc(), $a).call($b);
         self.method = "each";
         self.args = [];
         self.size = arguments[0] || nil;
         if (($a = self.size) !== false && $a !== nil) {
-          return self.size = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(self.size, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+          return self.size = $scope.Opal.$coerce_to(self.size, $scope.Integer, "to_int")
           } else {
           return nil
         };
@@ -4037,8 +4037,8 @@
     };
 
     def.$size = function() {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Proc) == null ? $opal.cm('Proc') : $b)['$==='](self.size)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Proc['$==='](self.size)) !== false && $a !== nil) {
         return ($a = self.size).$call.apply($a, [].concat(self.args))
         } else {
         return self.size
@@ -4052,7 +4052,7 @@
       }
       TMP_4._p = null;
       if (offset !== false && offset !== nil) {
-        offset = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(offset, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+        offset = $scope.Opal.$coerce_to(offset, $scope.Integer, "to_int")
         } else {
         offset = 0
       };
@@ -4062,7 +4062,7 @@
       var result
 
       self.$each._p = function() {
-        var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(arguments),
+        var param = $scope.Opal.$destructure(arguments),
             value = block(param, index);
 
         if (value === $breaker) {
@@ -4087,7 +4087,7 @@
       var $a, self = this, result = nil;
       result = "#<" + (self.$class().$name()) + ": " + (self.object.$inspect()) + ":" + (self.method);
       if (($a = self.args['$empty?']()) === false || $a === nil) {
-        result = result['$+']("(" + (self.args.$inspect()['$[]']((($a = $scope.Range) == null ? $opal.cm('Range') : $a).$new(1, -2))) + ")")};
+        result = result['$+']("(" + (self.args.$inspect()['$[]']($scope.Range.$new(1, -2))) + ")")};
       return result['$+'](">");
     };
 
@@ -4095,23 +4095,23 @@
       function $Generator(){};
       var self = $Generator = $klass($base, $super, 'Generator', $Generator);
 
-      var def = $Generator._proto, $scope = $Generator._scope, $a, TMP_5, TMP_6;
+      var def = $Generator._proto, $scope = $Generator._scope, TMP_5, TMP_6;
       def.block = nil;
-      self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+      self.$include($scope.Enumerable);
 
       def.$initialize = TMP_5 = function() {
         var $a, self = this, $iter = TMP_5._p, block = $iter || nil;
         TMP_5._p = null;
         if (($a = block) === false || $a === nil) {
-          self.$raise((($a = $scope.LocalJumpError) == null ? $opal.cm('LocalJumpError') : $a), "no block given")};
+          self.$raise($scope.LocalJumpError, "no block given")};
         return self.block = block;
       };
 
       return (def.$each = TMP_6 = function(args) {
-        var $a, $b, $c, self = this, $iter = TMP_6._p, block = $iter || nil, yielder = nil;
+        var $a, $b, self = this, $iter = TMP_6._p, block = $iter || nil, yielder = nil;
         args = $slice.call(arguments, 0);
         TMP_6._p = null;
-        yielder = ($a = ($b = (($c = $scope.Yielder) == null ? $opal.cm('Yielder') : $c)).$new, $a._p = block.$to_proc(), $a).call($b);
+        yielder = ($a = ($b = $scope.Yielder).$new, $a._p = block.$to_proc(), $a).call($b);
         
         try {
           args.unshift(yielder);
@@ -4171,7 +4171,7 @@
       function $Lazy(){};
       var self = $Lazy = $klass($base, $super, 'Lazy', $Lazy);
 
-      var def = $Lazy._proto, $scope = $Lazy._scope, $a, TMP_8, TMP_11, TMP_13, TMP_18, TMP_20, TMP_21, TMP_23, TMP_26, TMP_29;
+      var def = $Lazy._proto, $scope = $Lazy._scope, TMP_8, TMP_11, TMP_13, TMP_18, TMP_20, TMP_21, TMP_23, TMP_26, TMP_29;
       def.enumerator = nil;
       (function($base, $super) {
         function $StopLazyError(){};
@@ -4179,16 +4179,16 @@
 
         var def = $StopLazyError._proto, $scope = $StopLazyError._scope;
         return nil;
-      })(self, (($a = $scope.Exception) == null ? $opal.cm('Exception') : $a));
+      })(self, $scope.Exception);
 
       def.$initialize = TMP_8 = function(object, size) {
-        var $a, TMP_9, self = this, $iter = TMP_8._p, block = $iter || nil;
+        var TMP_9, self = this, $iter = TMP_8._p, block = $iter || nil;
         if (size == null) {
           size = nil
         }
         TMP_8._p = null;
         if (block === nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to call lazy new without a block")};
+          self.$raise($scope.ArgumentError, "tried to call lazy new without a block")};
         self.enumerator = object;
         return $opal.find_super_dispatcher(self, 'initialize', TMP_8, (TMP_9 = function(yielder, each_args){var self = TMP_9._s || this, $a, $b, TMP_10;if (yielder == null) yielder = nil;each_args = $slice.call(arguments, 1);
         try {
@@ -4200,7 +4200,7 @@
                 return $breaker;
               }
             ;}, TMP_10._s = self, TMP_10), $a).apply($b, [].concat(each_args))
-          } catch ($err) {if ((($a = $scope.Exception) == null ? $opal.cm('Exception') : $a)['$===']($err)) {
+          } catch ($err) {if ($scope.Exception['$===']($err)) {
             return nil
             }else { throw $err; }
           }}, TMP_9._s = self, TMP_9)).apply(self, [size]);
@@ -4214,11 +4214,11 @@
       };
 
       def.$collect = TMP_11 = function() {
-        var $a, $b, TMP_12, $c, self = this, $iter = TMP_11._p, block = $iter || nil;
+        var $a, $b, TMP_12, self = this, $iter = TMP_11._p, block = $iter || nil;
         TMP_11._p = null;
         if (($a = block) === false || $a === nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to call lazy map without a block")};
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_12 = function(enum$, args){var self = TMP_12._s || this;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+          self.$raise($scope.ArgumentError, "tried to call lazy map without a block")};
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_12 = function(enum$, args){var self = TMP_12._s || this;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         
           var value = $opal.$yieldX(block, args);
 
@@ -4231,11 +4231,11 @@
       };
 
       def.$collect_concat = TMP_13 = function() {
-        var $a, $b, TMP_14, $c, self = this, $iter = TMP_13._p, block = $iter || nil;
+        var $a, $b, TMP_14, self = this, $iter = TMP_13._p, block = $iter || nil;
         TMP_13._p = null;
         if (($a = block) === false || $a === nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to call lazy map without a block")};
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_14 = function(enum$, args){var self = TMP_14._s || this, $a, $b, TMP_15, $c, TMP_16;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+          self.$raise($scope.ArgumentError, "tried to call lazy map without a block")};
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_14 = function(enum$, args){var self = TMP_14._s || this, $a, $b, TMP_15, $c, TMP_16;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         
           var value = $opal.$yieldX(block, args);
 
@@ -4248,7 +4248,7 @@
           return enum$.$yield(v)}, TMP_15._s = self, TMP_15), $a).call($b)
           }
           else {
-            var array = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$try_convert(value, (($a = $scope.Array) == null ? $opal.cm('Array') : $a), "to_ary");
+            var array = $scope.Opal.$try_convert(value, $scope.Array, "to_ary");
 
             if (array === nil) {
               enum$.$yield(value);
@@ -4262,12 +4262,12 @@
       };
 
       def.$drop = function(n) {
-        var $a, $b, TMP_17, $c, self = this, current_size = nil, set_size = nil, dropped = nil;
-        n = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(n, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        var $a, $b, TMP_17, self = this, current_size = nil, set_size = nil, dropped = nil;
+        n = $scope.Opal.$coerce_to(n, $scope.Integer, "to_int");
         if (n['$<'](0)) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "attempt to drop negative size")};
+          self.$raise($scope.ArgumentError, "attempt to drop negative size")};
         current_size = self.$enumerator_size();
-        set_size = (function() {if (($a = (($b = $scope.Integer) == null ? $opal.cm('Integer') : $b)['$==='](current_size)) !== false && $a !== nil) {
+        set_size = (function() {if (($a = $scope.Integer['$==='](current_size)) !== false && $a !== nil) {
           if (n['$<'](current_size)) {
             return n
             } else {
@@ -4277,7 +4277,7 @@
           return current_size
         }; return nil; })();
         dropped = 0;
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_17 = function(enum$, args){var self = TMP_17._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_17 = function(enum$, args){var self = TMP_17._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         if (dropped['$<'](n)) {
             return dropped = dropped['$+'](1)
             } else {
@@ -4286,12 +4286,12 @@
       };
 
       def.$drop_while = TMP_18 = function() {
-        var $a, $b, TMP_19, $c, self = this, $iter = TMP_18._p, block = $iter || nil, succeeding = nil;
+        var $a, $b, TMP_19, self = this, $iter = TMP_18._p, block = $iter || nil, succeeding = nil;
         TMP_18._p = null;
         if (($a = block) === false || $a === nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to call lazy drop_while without a block")};
+          self.$raise($scope.ArgumentError, "tried to call lazy drop_while without a block")};
         succeeding = true;
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_19 = function(enum$, args){var self = TMP_19._s || this, $a, $b;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_19 = function(enum$, args){var self = TMP_19._s || this, $a, $b;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         if (succeeding !== false && succeeding !== nil) {
             
             var value = $opal.$yieldX(block, args);
@@ -4322,11 +4322,11 @@
       };
 
       def.$find_all = TMP_21 = function() {
-        var $a, $b, TMP_22, $c, self = this, $iter = TMP_21._p, block = $iter || nil;
+        var $a, $b, TMP_22, self = this, $iter = TMP_21._p, block = $iter || nil;
         TMP_21._p = null;
         if (($a = block) === false || $a === nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to call lazy select without a block")};
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_22 = function(enum$, args){var self = TMP_22._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+          self.$raise($scope.ArgumentError, "tried to call lazy select without a block")};
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_22 = function(enum$, args){var self = TMP_22._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         
           var value = $opal.$yieldX(block, args);
 
@@ -4343,12 +4343,12 @@
       $opal.defn(self, '$flat_map', def.$collect_concat);
 
       def.$grep = TMP_23 = function(pattern) {
-        var $a, $b, TMP_24, $c, TMP_25, $d, self = this, $iter = TMP_23._p, block = $iter || nil;
+        var $a, $b, TMP_24, $c, TMP_25, self = this, $iter = TMP_23._p, block = $iter || nil;
         TMP_23._p = null;
         if (block !== false && block !== nil) {
-          return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_24 = function(enum$, args){var self = TMP_24._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+          return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_24 = function(enum$, args){var self = TMP_24._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
           
-            var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(args),
+            var param = $scope.Opal.$destructure(args),
                 value = pattern['$==='](param);
 
             if (($a = value) !== false && $a !== nil) {
@@ -4362,9 +4362,9 @@
             }
           ;}, TMP_24._s = self, TMP_24), $a).call($b, self, nil)
           } else {
-          return ($a = ($c = (($d = $scope.Lazy) == null ? $opal.cm('Lazy') : $d)).$new, $a._p = (TMP_25 = function(enum$, args){var self = TMP_25._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+          return ($a = ($c = $scope.Lazy).$new, $a._p = (TMP_25 = function(enum$, args){var self = TMP_25._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
           
-            var param = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$destructure(args),
+            var param = $scope.Opal.$destructure(args),
                 value = pattern['$==='](param);
 
             if (($a = value) !== false && $a !== nil) {
@@ -4379,11 +4379,11 @@
       $opal.defn(self, '$select', def.$find_all);
 
       def.$reject = TMP_26 = function() {
-        var $a, $b, TMP_27, $c, self = this, $iter = TMP_26._p, block = $iter || nil;
+        var $a, $b, TMP_27, self = this, $iter = TMP_26._p, block = $iter || nil;
         TMP_26._p = null;
         if (($a = block) === false || $a === nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to call lazy reject without a block")};
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_27 = function(enum$, args){var self = TMP_27._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+          self.$raise($scope.ArgumentError, "tried to call lazy reject without a block")};
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_27 = function(enum$, args){var self = TMP_27._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         
           var value = $opal.$yieldX(block, args);
 
@@ -4398,12 +4398,12 @@
       };
 
       def.$take = function(n) {
-        var $a, $b, TMP_28, $c, self = this, current_size = nil, set_size = nil, taken = nil;
-        n = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(n, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        var $a, $b, TMP_28, self = this, current_size = nil, set_size = nil, taken = nil;
+        n = $scope.Opal.$coerce_to(n, $scope.Integer, "to_int");
         if (n['$<'](0)) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "attempt to take negative size")};
+          self.$raise($scope.ArgumentError, "attempt to take negative size")};
         current_size = self.$enumerator_size();
-        set_size = (function() {if (($a = (($b = $scope.Integer) == null ? $opal.cm('Integer') : $b)['$==='](current_size)) !== false && $a !== nil) {
+        set_size = (function() {if (($a = $scope.Integer['$==='](current_size)) !== false && $a !== nil) {
           if (n['$<'](current_size)) {
             return n
             } else {
@@ -4413,21 +4413,21 @@
           return current_size
         }; return nil; })();
         taken = 0;
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_28 = function(enum$, args){var self = TMP_28._s || this, $a, $b;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_28 = function(enum$, args){var self = TMP_28._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         if (taken['$<'](n)) {
             ($a = enum$).$yield.apply($a, [].concat(args));
             return taken = taken['$+'](1);
             } else {
-            return self.$raise((($b = $scope.StopLazyError) == null ? $opal.cm('StopLazyError') : $b))
+            return self.$raise($scope.StopLazyError)
           }}, TMP_28._s = self, TMP_28), $a).call($b, self, set_size);
       };
 
       def.$take_while = TMP_29 = function() {
-        var $a, $b, TMP_30, $c, self = this, $iter = TMP_29._p, block = $iter || nil;
+        var $a, $b, TMP_30, self = this, $iter = TMP_29._p, block = $iter || nil;
         TMP_29._p = null;
         if (($a = block) === false || $a === nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to call lazy take_while without a block")};
-        return ($a = ($b = (($c = $scope.Lazy) == null ? $opal.cm('Lazy') : $c)).$new, $a._p = (TMP_30 = function(enum$, args){var self = TMP_30._s || this, $a, $b;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
+          self.$raise($scope.ArgumentError, "tried to call lazy take_while without a block")};
+        return ($a = ($b = $scope.Lazy).$new, $a._p = (TMP_30 = function(enum$, args){var self = TMP_30._s || this, $a;if (enum$ == null) enum$ = nil;args = $slice.call(arguments, 1);
         
           var value = $opal.$yieldX(block, args);
 
@@ -4439,7 +4439,7 @@
             ($a = enum$).$yield.apply($a, [].concat(args));
           }
           else {
-            self.$raise((($b = $scope.StopLazyError) == null ? $opal.cm('StopLazyError') : $b));
+            self.$raise($scope.StopLazyError);
           }
         ;}, TMP_30._s = self, TMP_30), $a).call($b, self, nil);
       };
@@ -4458,26 +4458,26 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $range = $opal.range;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $range = $opal.range;
   $opal.add_stubs(['$include', '$new', '$class', '$raise', '$===', '$to_a', '$respond_to?', '$to_ary', '$coerce_to', '$==', '$to_str', '$clone', '$hash', '$<=>', '$fits_fixnum!', '$inspect', '$empty?', '$enum_for', '$nil?', '$coerce_to!', '$initialize_clone', '$initialize_dup', '$replace', '$eql?', '$length', '$begin', '$end', '$exclude_end?', '$fits_array!', '$flatten', '$object_id', '$[]', '$to_s', '$delete_if', '$to_proc', '$each', '$reverse', '$map', '$rand', '$keep_if', '$shuffle!', '$>', '$<', '$sort', '$times', '$[]=', '$<<', '$at', '$allocate', '$initialize', '$__send__', '$*', '$slice', '$uniq']);
   (function($base, $super) {
     function $Array(){};
     var self = $Array = $klass($base, $super, 'Array', $Array);
 
-    var def = $Array._proto, $scope = $Array._scope, $a, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_10, TMP_11, TMP_12, TMP_13, TMP_14, TMP_15, TMP_17, TMP_18, TMP_19, TMP_20, TMP_21, TMP_24;
+    var def = $Array._proto, $scope = $Array._scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_10, TMP_11, TMP_12, TMP_13, TMP_14, TMP_15, TMP_17, TMP_18, TMP_19, TMP_20, TMP_21, TMP_24;
     def.length = nil;
-    self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+    self.$include($scope.Enumerable);
 
     def._isArray = true;
 
     $opal.defs(self, '$inherited', function(klass) {
-      var $a, $b, self = this, replace = nil;
-      replace = (($a = $scope.Class) == null ? $opal.cm('Class') : $a).$new((($a = ((($b = $scope.Array) == null ? $opal.cm('Array') : $b))._scope).Wrapper == null ? $a.cm('Wrapper') : $a.Wrapper));
+      var self = this, replace = nil;
+      replace = $scope.Class.$new(($scope.Array)._scope.Wrapper);
       
       klass._proto        = replace._proto;
       klass._proto._klass = klass;
       klass._alloc        = replace._alloc;
-      klass.__parent      = (($a = ((($b = $scope.Array) == null ? $opal.cm('Array') : $b))._scope).Wrapper == null ? $a.cm('Wrapper') : $a.Wrapper);
+      klass.__parent      = ($scope.Array)._scope.Wrapper;
 
       klass.$allocate = replace.$allocate;
       klass.$new      = replace.$new;
@@ -4498,7 +4498,7 @@
     };
 
     $opal.defs(self, '$new', TMP_1 = function(size, obj) {
-      var $a, $b, self = this, $iter = TMP_1._p, block = $iter || nil;
+      var $a, self = this, $iter = TMP_1._p, block = $iter || nil;
       if (size == null) {
         size = nil
       }
@@ -4507,17 +4507,17 @@
       }
       TMP_1._p = null;
       if (($a = arguments.length > 2) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "wrong number of arguments (" + (arguments.length) + " for 0..2)")};
+        self.$raise($scope.ArgumentError, "wrong number of arguments (" + (arguments.length) + " for 0..2)")};
       if (($a = arguments.length === 0) !== false && $a !== nil) {
         return []};
       if (($a = arguments.length === 1) !== false && $a !== nil) {
-        if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](size)) !== false && $a !== nil) {
+        if (($a = $scope.Array['$==='](size)) !== false && $a !== nil) {
           return size.$to_a()
         } else if (($a = size['$respond_to?']("to_ary")) !== false && $a !== nil) {
           return size.$to_ary()}};
-      size = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(size, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+      size = $scope.Opal.$coerce_to(size, $scope.Integer, "to_int");
       if (($a = size < 0) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "negative array size")};
+        self.$raise($scope.ArgumentError, "negative array size")};
       
       var result = [];
 
@@ -4543,8 +4543,8 @@
     });
 
     $opal.defs(self, '$try_convert', function(obj) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](obj)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](obj)) !== false && $a !== nil) {
         return obj};
       if (($a = obj['$respond_to?']("to_ary")) !== false && $a !== nil) {
         return obj.$to_ary()};
@@ -4552,11 +4552,11 @@
     });
 
     def['$&'] = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](other)) !== false && $a !== nil) {
         other = other.$to_a()
         } else {
-        other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Array) == null ? $opal.cm('Array') : $a), "to_ary").$to_a()
+        other = $scope.Opal.$coerce_to(other, $scope.Array, "to_ary").$to_a()
       };
       
       var result = [],
@@ -4586,10 +4586,10 @@
       if (($a = other['$respond_to?']("to_str")) !== false && $a !== nil) {
         return self.join(other.$to_str())};
       if (($a = other['$respond_to?']("to_int")) === false || $a === nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "no implicit conversion of " + (other.$class()) + " into Integer")};
-      other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        self.$raise($scope.TypeError, "no implicit conversion of " + (other.$class()) + " into Integer")};
+      other = $scope.Opal.$coerce_to(other, $scope.Integer, "to_int");
       if (($a = other < 0) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "negative argument")};
+        self.$raise($scope.ArgumentError, "negative argument")};
       
       var result = [];
 
@@ -4602,21 +4602,21 @@
     };
 
     def['$+'] = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](other)) !== false && $a !== nil) {
         other = other.$to_a()
         } else {
-        other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Array) == null ? $opal.cm('Array') : $a), "to_ary").$to_a()
+        other = $scope.Opal.$coerce_to(other, $scope.Array, "to_ary").$to_a()
       };
       return self.concat(other);
     };
 
     def['$-'] = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](other)) !== false && $a !== nil) {
         other = other.$to_a()
         } else {
-        other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Array) == null ? $opal.cm('Array') : $a), "to_ary").$to_a()
+        other = $scope.Opal.$coerce_to(other, $scope.Array, "to_ary").$to_a()
       };
       if (($a = self.length === 0) !== false && $a !== nil) {
         return []};
@@ -4649,8 +4649,8 @@
     };
 
     def['$<=>'] = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](other)) !== false && $a !== nil) {
         other = other.$to_a()
       } else if (($a = other['$respond_to?']("to_ary")) !== false && $a !== nil) {
         other = other.$to_ary().$to_a()
@@ -4679,10 +4679,10 @@
     };
 
     def['$=='] = function(other) {
-      var $a, $b, self = this;
+      var $a, self = this;
       if (($a = self === other) !== false && $a !== nil) {
         return true};
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) === false || $a === nil) {
+      if (($a = $scope.Array['$==='](other)) === false || $a === nil) {
         if (($a = other['$respond_to?']("to_ary")) === false || $a === nil) {
           return false};
         return other['$=='](self);};
@@ -4707,13 +4707,13 @@
     };
 
     def['$[]'] = function(index, length) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Range) == null ? $opal.cm('Range') : $b)['$==='](index)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Range['$==='](index)) !== false && $a !== nil) {
         
         var size    = self.length,
             exclude = index.exclude,
-            from    = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(index.begin, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int"),
-            to      = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(index.end, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+            from    = $scope.Opal.$coerce_to(index.begin, $scope.Integer, "to_int"),
+            to      = $scope.Opal.$coerce_to(index.end, $scope.Integer, "to_int");
 
         if (from < 0) {
           from += size;
@@ -4723,7 +4723,7 @@
           }
         }
 
-        (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](from);
+        $scope.Opal['$fits_fixnum!'](from);
 
         if (from > size) {
           return nil;
@@ -4737,7 +4737,7 @@
           }
         }
 
-        (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](to);
+        $scope.Opal['$fits_fixnum!'](to);
 
         if (!exclude) {
           to += 1;
@@ -4746,7 +4746,7 @@
         return self.slice(from, to);
       ;
         } else {
-        index = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(index, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        index = $scope.Opal.$coerce_to(index, $scope.Integer, "to_int");
         
         var size = self.length;
 
@@ -4758,7 +4758,7 @@
           }
         }
 
-        (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](index);
+        $scope.Opal['$fits_fixnum!'](index);
 
         if (length === undefined) {
           if (index >= size || index < 0) {
@@ -4768,9 +4768,9 @@
           return self[index];
         }
         else {
-          length = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(length, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+          length = $scope.Opal.$coerce_to(length, $scope.Integer, "to_int");
 
-          (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](length);
+          $scope.Opal['$fits_fixnum!'](length);
 
           if (length < 0 || index > size || index < 0) {
             return nil;
@@ -4783,9 +4783,9 @@
     };
 
     def['$[]='] = function(index, value, extra) {
-      var $a, $b, self = this, data = nil, length = nil;
-      if (($a = (($b = $scope.Range) == null ? $opal.cm('Range') : $b)['$==='](index)) !== false && $a !== nil) {
-        if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](value)) !== false && $a !== nil) {
+      var $a, self = this, data = nil, length = nil;
+      if (($a = $scope.Range['$==='](index)) !== false && $a !== nil) {
+        if (($a = $scope.Array['$==='](value)) !== false && $a !== nil) {
           data = value.$to_a()
         } else if (($a = value['$respond_to?']("to_ary")) !== false && $a !== nil) {
           data = value.$to_ary().$to_a()
@@ -4795,24 +4795,24 @@
         
         var size    = self.length,
             exclude = index.exclude,
-            from    = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(index.begin, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int"),
-            to      = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(index.end, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+            from    = $scope.Opal.$coerce_to(index.begin, $scope.Integer, "to_int"),
+            to      = $scope.Opal.$coerce_to(index.end, $scope.Integer, "to_int");
 
         if (from < 0) {
           from += size;
 
           if (from < 0) {
-            self.$raise((($a = $scope.RangeError) == null ? $opal.cm('RangeError') : $a), "" + (index.$inspect()) + " out of range");
+            self.$raise($scope.RangeError, "" + (index.$inspect()) + " out of range");
           }
         }
 
-        (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](from);
+        $scope.Opal['$fits_fixnum!'](from);
 
         if (to < 0) {
           to += size;
         }
 
-        (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](to);
+        $scope.Opal['$fits_fixnum!'](to);
 
         if (!exclude) {
           to += 1;
@@ -4839,7 +4839,7 @@
           } else {
           length = value;
           value = extra;
-          if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](value)) !== false && $a !== nil) {
+          if (($a = $scope.Array['$==='](value)) !== false && $a !== nil) {
             data = value.$to_a()
           } else if (($a = value['$respond_to?']("to_ary")) !== false && $a !== nil) {
             data = value.$to_ary().$to_a()
@@ -4849,8 +4849,8 @@
         };
         
         var size   = self.length,
-            index  = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(index, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int"),
-            length = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(length, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int"),
+            index  = $scope.Opal.$coerce_to(index, $scope.Integer, "to_int"),
+            length = $scope.Opal.$coerce_to(length, $scope.Integer, "to_int"),
             old;
 
         if (index < 0) {
@@ -4858,17 +4858,17 @@
           index += size;
 
           if (index < 0) {
-            self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "index " + (old) + " too small for array; minimum " + (-self.length));
+            self.$raise($scope.IndexError, "index " + (old) + " too small for array; minimum " + (-self.length));
           }
         }
 
-        (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](index);
+        $scope.Opal['$fits_fixnum!'](index);
 
         if (length < 0) {
-          self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "negative length (" + (length) + ")")
+          self.$raise($scope.IndexError, "negative length (" + (length) + ")")
         }
 
-        (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](length);
+        $scope.Opal['$fits_fixnum!'](length);
 
         if (index > size) {
           for (var i = size; i < index; i++) {
@@ -4902,8 +4902,8 @@
     };
 
     def.$at = function(index) {
-      var $a, self = this;
-      index = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(index, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+      var self = this;
+      index = $scope.Opal.$coerce_to(index, $scope.Integer, "to_int");
       
       if (index < 0) {
         index += self.length;
@@ -4940,7 +4940,7 @@
         }
       
         } else {
-        n = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$coerce_to!'](n, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        n = $scope.Opal['$coerce_to!'](n, $scope.Integer, "to_int");
         
         if (n <= 0) {
           return self;
@@ -5062,11 +5062,11 @@
     };
 
     def.$concat = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](other)) !== false && $a !== nil) {
         other = other.$to_a()
         } else {
-        other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Array) == null ? $opal.cm('Array') : $a), "to_ary").$to_a()
+        other = $scope.Opal.$coerce_to(other, $scope.Array, "to_ary").$to_a()
       };
       
       for (var i = 0, length = other.length; i < length; i++) {
@@ -5136,10 +5136,10 @@
     };
 
     def.$drop = function(number) {
-      var $a, self = this;
+      var self = this;
       
       if (number < 0) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a))
+        self.$raise($scope.ArgumentError)
       }
 
       return self.slice(number);
@@ -5188,10 +5188,10 @@
     };
 
     def['$eql?'] = function(other) {
-      var $a, $b, self = this;
+      var $a, self = this;
       if (($a = self === other) !== false && $a !== nil) {
         return true};
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) === false || $a === nil) {
+      if (($a = $scope.Array['$==='](other)) === false || $a === nil) {
         return false};
       other = other.$to_a();
       if (($a = self.length === other.length) === false || $a === nil) {
@@ -5214,7 +5214,7 @@
     };
 
     def.$fetch = TMP_8 = function(index, defaults) {
-      var $a, self = this, $iter = TMP_8._p, block = $iter || nil;
+      var self = this, $iter = TMP_8._p, block = $iter || nil;
       TMP_8._p = null;
       
       var original = index;
@@ -5236,38 +5236,38 @@
       }
 
       if (self.length === 0) {
-        self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "index " + (original) + " outside of array bounds: 0...0")
+        self.$raise($scope.IndexError, "index " + (original) + " outside of array bounds: 0...0")
       }
       else {
-        self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "index " + (original) + " outside of array bounds: -" + (self.length) + "..." + (self.length));
+        self.$raise($scope.IndexError, "index " + (original) + " outside of array bounds: -" + (self.length) + "..." + (self.length));
       }
     ;
     };
 
     def.$fill = TMP_9 = function(args) {
-      var $a, $b, self = this, $iter = TMP_9._p, block = $iter || nil, one = nil, two = nil, obj = nil, left = nil, right = nil;
+      var $a, self = this, $iter = TMP_9._p, block = $iter || nil, one = nil, two = nil, obj = nil, left = nil, right = nil;
       args = $slice.call(arguments, 0);
       TMP_9._p = null;
       if (block !== false && block !== nil) {
         if (($a = args.length > 2) !== false && $a !== nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "wrong number of arguments (" + (args.$length()) + " for 0..2)")};
+          self.$raise($scope.ArgumentError, "wrong number of arguments (" + (args.$length()) + " for 0..2)")};
         $a = $opal.to_ary(args), one = ($a[0] == null ? nil : $a[0]), two = ($a[1] == null ? nil : $a[1]);
         } else {
         if (($a = args.length == 0) !== false && $a !== nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "wrong number of arguments (0 for 1..3)")
+          self.$raise($scope.ArgumentError, "wrong number of arguments (0 for 1..3)")
         } else if (($a = args.length > 3) !== false && $a !== nil) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "wrong number of arguments (" + (args.$length()) + " for 1..3)")};
+          self.$raise($scope.ArgumentError, "wrong number of arguments (" + (args.$length()) + " for 1..3)")};
         $a = $opal.to_ary(args), obj = ($a[0] == null ? nil : $a[0]), one = ($a[1] == null ? nil : $a[1]), two = ($a[2] == null ? nil : $a[2]);
       };
-      if (($a = (($b = $scope.Range) == null ? $opal.cm('Range') : $b)['$==='](one)) !== false && $a !== nil) {
+      if (($a = $scope.Range['$==='](one)) !== false && $a !== nil) {
         if (two !== false && two !== nil) {
-          self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "length invalid with range")};
-        left = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(one.$begin(), (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+          self.$raise($scope.TypeError, "length invalid with range")};
+        left = $scope.Opal.$coerce_to(one.$begin(), $scope.Integer, "to_int");
         if (($a = left < 0) !== false && $a !== nil) {
           left += self.length;};
         if (($a = left < 0) !== false && $a !== nil) {
-          self.$raise((($a = $scope.RangeError) == null ? $opal.cm('RangeError') : $a), "" + (one.$inspect()) + " out of range")};
-        right = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(one.$end(), (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+          self.$raise($scope.RangeError, "" + (one.$inspect()) + " out of range")};
+        right = $scope.Opal.$coerce_to(one.$end(), $scope.Integer, "to_int");
         if (($a = right < 0) !== false && $a !== nil) {
           right += self.length;};
         if (($a = one['$exclude_end?']()) === false || $a === nil) {
@@ -5275,13 +5275,13 @@
         if (($a = right <= left) !== false && $a !== nil) {
           return self};
       } else if (one !== false && one !== nil) {
-        left = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(one, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        left = $scope.Opal.$coerce_to(one, $scope.Integer, "to_int");
         if (($a = left < 0) !== false && $a !== nil) {
           left += self.length;};
         if (($a = left < 0) !== false && $a !== nil) {
           left = 0};
         if (two !== false && two !== nil) {
-          right = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(two, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+          right = $scope.Opal.$coerce_to(two, $scope.Integer, "to_int");
           if (($a = right == 0) !== false && $a !== nil) {
             return self};
           right += left;
@@ -5292,8 +5292,8 @@
         left = 0;
         right = self.length;
       };
-      (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_fixnum!'](right);
-      (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$fits_array!'](right);
+      $scope.Opal['$fits_fixnum!'](right);
+      $scope.Opal['$fits_array!'](right);
       if (($a = left > self.length) !== false && $a !== nil) {
         
         for (var i = self.length; i < right; i++) {
@@ -5325,12 +5325,12 @@
     };
 
     def.$first = function(count) {
-      var $a, self = this;
+      var self = this;
       
       if (count != null) {
 
         if (count < 0) {
-          self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a));
+          self.$raise($scope.ArgumentError);
         }
 
         return self.slice(0, count);
@@ -5441,7 +5441,7 @@
     };
 
     def.$insert = function(index, objects) {
-      var $a, self = this;
+      var self = this;
       objects = $slice.call(arguments, 1);
       
       if (objects.length > 0) {
@@ -5449,7 +5449,7 @@
           index += self.length + 1;
 
           if (index < 0) {
-            self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "" + (index) + " is out of bounds");
+            self.$raise($scope.IndexError, "" + (index) + " is out of bounds");
           }
         }
         if (index > self.length) {
@@ -5524,12 +5524,12 @@
     };
 
     def.$last = function(count) {
-      var $a, self = this;
+      var self = this;
       
       var length = self.length;
 
       if (count === nil || typeof(count) == 'string') {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "no implicit conversion to integer");
+        self.$raise($scope.TypeError, "no implicit conversion to integer");
       }
 
       if (typeof(count) == 'object') {
@@ -5537,7 +5537,7 @@
           count = count['$to_int']();
         }
         else {
-          self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "no implicit conversion to integer");
+          self.$raise($scope.TypeError, "no implicit conversion to integer");
         }
       }
 
@@ -5545,7 +5545,7 @@
         return length === 0 ? nil : self[length - 1];
       }
       else if (count < 0) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "negative count given");
+        self.$raise($scope.ArgumentError, "negative count given");
       }
 
       if (count > length) {
@@ -5566,7 +5566,7 @@
     $opal.defn(self, '$map!', def['$collect!']);
 
     def.$pop = function(count) {
-      var $a, self = this;
+      var self = this;
       
       var length = self.length;
 
@@ -5575,7 +5575,7 @@
       }
 
       if (count < 0) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "negative count given");
+        self.$raise($scope.ArgumentError, "negative count given");
       }
 
       return count > length ? self.splice(0, self.length) : self.splice(length - count, length);
@@ -5644,11 +5644,11 @@
     };
 
     def.$replace = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](other)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](other)) !== false && $a !== nil) {
         other = other.$to_a()
         } else {
-        other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Array) == null ? $opal.cm('Array') : $a), "to_ary").$to_a()
+        other = $scope.Opal.$coerce_to(other, $scope.Array, "to_ary").$to_a()
       };
       
       self.splice(0, self.length);
@@ -5832,7 +5832,7 @@
             throw $breaker;
           }
           else if (ret === nil) {
-            self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison of " + ((x).$inspect()) + " with " + ((y).$inspect()) + " failed");
+            self.$raise($scope.ArgumentError, "comparison of " + ((x).$inspect()) + " with " + ((y).$inspect()) + " failed");
           }
 
           return (ret)['$>'](0) ? 1 : ((ret)['$<'](0) ? -1 : 0);
@@ -5872,10 +5872,10 @@
     };
 
     def.$take = function(count) {
-      var $a, self = this;
+      var self = this;
       
       if (count < 0) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a));
+        self.$raise($scope.ArgumentError);
       }
 
       return self.slice(0, count);
@@ -5922,14 +5922,14 @@
       result = [];
       max = nil;
       ($a = ($b = self).$each, $a._p = (TMP_22 = function(row){var self = TMP_22._s || this, $a, $b, TMP_23;if (row == null) row = nil;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](row)) !== false && $a !== nil) {
+      if (($a = $scope.Array['$==='](row)) !== false && $a !== nil) {
           row = row.$to_a()
           } else {
-          row = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(row, (($a = $scope.Array) == null ? $opal.cm('Array') : $a), "to_ary").$to_a()
+          row = $scope.Opal.$coerce_to(row, $scope.Array, "to_ary").$to_a()
         };
         ((($a = max) !== false && $a !== nil) ? $a : max = row.length);
         if (($a = ($b = (row.length)['$=='](max), ($b === nil || $b === false))) !== false && $a !== nil) {
-          self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "element size differs (" + (row.length) + " should be " + (max))};
+          self.$raise($scope.IndexError, "element size differs (" + (row.length) + " should be " + (max))};
         return ($a = ($b = (row.length)).$times, $a._p = (TMP_23 = function(i){var self = TMP_23._s || this, $a, $b, $c, entry = nil;if (i == null) i = nil;
         entry = (($a = i, $b = result, ((($c = $b['$[]']($a)) !== false && $c !== nil) ? $c : $b['$[]=']($a, []))));
           return entry['$<<'](row.$at(i));}, TMP_23._s = self, TMP_23), $a).call($b);}, TMP_22._s = self, TMP_22), $a).call($b);
@@ -6061,10 +6061,10 @@
     });
 
     def.$initialize = TMP_27 = function(args) {
-      var $a, $b, $c, self = this, $iter = TMP_27._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_27._p, block = $iter || nil;
       args = $slice.call(arguments, 0);
       TMP_27._p = null;
-      return self.literal = ($a = ($b = (($c = $scope.Array) == null ? $opal.cm('Array') : $c)).$new, $a._p = block.$to_proc(), $a).apply($b, [].concat(args));
+      return self.literal = ($a = ($b = $scope.Array).$new, $a._p = block.$to_proc(), $a).apply($b, [].concat(args));
     };
 
     def.$method_missing = TMP_28 = function(args) {
@@ -6154,7 +6154,7 @@
       var self = this;
       return self.$class().$allocate(self.literal.$flatten(level));
     }, nil);
-  })((($a = $scope.Array) == null ? $opal.cm('Array') : $a), null);
+  })($scope.Array, null);
 })(Opal);
 
 //@ sourceMappingURL=/__opal_source_maps__/corelib/array.js.map
@@ -6167,9 +6167,9 @@
     function $Hash(){};
     var self = $Hash = $klass($base, $super, 'Hash', $Hash);
 
-    var def = $Hash._proto, $scope = $Hash._scope, $a, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_10, TMP_11, TMP_12;
+    var def = $Hash._proto, $scope = $Hash._scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_10, TMP_11, TMP_12;
     def.proc = def.none = nil;
-    self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+    self.$include($scope.Enumerable);
 
     var $hasOwn = {}.hasOwnProperty;
 
@@ -6457,7 +6457,7 @@
     $opal.defn(self, '$eql?', def['$==']);
 
     def.$fetch = TMP_6 = function(key, defaults) {
-      var $a, self = this, $iter = TMP_6._p, block = $iter || nil;
+      var self = this, $iter = TMP_6._p, block = $iter || nil;
       TMP_6._p = null;
       
       var value = self.map[key];
@@ -6480,7 +6480,7 @@
         return defaults;
       }
 
-      self.$raise((($a = $scope.KeyError) == null ? $opal.cm('KeyError') : $a), "key not found");
+      self.$raise($scope.KeyError, "key not found");
     
     };
 
@@ -6934,15 +6934,15 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $gvars = $opal.gvars;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $gvars = $opal.gvars;
   $opal.add_stubs(['$include', '$to_str', '$===', '$format', '$coerce_to', '$to_s', '$respond_to?', '$<=>', '$raise', '$=~', '$empty?', '$ljust', '$ceil', '$/', '$+', '$rjust', '$floor', '$to_a', '$each_char', '$coerce_to!', '$enum_for', '$split', '$chomp', '$escape', '$class', '$to_i', '$name', '$each_line', '$match', '$to_proc', '$new', '$is_a?', '$[]', '$str', '$value', '$try_convert']);
   (function($base, $super) {
     function $String(){};
     var self = $String = $klass($base, $super, 'String', $String);
 
-    var def = $String._proto, $scope = $String._scope, $a, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6;
+    var def = $String._proto, $scope = $String._scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6;
     def.length = nil;
-    self.$include((($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a));
+    self.$include($scope.Comparable);
 
     def._isString = true;
 
@@ -6965,8 +6965,8 @@
     });
 
     def['$%'] = function(data) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Array) == null ? $opal.cm('Array') : $b)['$==='](data)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Array['$==='](data)) !== false && $a !== nil) {
         return ($a = self).$format.apply($a, [self].concat(data))
         } else {
         return self.$format(self, data)
@@ -6997,8 +6997,8 @@
     };
 
     def['$+'] = function(other) {
-      var $a, self = this;
-      other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str");
+      var self = this;
+      other = $scope.Opal.$coerce_to(other, $scope.String, "to_str");
       return self + other.$to_s();
     };
 
@@ -7029,10 +7029,10 @@
     $opal.defn(self, '$===', def['$==']);
 
     def['$=~'] = function(other) {
-      var $a, self = this;
+      var self = this;
       
       if (other._isString) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "type mismatch: String given");
+        self.$raise($scope.TypeError, "type mismatch: String given");
       }
 
       return other['$=~'](self);
@@ -7100,8 +7100,8 @@
     };
 
     def.$casecmp = function(other) {
-      var $a, self = this;
-      other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str").$to_s();
+      var self = this;
+      other = $scope.Opal.$coerce_to(other, $scope.String, "to_str").$to_s();
       return (self.toLowerCase())['$<=>'](other.toLowerCase());
     };
 
@@ -7110,10 +7110,10 @@
       if (padstr == null) {
         padstr = " "
       }
-      width = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(width, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
-      padstr = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(padstr, (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str").$to_s();
+      width = $scope.Opal.$coerce_to(width, $scope.Integer, "to_int");
+      padstr = $scope.Opal.$coerce_to(padstr, $scope.String, "to_str").$to_s();
       if (($a = padstr['$empty?']()) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "zero width padding")};
+        self.$raise($scope.ArgumentError, "zero width padding")};
       if (($a = width <= self.length) !== false && $a !== nil) {
         return self};
       
@@ -7136,7 +7136,7 @@
       }
       if (($a = separator === nil || self.length === 0) !== false && $a !== nil) {
         return self};
-      separator = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a)['$coerce_to!'](separator, (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str").$to_s();
+      separator = $scope.Opal['$coerce_to!'](separator, $scope.String, "to_str").$to_s();
       
       if (separator === "\n") {
         return self.replace(/\r?\n?$/, '');
@@ -7239,11 +7239,11 @@
     };
 
     def['$end_with?'] = function(suffixes) {
-      var $a, self = this;
+      var self = this;
       suffixes = $slice.call(arguments, 0);
       
       for (var i = 0, length = suffixes.length; i < length; i++) {
-        var suffix = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(suffixes[i], (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str");
+        var suffix = $scope.Opal.$coerce_to(suffixes[i], $scope.String, "to_str");
 
         if (self.length >= suffix.length && self.substr(0 - suffix.length) === suffix) {
           return true;
@@ -7258,12 +7258,12 @@
     $opal.defn(self, '$equal?', def['$===']);
 
     def.$gsub = TMP_3 = function(pattern, replace) {
-      var $a, $b, $c, self = this, $iter = TMP_3._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_3._p, block = $iter || nil;
       TMP_3._p = null;
-      if (($a = ((($b = (($c = $scope.String) == null ? $opal.cm('String') : $c)['$==='](pattern)) !== false && $b !== nil) ? $b : pattern['$respond_to?']("to_str"))) !== false && $a !== nil) {
-        pattern = (new RegExp("" + (($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$escape(pattern.$to_str())))};
-      if (($a = (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b)['$==='](pattern)) === false || $a === nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "wrong argument type " + (pattern.$class()) + " (expected Regexp)")};
+      if (($a = ((($b = $scope.String['$==='](pattern)) !== false && $b !== nil) ? $b : pattern['$respond_to?']("to_str"))) !== false && $a !== nil) {
+        pattern = (new RegExp("" + $scope.Regexp.$escape(pattern.$to_str())))};
+      if (($a = $scope.Regexp['$==='](pattern)) === false || $a === nil) {
+        self.$raise($scope.TypeError, "wrong argument type " + (pattern.$class()) + " (expected Regexp)")};
       
       var pattern = pattern.toString(),
           options = pattern.substr(pattern.lastIndexOf('/') + 1) + 'g',
@@ -7292,24 +7292,24 @@
       }
     
       if (($a = other['$respond_to?']("to_str")) === false || $a === nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "no implicit conversion of " + (other.$class().$name()) + " into String")};
+        self.$raise($scope.TypeError, "no implicit conversion of " + (other.$class().$name()) + " into String")};
       return self.indexOf(other.$to_str()) !== -1;
     };
 
     def.$index = function(what, offset) {
-      var $a, $b, $c, self = this, result = nil;
+      var $a, $b, self = this, result = nil;
       if (offset == null) {
         offset = nil
       }
-      if (($a = (($b = $scope.String) == null ? $opal.cm('String') : $b)['$==='](what)) !== false && $a !== nil) {
+      if (($a = $scope.String['$==='](what)) !== false && $a !== nil) {
         what = what.$to_s()
       } else if (($a = what['$respond_to?']("to_str")) !== false && $a !== nil) {
         what = what.$to_str().$to_s()
-      } else if (($a = ($b = (($c = $scope.Regexp) == null ? $opal.cm('Regexp') : $c)['$==='](what), ($b === nil || $b === false))) !== false && $a !== nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "type mismatch: " + (what.$class()) + " given")};
+      } else if (($a = ($b = $scope.Regexp['$==='](what), ($b === nil || $b === false))) !== false && $a !== nil) {
+        self.$raise($scope.TypeError, "type mismatch: " + (what.$class()) + " given")};
       result = -1;
       if (offset !== false && offset !== nil) {
-        offset = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(offset, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        offset = $scope.Opal.$coerce_to(offset, $scope.Integer, "to_int");
         
         var size = self.length;
 
@@ -7321,7 +7321,7 @@
           return nil;
         }
       
-        if (($a = (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b)['$==='](what)) !== false && $a !== nil) {
+        if (($a = $scope.Regexp['$==='](what)) !== false && $a !== nil) {
           result = ((($a = (what['$=~'](self.substr(offset)))) !== false && $a !== nil) ? $a : -1)
           } else {
           result = self.substr(offset).indexOf(what)
@@ -7331,7 +7331,7 @@
           result += offset;
         }
       
-      } else if (($a = (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b)['$==='](what)) !== false && $a !== nil) {
+      } else if (($a = $scope.Regexp['$==='](what)) !== false && $a !== nil) {
         result = ((($a = (what['$=~'](self))) !== false && $a !== nil) ? $a : -1)
         } else {
         result = self.indexOf(what)
@@ -7391,10 +7391,10 @@
       if (padstr == null) {
         padstr = " "
       }
-      width = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(width, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
-      padstr = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(padstr, (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str").$to_s();
+      width = $scope.Opal.$coerce_to(width, $scope.Integer, "to_int");
+      padstr = $scope.Opal.$coerce_to(padstr, $scope.String, "to_str").$to_s();
       if (($a = padstr['$empty?']()) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "zero width padding")};
+        self.$raise($scope.ArgumentError, "zero width padding")};
       if (($a = width <= self.length) !== false && $a !== nil) {
         return self};
       
@@ -7417,12 +7417,12 @@
     };
 
     def.$match = TMP_4 = function(pattern, pos) {
-      var $a, $b, $c, self = this, $iter = TMP_4._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_4._p, block = $iter || nil;
       TMP_4._p = null;
-      if (($a = ((($b = (($c = $scope.String) == null ? $opal.cm('String') : $c)['$==='](pattern)) !== false && $b !== nil) ? $b : pattern['$respond_to?']("to_str"))) !== false && $a !== nil) {
-        pattern = (new RegExp("" + (($a = $scope.Regexp) == null ? $opal.cm('Regexp') : $a).$escape(pattern.$to_str())))};
-      if (($a = (($b = $scope.Regexp) == null ? $opal.cm('Regexp') : $b)['$==='](pattern)) === false || $a === nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "wrong argument type " + (pattern.$class()) + " (expected Regexp)")};
+      if (($a = ((($b = $scope.String['$==='](pattern)) !== false && $b !== nil) ? $b : pattern['$respond_to?']("to_str"))) !== false && $a !== nil) {
+        pattern = (new RegExp("" + $scope.Regexp.$escape(pattern.$to_str())))};
+      if (($a = $scope.Regexp['$==='](pattern)) === false || $a === nil) {
+        self.$raise($scope.TypeError, "wrong argument type " + (pattern.$class()) + " (expected Regexp)")};
       return ($a = ($b = pattern).$match, $a._p = block.$to_proc(), $a).call($b, self, pos);
     };
 
@@ -7461,12 +7461,12 @@
     };
 
     def.$rindex = function(search, offset) {
-      var $a, self = this;
+      var self = this;
       
       var search_type = (search == null ? Opal.NilClass : search.constructor);
       if (search_type != String && search_type != RegExp) {
         var msg = "type mismatch: " + search_type + " given";
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a).$new(msg));
+        self.$raise($scope.TypeError.$new(msg));
       }
 
       if (self.length == 0) {
@@ -7510,10 +7510,10 @@
       if (padstr == null) {
         padstr = " "
       }
-      width = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(width, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
-      padstr = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(padstr, (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str").$to_s();
+      width = $scope.Opal.$coerce_to(width, $scope.Integer, "to_int");
+      padstr = $scope.Opal.$coerce_to(padstr, $scope.String, "to_str").$to_s();
       if (($a = padstr['$empty?']()) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "zero width padding")};
+        self.$raise($scope.ArgumentError, "zero width padding")};
       if (($a = width <= self.length) !== false && $a !== nil) {
         return self};
       
@@ -7532,7 +7532,7 @@
     };
 
     def.$scan = TMP_5 = function(pattern) {
-      var $a, self = this, $iter = TMP_5._p, block = $iter || nil;
+      var self = this, $iter = TMP_5._p, block = $iter || nil;
       TMP_5._p = null;
       
       if (pattern.global) {
@@ -7548,7 +7548,7 @@
       var match;
 
       while ((match = pattern.exec(self)) != null) {
-        var match_data = (($a = $scope.MatchData) == null ? $opal.cm('MatchData') : $a).$new(pattern, match);
+        var match_data = $scope.MatchData.$new(pattern, match);
         if (block === nil) {
           match.length == 1 ? result.push(match[0]) : result.push(match.slice(1));
         }
@@ -7574,11 +7574,11 @@
     };
 
     def['$start_with?'] = function(prefixes) {
-      var $a, self = this;
+      var self = this;
       prefixes = $slice.call(arguments, 0);
       
       for (var i = 0, length = prefixes.length; i < length; i++) {
-        var prefix = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(prefixes[i], (($a = $scope.String) == null ? $opal.cm('String') : $a), "to_str");
+        var prefix = $scope.Opal.$coerce_to(prefixes[i], $scope.String, "to_str");
 
         if (self.indexOf(prefix) === 0) {
           return true;
@@ -7595,7 +7595,7 @@
     };
 
     def.$sub = TMP_6 = function(pattern, replace) {
-      var $a, self = this, $iter = TMP_6._p, block = $iter || nil;
+      var self = this, $iter = TMP_6._p, block = $iter || nil;
       TMP_6._p = null;
       
       if (typeof(replace) === 'string') {
@@ -7631,7 +7631,7 @@
         });
       }
       else if (replace !== undefined) {
-        if (replace['$is_a?']((($a = $scope.Hash) == null ? $opal.cm('Hash') : $a))) {
+        if (replace['$is_a?']($scope.Hash)) {
           return self.replace(pattern, function(str) {
             var value = replace['$[]'](self.$str());
 
@@ -7639,10 +7639,10 @@
           });
         }
         else {
-          replace = (($a = $scope.String) == null ? $opal.cm('String') : $a).$try_convert(replace);
+          replace = $scope.String.$try_convert(replace);
 
           if (replace == null) {
-            self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "can't convert " + (replace.$class()) + " into String");
+            self.$raise($scope.TypeError, "can't convert " + (replace.$class()) + " into String");
           }
 
           return self.replace(pattern, replace);
@@ -8051,7 +8051,7 @@
       return true;
     }, nil);
   })(self, null);
-  return $opal.cdecl($scope, 'Symbol', (($a = $scope.String) == null ? $opal.cm('String') : $a));
+  return $opal.cdecl($scope, 'Symbol', $scope.String);
 })(Opal);
 
 //@ sourceMappingURL=/__opal_source_maps__/corelib/string.js.map
@@ -8108,7 +8108,7 @@
 
     def['$=='] = function(other) {
       var $a, $b, $c, $d, self = this;
-      if (($a = (($b = $scope.MatchData) == null ? $opal.cm('MatchData') : $b)['$==='](other)) === false || $a === nil) {
+      if (($a = $scope.MatchData['$==='](other)) === false || $a === nil) {
         return false};
       return ($a = ($b = ($c = ($d = self.string == other.string, $d !== false && $d !== nil ?self.regexp == other.regexp : $d), $c !== false && $c !== nil ?self.pre_match == other.pre_match : $c), $b !== false && $b !== nil ?self.post_match == other.post_match : $b), $a !== false && $a !== nil ?self.begin == other.begin : $a);
     };
@@ -8116,7 +8116,7 @@
     def.$begin = function(pos) {
       var $a, $b, $c, self = this;
       if (($a = ($b = ($c = pos['$=='](0), ($c === nil || $c === false)), $b !== false && $b !== nil ?($c = pos['$=='](1), ($c === nil || $c === false)) : $b)) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "MatchData#begin only supports 0th element")};
+        self.$raise($scope.ArgumentError, "MatchData#begin only supports 0th element")};
       return self.begin;
     };
 
@@ -8190,7 +8190,7 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, $b, TMP_4, $c, TMP_6, $d, TMP_8, $e, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $hash2 = $opal.hash2;
+  var $a, $b, TMP_4, $c, TMP_6, $d, TMP_8, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $hash2 = $opal.hash2;
   $opal.add_stubs(['$+', '$[]', '$new', '$to_proc', '$each', '$const_set', '$sub', '$===', '$const_get', '$==', '$name', '$include?', '$names', '$constants', '$raise', '$attr_accessor', '$attr_reader', '$register', '$length', '$bytes', '$to_a', '$each_byte', '$bytesize', '$enum_for', '$find', '$getbyte']);
   (function($base, $super) {
     function $Encoding(){};
@@ -8205,7 +8205,7 @@
       }
       TMP_1._p = null;
       names = [name]['$+']((((($a = options['$[]']("aliases")) !== false && $a !== nil) ? $a : [])));
-      encoding = ($a = ($b = (($c = $scope.Class) == null ? $opal.cm('Class') : $c)).$new, $a._p = block.$to_proc(), $a).call($b, self).$new(name, names, ((($a = options['$[]']("ascii")) !== false && $a !== nil) ? $a : false), ((($a = options['$[]']("dummy")) !== false && $a !== nil) ? $a : false));
+      encoding = ($a = ($b = $scope.Class).$new, $a._p = block.$to_proc(), $a).call($b, self).$new(name, names, ((($a = options['$[]']("ascii")) !== false && $a !== nil) ? $a : false), ((($a = options['$[]']("dummy")) !== false && $a !== nil) ? $a : false));
       return ($a = ($c = names).$each, $a._p = (TMP_2 = function(name){var self = TMP_2._s || this;if (name == null) name = nil;
       return self.$const_set(name.$sub("-", "_"), encoding)}, TMP_2._s = self, TMP_2), $a).call($c);
     });
@@ -8222,7 +8222,7 @@
           } else {
           return nil
         };}, TMP_3._s = self, TMP_3), $a).call($b);
-      return self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "unknown encoding name - " + (name));
+      return self.$raise($scope.ArgumentError, "unknown encoding name - " + (name));
       } catch ($returner) { if ($returner === $opal.returner) { return $returner.$v } throw $returner; }
     });
 
@@ -8266,21 +8266,21 @@
     };
 
     def.$each_byte = function() {
-      var $a, self = this;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      var self = this;
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$getbyte = function() {
-      var $a, self = this;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      var self = this;
+      return self.$raise($scope.NotImplementedError);
     };
 
     return (def.$bytesize = function() {
-      var $a, self = this;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      var self = this;
+      return self.$raise($scope.NotImplementedError);
     }, nil);
   })(self, null);
-  ($a = ($b = (($c = $scope.Encoding) == null ? $opal.cm('Encoding') : $c)).$register, $a._p = (TMP_4 = function(){var self = TMP_4._s || this, TMP_5;
+  ($a = ($b = $scope.Encoding).$register, $a._p = (TMP_4 = function(){var self = TMP_4._s || this, TMP_5;
   $opal.defn(self, '$each_byte', TMP_5 = function(string) {
       var $a, self = this, $iter = TMP_5._p, block = $iter || nil;
       TMP_5._p = null;
@@ -8305,7 +8305,7 @@
       var self = this;
       return self.$bytes().$length();
     }), nil);}, TMP_4._s = self, TMP_4), $a).call($b, "UTF-8", $hash2(["aliases", "ascii"], {"aliases": ["CP65001"], "ascii": true}));
-  ($a = ($c = (($d = $scope.Encoding) == null ? $opal.cm('Encoding') : $d)).$register, $a._p = (TMP_6 = function(){var self = TMP_6._s || this, TMP_7;
+  ($a = ($c = $scope.Encoding).$register, $a._p = (TMP_6 = function(){var self = TMP_6._s || this, TMP_7;
   $opal.defn(self, '$each_byte', TMP_7 = function(string) {
       var $a, self = this, $iter = TMP_7._p, block = $iter || nil;
       TMP_7._p = null;
@@ -8322,7 +8322,7 @@
       var self = this;
       return self.$bytes().$length();
     }), nil);}, TMP_6._s = self, TMP_6), $a).call($c, "UTF-16LE");
-  ($a = ($d = (($e = $scope.Encoding) == null ? $opal.cm('Encoding') : $e)).$register, $a._p = (TMP_8 = function(){var self = TMP_8._s || this, TMP_9;
+  ($a = ($d = $scope.Encoding).$register, $a._p = (TMP_8 = function(){var self = TMP_8._s || this, TMP_9;
   $opal.defn(self, '$each_byte', TMP_9 = function(string) {
       var $a, self = this, $iter = TMP_9._p, block = $iter || nil;
       TMP_9._p = null;
@@ -8340,9 +8340,9 @@
     function $String(){};
     var self = $String = $klass($base, $super, 'String', $String);
 
-    var def = $String._proto, $scope = $String._scope, $a, $b, TMP_10;
+    var def = $String._proto, $scope = $String._scope, TMP_10;
     def.encoding = nil;
-    def.encoding = (($a = ((($b = $scope.Encoding) == null ? $opal.cm('Encoding') : $b))._scope).UTF_16LE == null ? $a.cm('UTF_16LE') : $a.UTF_16LE);
+    def.encoding = ($scope.Encoding)._scope.UTF_16LE;
 
     def.$bytes = function() {
       var self = this;
@@ -8369,8 +8369,8 @@
     };
 
     def.$force_encoding = function(encoding) {
-      var $a, self = this;
-      encoding = (($a = $scope.Encoding) == null ? $opal.cm('Encoding') : $a).$find(encoding);
+      var self = this;
+      encoding = $scope.Encoding.$find(encoding);
       if (encoding['$=='](self.encoding)) {
         return self};
       
@@ -8392,14 +8392,14 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass;
   $opal.add_stubs(['$include', '$undef_method', '$coerce', '$===', '$raise', '$class', '$__send__', '$send_coerced', '$to_int', '$respond_to?', '$==', '$enum_for', '$<', '$>', '$floor', '$/', '$%']);
   (function($base, $super) {
     function $Numeric(){};
     var self = $Numeric = $klass($base, $super, 'Numeric', $Numeric);
 
-    var def = $Numeric._proto, $scope = $Numeric._scope, $a, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5;
-    self.$include((($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a));
+    var def = $Numeric._proto, $scope = $Numeric._scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5;
+    self.$include($scope.Comparable);
 
     def._isNumber = true;
 
@@ -8409,7 +8409,7 @@
     })(self.$singleton_class());
 
     def.$coerce = function(other, type) {
-      var $a, self = this, $case = nil;
+      var self = this, $case = nil;
       if (type == null) {
         type = "operation"
       }
@@ -8423,7 +8423,7 @@
       }
     
       } catch ($err) {if (true) {
-        return (function() {$case = type;if ("operation"['$===']($case)) {return self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "" + (other.$class()) + " can't be coerce into Numeric")}else if ("comparison"['$===']($case)) {return self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")}else { return nil }})()
+        return (function() {$case = type;if ("operation"['$===']($case)) {return self.$raise($scope.TypeError, "" + (other.$class()) + " can't be coerce into Numeric")}else if ("comparison"['$===']($case)) {return self.$raise($scope.ArgumentError, "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")}else { return nil }})()
         }else { throw $err; }
       };
     };
@@ -8585,7 +8585,7 @@
     };
 
     def['$<=>'] = function(other) {
-      var $a, self = this;
+      var self = this;
       try {
       
       if (other._isNumber) {
@@ -8595,7 +8595,7 @@
         return self.$send_coerced("<=>", other);
       }
     
-      } catch ($err) {if ((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a)['$===']($err)) {
+      } catch ($err) {if ($scope.ArgumentError['$===']($err)) {
         return nil
         }else { throw $err; }
       };
@@ -8715,11 +8715,11 @@
     };
 
     def['$is_a?'] = TMP_2 = function(klass) {var $zuper = $slice.call(arguments, 0);
-      var $a, $b, $c, self = this, $iter = TMP_2._p, $yield = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_2._p, $yield = $iter || nil;
       TMP_2._p = null;
-      if (($a = (($b = klass['$==']((($c = $scope.Float) == null ? $opal.cm('Float') : $c))) ? (($c = $scope.Float) == null ? $opal.cm('Float') : $c)['$==='](self) : $b)) !== false && $a !== nil) {
+      if (($a = (($b = klass['$==']($scope.Float)) ? $scope.Float['$==='](self) : $b)) !== false && $a !== nil) {
         return true};
-      if (($a = (($b = klass['$==']((($c = $scope.Integer) == null ? $opal.cm('Integer') : $c))) ? (($c = $scope.Integer) == null ? $opal.cm('Integer') : $c)['$==='](self) : $b)) !== false && $a !== nil) {
+      if (($a = (($b = klass['$==']($scope.Integer)) ? $scope.Integer['$==='](self) : $b)) !== false && $a !== nil) {
         return true};
       return $opal.find_super_dispatcher(self, 'is_a?', TMP_2, $iter).apply(self, $zuper);
     };
@@ -8762,7 +8762,7 @@
       if (($a = block) === false || $a === nil) {
         return self.$enum_for("step", limit, step)};
       if (($a = step == 0) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "step cannot be 0")};
+        self.$raise($scope.ArgumentError, "step cannot be 0")};
       
       var value = self;
 
@@ -8817,7 +8817,7 @@
         base = 10
       }
       if (($a = ((($b = base['$<'](2)) !== false && $b !== nil) ? $b : base['$>'](36))) !== false && $a !== nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "base must be between 2 and 36")};
+        self.$raise($scope.ArgumentError, "base must be between 2 and 36")};
       return self.toString(base);
     };
 
@@ -8876,7 +8876,7 @@
       };
     }, nil);
   })(self, null);
-  $opal.cdecl($scope, 'Fixnum', (($a = $scope.Numeric) == null ? $opal.cm('Numeric') : $a));
+  $opal.cdecl($scope, 'Fixnum', $scope.Numeric);
   (function($base, $super) {
     function $Integer(){};
     var self = $Integer = $klass($base, $super, 'Integer', $Integer);
@@ -8886,7 +8886,7 @@
       var self = this;
       return !!(other._isNumber && (other % 1) == 0);
     }), nil)
-  })(self, (($a = $scope.Numeric) == null ? $opal.cm('Numeric') : $a));
+  })(self, $scope.Numeric);
   return (function($base, $super) {
     function $Float(){};
     var self = $Float = $klass($base, $super, 'Float', $Float);
@@ -8900,7 +8900,7 @@
     $opal.cdecl($scope, 'INFINITY', Infinity);
 
     return $opal.cdecl($scope, 'NAN', NaN);
-  })(self, (($a = $scope.Numeric) == null ? $opal.cm('Numeric') : $a));
+  })(self, $scope.Numeric);
 })(Opal);
 
 //@ sourceMappingURL=/__opal_source_maps__/corelib/numeric.js.map
@@ -8922,7 +8922,7 @@
       var $a, self = this, $iter = TMP_1._p, block = $iter || nil;
       TMP_1._p = null;
       if (($a = block) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "tried to create a Proc object without a block")};
+        self.$raise($scope.ArgumentError, "tried to create a Proc object without a block")};
       return block;
     });
 
@@ -9012,8 +9012,8 @@
     $opal.defn(self, '$[]', def.$call);
 
     def.$unbind = function() {
-      var $a, self = this;
-      return (($a = $scope.UnboundMethod) == null ? $opal.cm('UnboundMethod') : $a).$new(self.owner, self.method, self.name);
+      var self = this;
+      return $scope.UnboundMethod.$new(self.owner, self.method, self.name);
     };
 
     def.$to_proc = function() {
@@ -9047,8 +9047,8 @@
     };
 
     def.$bind = function(object) {
-      var $a, self = this;
-      return (($a = $scope.Method) == null ? $opal.cm('Method') : $a).$new(object, self.method, self.name);
+      var self = this;
+      return $scope.Method.$new(object, self.method, self.name);
     };
 
     return (def.$inspect = function() {
@@ -9068,9 +9068,9 @@
     function $Range(){};
     var self = $Range = $klass($base, $super, 'Range', $Range);
 
-    var def = $Range._proto, $scope = $Range._scope, $a, TMP_1, TMP_2, TMP_3;
+    var def = $Range._proto, $scope = $Range._scope, TMP_1, TMP_2, TMP_3;
     def.begin = def.exclude = def.end = nil;
-    self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+    self.$include($scope.Enumerable);
 
     def._isRange = true;
 
@@ -9132,7 +9132,7 @@
 
     def['$eql?'] = function(other) {
       var $a, $b, self = this;
-      if (($a = (($b = $scope.Range) == null ? $opal.cm('Range') : $b)['$==='](other)) === false || $a === nil) {
+      if (($a = $scope.Range['$==='](other)) === false || $a === nil) {
         return false};
       return ($a = ($b = self.exclude['$==='](other['$exclude_end?']()), $b !== false && $b !== nil ?self.begin['$eql?'](other.$begin()) : $b), $a !== false && $a !== nil ?self.end['$eql?'](other.$end()) : $a);
     };
@@ -9172,11 +9172,11 @@
     $opal.defn(self, '$member?', def['$include?']);
 
     def.$step = function(n) {
-      var $a, self = this;
+      var self = this;
       if (n == null) {
         n = 1
       }
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      return self.$raise($scope.NotImplementedError);
     };
 
     def.$to_s = function() {
@@ -9198,8 +9198,8 @@
     function $Time(){};
     var self = $Time = $klass($base, $super, 'Time', $Time);
 
-    var def = $Time._proto, $scope = $Time._scope, $a;
-    self.$include((($a = $scope.Comparable) == null ? $opal.cm('Comparable') : $a));
+    var def = $Time._proto, $scope = $Time._scope;
+    self.$include($scope.Comparable);
 
     
     var days_of_week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -9217,7 +9217,7 @@
     });
 
     $opal.defs(self, '$new', function(year, month, day, hour, minute, second, utc_offset) {
-      var $a, self = this;
+      var self = this;
       
       switch (arguments.length) {
         case 1:
@@ -9239,7 +9239,7 @@
           return new Date(year, month - 1, day, hour, minute, second);
 
         case 7:
-          self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+          self.$raise($scope.NotImplementedError);
 
         default:
           return new Date();
@@ -9248,7 +9248,7 @@
     });
 
     $opal.defs(self, '$local', function(year, month, day, hour, minute, second, millisecond) {
-      var $a, $b, self = this;
+      var $a, self = this;
       if (month == null) {
         month = nil
       }
@@ -9278,53 +9278,53 @@
         month  = args[5];
         year   = args[4];
       };
-      year = (function() {if (($a = year['$kind_of?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+      year = (function() {if (($a = year['$kind_of?']($scope.String)) !== false && $a !== nil) {
         return year.$to_i()
         } else {
-        return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(year, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+        return $scope.Opal.$coerce_to(year, $scope.Integer, "to_int")
       }; return nil; })();
-      month = (function() {if (($a = month['$kind_of?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+      month = (function() {if (($a = month['$kind_of?']($scope.String)) !== false && $a !== nil) {
         return month.$to_i()
         } else {
-        return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(((($a = month) !== false && $a !== nil) ? $a : 1), (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+        return $scope.Opal.$coerce_to(((($a = month) !== false && $a !== nil) ? $a : 1), $scope.Integer, "to_int")
       }; return nil; })();
       if (($a = month['$between?'](1, 12)) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "month out of range: " + (month))};
-      day = (function() {if (($a = day['$kind_of?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+        self.$raise($scope.ArgumentError, "month out of range: " + (month))};
+      day = (function() {if (($a = day['$kind_of?']($scope.String)) !== false && $a !== nil) {
         return day.$to_i()
         } else {
-        return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(((($a = day) !== false && $a !== nil) ? $a : 1), (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+        return $scope.Opal.$coerce_to(((($a = day) !== false && $a !== nil) ? $a : 1), $scope.Integer, "to_int")
       }; return nil; })();
       if (($a = day['$between?'](1, 31)) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "day out of range: " + (day))};
-      hour = (function() {if (($a = hour['$kind_of?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+        self.$raise($scope.ArgumentError, "day out of range: " + (day))};
+      hour = (function() {if (($a = hour['$kind_of?']($scope.String)) !== false && $a !== nil) {
         return hour.$to_i()
         } else {
-        return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(((($a = hour) !== false && $a !== nil) ? $a : 0), (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+        return $scope.Opal.$coerce_to(((($a = hour) !== false && $a !== nil) ? $a : 0), $scope.Integer, "to_int")
       }; return nil; })();
       if (($a = hour['$between?'](0, 24)) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "hour out of range: " + (hour))};
-      minute = (function() {if (($a = minute['$kind_of?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+        self.$raise($scope.ArgumentError, "hour out of range: " + (hour))};
+      minute = (function() {if (($a = minute['$kind_of?']($scope.String)) !== false && $a !== nil) {
         return minute.$to_i()
         } else {
-        return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(((($a = minute) !== false && $a !== nil) ? $a : 0), (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+        return $scope.Opal.$coerce_to(((($a = minute) !== false && $a !== nil) ? $a : 0), $scope.Integer, "to_int")
       }; return nil; })();
       if (($a = minute['$between?'](0, 59)) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "minute out of range: " + (minute))};
-      second = (function() {if (($a = second['$kind_of?']((($b = $scope.String) == null ? $opal.cm('String') : $b))) !== false && $a !== nil) {
+        self.$raise($scope.ArgumentError, "minute out of range: " + (minute))};
+      second = (function() {if (($a = second['$kind_of?']($scope.String)) !== false && $a !== nil) {
         return second.$to_i()
         } else {
-        return (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(((($a = second) !== false && $a !== nil) ? $a : 0), (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int")
+        return $scope.Opal.$coerce_to(((($a = second) !== false && $a !== nil) ? $a : 0), $scope.Integer, "to_int")
       }; return nil; })();
       if (($a = second['$between?'](0, 59)) === false || $a === nil) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "second out of range: " + (second))};
+        self.$raise($scope.ArgumentError, "second out of range: " + (second))};
       return ($a = self).$new.apply($a, [].concat([year, month, day, hour, minute, second].$compact()));
     });
 
     $opal.defs(self, '$gm', function(year, month, day, hour, minute, second, utc_offset) {
       var $a, self = this;
       if (($a = year['$nil?']()) !== false && $a !== nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "missing year (got nil)")};
+        self.$raise($scope.TypeError, "missing year (got nil)")};
       
       switch (arguments.length) {
         case 1:
@@ -9346,7 +9346,7 @@
           return new Date(Date.UTC(year, month - 1, day, hour, minute, second));
 
         case 7:
-          self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+          self.$raise($scope.NotImplementedError);
       }
     
     });
@@ -9363,19 +9363,19 @@
     });
 
     def['$+'] = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Time) == null ? $opal.cm('Time') : $b)['$==='](other)) !== false && $a !== nil) {
-        self.$raise((($a = $scope.TypeError) == null ? $opal.cm('TypeError') : $a), "time + time?")};
-      other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+      var $a, self = this;
+      if (($a = $scope.Time['$==='](other)) !== false && $a !== nil) {
+        self.$raise($scope.TypeError, "time + time?")};
+      other = $scope.Opal.$coerce_to(other, $scope.Integer, "to_int");
       return new Date(self.getTime() + (other * 1000));
     };
 
     def['$-'] = function(other) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Time) == null ? $opal.cm('Time') : $b)['$==='](other)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Time['$==='](other)) !== false && $a !== nil) {
         return (self.getTime() - other.getTime()) / 1000;
         } else {
-        other = (($a = $scope.Opal) == null ? $opal.cm('Opal') : $a).$coerce_to(other, (($a = $scope.Integer) == null ? $opal.cm('Integer') : $a), "to_int");
+        other = $scope.Opal.$coerce_to(other, $scope.Integer, "to_int");
         return new Date(self.getTime() - (other * 1000));
       };
     };
@@ -9405,13 +9405,13 @@
     };
 
     def.$isdst = function() {
-      var $a, self = this;
-      return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+      var self = this;
+      return self.$raise($scope.NotImplementedError);
     };
 
     def['$eql?'] = function(other) {
-      var $a, $b, self = this;
-      return ($a = other['$is_a?']((($b = $scope.Time) == null ? $opal.cm('Time') : $b)), $a !== false && $a !== nil ?(self['$<=>'](other))['$zero?']() : $a);
+      var $a, self = this;
+      return ($a = other['$is_a?']($scope.Time), $a !== false && $a !== nil ?(self['$<=>'](other))['$zero?']() : $a);
     };
 
     def['$friday?'] = function() {
@@ -9794,18 +9794,18 @@
     function $Struct(){};
     var self = $Struct = $klass($base, $super, 'Struct', $Struct);
 
-    var def = $Struct._proto, $scope = $Struct._scope, TMP_1, $a, TMP_8, TMP_10;
+    var def = $Struct._proto, $scope = $Struct._scope, TMP_1, TMP_8, TMP_10;
     $opal.defs(self, '$new', TMP_1 = function(name, args) {var $zuper = $slice.call(arguments, 0);
-      var $a, $b, $c, TMP_2, $d, self = this, $iter = TMP_1._p, block = $iter || nil;
+      var $a, $b, $c, TMP_2, self = this, $iter = TMP_1._p, block = $iter || nil;
       args = $slice.call(arguments, 1);
       TMP_1._p = null;
-      if (($a = self['$==']((($b = $scope.Struct) == null ? $opal.cm('Struct') : $b))) === false || $a === nil) {
+      if (($a = self['$==']($scope.Struct)) === false || $a === nil) {
         return $opal.find_super_dispatcher(self, 'new', TMP_1, $iter, $Struct).apply(self, $zuper)};
       if (name['$[]'](0)['$=='](name['$[]'](0).$upcase())) {
-        return (($a = $scope.Struct) == null ? $opal.cm('Struct') : $a).$const_set(name, ($a = self).$new.apply($a, [].concat(args)))
+        return $scope.Struct.$const_set(name, ($a = self).$new.apply($a, [].concat(args)))
         } else {
         args.$unshift(name);
-        return ($b = ($c = (($d = $scope.Class) == null ? $opal.cm('Class') : $d)).$new, $b._p = (TMP_2 = function(){var self = TMP_2._s || this, $a, $b, TMP_3, $c;
+        return ($b = ($c = $scope.Class).$new, $b._p = (TMP_2 = function(){var self = TMP_2._s || this, $a, $b, TMP_3, $c;
         ($a = ($b = args).$each, $a._p = (TMP_3 = function(arg){var self = TMP_3._s || this;if (arg == null) arg = nil;
           return self.$define_struct_attribute(arg)}, TMP_3._s = self, TMP_3), $a).call($b);
           if (block !== false && block !== nil) {
@@ -9818,8 +9818,8 @@
 
     $opal.defs(self, '$define_struct_attribute', function(name) {
       var $a, $b, TMP_4, $c, TMP_5, self = this;
-      if (self['$==']((($a = $scope.Struct) == null ? $opal.cm('Struct') : $a))) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "you cannot define attributes to the Struct class")};
+      if (self['$==']($scope.Struct)) {
+        self.$raise($scope.ArgumentError, "you cannot define attributes to the Struct class")};
       self.$members()['$<<'](name);
       ($a = ($b = self).$define_method, $a._p = (TMP_4 = function(){var self = TMP_4._s || this;
       return self.$instance_variable_get("@" + (name))}, TMP_4._s = self, TMP_4), $a).call($b, name);
@@ -9831,8 +9831,8 @@
       var $a, self = this;
       if (self.members == null) self.members = nil;
 
-      if (self['$==']((($a = $scope.Struct) == null ? $opal.cm('Struct') : $a))) {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "the Struct class has no members")};
+      if (self['$==']($scope.Struct)) {
+        self.$raise($scope.ArgumentError, "the Struct class has no members")};
       return ((($a = self.members) !== false && $a !== nil) ? $a : self.members = []);
     });
 
@@ -9840,14 +9840,14 @@
       var $a, $b, TMP_6, self = this, members = nil;
       if (self.members == null) self.members = nil;
 
-      if (self['$==']((($a = $scope.Struct) == null ? $opal.cm('Struct') : $a))) {
+      if (self['$==']($scope.Struct)) {
         return nil};
       members = self.members;
       return ($a = ($b = klass).$instance_eval, $a._p = (TMP_6 = function(){var self = TMP_6._s || this;
       return self.members = members}, TMP_6._s = self, TMP_6), $a).call($b);
     });
 
-    self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+    self.$include($scope.Enumerable);
 
     def.$initialize = function(args) {
       var $a, $b, TMP_7, self = this;
@@ -9862,24 +9862,24 @@
     };
 
     def['$[]'] = function(name) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Integer) == null ? $opal.cm('Integer') : $b)['$==='](name)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Integer['$==='](name)) !== false && $a !== nil) {
         if (name['$>='](self.$members().$size())) {
-          self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "offset " + (name) + " too large for struct(size:" + (self.$members().$size()) + ")")};
+          self.$raise($scope.IndexError, "offset " + (name) + " too large for struct(size:" + (self.$members().$size()) + ")")};
         name = self.$members()['$[]'](name);
       } else if (($a = self.$members()['$include?'](name.$to_sym())) === false || $a === nil) {
-        self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "no member '" + (name) + "' in struct")};
+        self.$raise($scope.NameError, "no member '" + (name) + "' in struct")};
       return self.$instance_variable_get("@" + (name));
     };
 
     def['$[]='] = function(name, value) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Integer) == null ? $opal.cm('Integer') : $b)['$==='](name)) !== false && $a !== nil) {
+      var $a, self = this;
+      if (($a = $scope.Integer['$==='](name)) !== false && $a !== nil) {
         if (name['$>='](self.$members().$size())) {
-          self.$raise((($a = $scope.IndexError) == null ? $opal.cm('IndexError') : $a), "offset " + (name) + " too large for struct(size:" + (self.$members().$size()) + ")")};
+          self.$raise($scope.IndexError, "offset " + (name) + " too large for struct(size:" + (self.$members().$size()) + ")")};
         name = self.$members()['$[]'](name);
       } else if (($a = self.$members()['$include?'](name.$to_sym())) === false || $a === nil) {
-        self.$raise((($a = $scope.NameError) == null ? $opal.cm('NameError') : $a), "no member '" + (name) + "' in struct")};
+        self.$raise($scope.NameError, "no member '" + (name) + "' in struct")};
       return self.$instance_variable_set("@" + (name), value);
     };
 
@@ -9925,7 +9925,7 @@
     return (def.$inspect = function() {
       var $a, $b, TMP_14, self = this, result = nil;
       result = "#<struct ";
-      if (self.$class()['$==']((($a = $scope.Struct) == null ? $opal.cm('Struct') : $a))) {
+      if (self.$class()['$==']($scope.Struct)) {
         result = result['$+']("" + (self.$class().$name()) + " ")};
       result = result['$+'](($a = ($b = self.$each_pair()).$map, $a._p = (TMP_14 = function(name, value){var self = TMP_14._s || this;if (name == null) name = nil;if (value == null) value = nil;
       return "" + (name) + "=" + (value.$inspect())}, TMP_14._s = self, TMP_14), $a).call($b).$join(", "));
@@ -9939,7 +9939,7 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $module = $opal.module, $gvars = $opal.gvars;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $klass = $opal.klass, $module = $opal.module, $gvars = $opal.gvars;
   $opal.add_stubs(['$write', '$join', '$map', '$String', '$getbyte', '$getc', '$raise', '$new', '$puts', '$to_s']);
   (function($base, $super) {
     function $IO(){};
@@ -9993,26 +9993,26 @@
       };
 
       def.$readline = function(sep) {
-        var $a, self = this;
+        var self = this;
         if (sep == null) {
           sep = $gvars["/"]
         }
-        return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+        return self.$raise($scope.NotImplementedError);
       };
 
       def.$readpartial = function(integer, outbuf) {
-        var $a, self = this;
+        var self = this;
         if (outbuf == null) {
           outbuf = nil
         }
-        return self.$raise((($a = $scope.NotImplementedError) == null ? $opal.cm('NotImplementedError') : $a));
+        return self.$raise($scope.NotImplementedError);
       };
             ;$opal.donate(self, ["$readbyte", "$readchar", "$readline", "$readpartial"]);
     })(self);
   })(self, null);
-  $opal.cdecl($scope, 'STDERR', $gvars["stderr"] = (($a = $scope.IO) == null ? $opal.cm('IO') : $a).$new());
-  $opal.cdecl($scope, 'STDIN', $gvars["stdin"] = (($a = $scope.IO) == null ? $opal.cm('IO') : $a).$new());
-  $opal.cdecl($scope, 'STDOUT', $gvars["stdout"] = (($a = $scope.IO) == null ? $opal.cm('IO') : $a).$new());
+  $opal.cdecl($scope, 'STDERR', $gvars["stderr"] = $scope.IO.$new());
+  $opal.cdecl($scope, 'STDIN', $gvars["stdin"] = $scope.IO.$new());
+  $opal.cdecl($scope, 'STDOUT', $gvars["stdout"] = $scope.IO.$new());
   $opal.defs($gvars["stdout"], '$puts', function(strs) {
     var $a, self = this;
     strs = $slice.call(arguments, 0);
@@ -10056,8 +10056,8 @@
     return "main";
   });
   return ($opal.defs(self, '$include', function(mod) {
-    var $a, self = this;
-    return (($a = $scope.Object) == null ? $opal.cm('Object') : $a).$include(mod);
+    var self = this;
+    return $scope.Object.$include(mod);
   }), nil);
 })(Opal);
 
@@ -10065,17 +10065,17 @@
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $module = $opal.module, $range = $opal.range, $hash2 = $opal.hash2, $klass = $opal.klass, $gvars = $opal.gvars;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $module = $opal.module, $range = $opal.range, $hash2 = $opal.hash2, $klass = $opal.klass, $gvars = $opal.gvars;
   $opal.add_stubs(['$try_convert', '$native?', '$respond_to?', '$to_n', '$raise', '$map', '$===', '$Native', '$end_with?', '$define_method', '$[]', '$convert', '$call', '$to_proc', '$new', '$extend', '$to_a', '$to_ary', '$include', '$method_missing', '$[]=', '$slice', '$-', '$length', '$==', '$enum_for', '$>=', '$<<', '$inspect', '$each', '$instance_variable_set', '$members', '$each_with_index', '$each_pair', '$name']);
   (function($base) {
     var self = $module($base, 'Native');
 
     var def = self._proto, $scope = self._scope, TMP_1;
     $opal.defs(self, '$is_a?', function(object, klass) {
-      var $a, self = this;
+      var self = this;
       
       try {
-        return object instanceof (($a = $scope.Native) == null ? $opal.cm('Native') : $a).$try_convert(klass);
+        return object instanceof $scope.Native.$try_convert(klass);
       }
       catch (e) {
         return false;
@@ -10099,7 +10099,7 @@
     });
 
     $opal.defs(self, '$convert', function(value) {
-      var $a, self = this;
+      var self = this;
       
       if (self['$native?'](value)) {
         return value;
@@ -10108,7 +10108,7 @@
         return value.$to_n();
       }
       else {
-        self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "the passed value isn't a native");
+        self.$raise($scope.ArgumentError, "the passed value isn't a native");
       }
     ;
     });
@@ -10160,41 +10160,41 @@
           options = $hash2([], {})
         }
         if (($a = old['$end_with?']("=")) !== false && $a !== nil) {
-          return ($a = ($b = self).$define_method, $a._p = (TMP_3 = function(value){var self = TMP_3._s || this, $a;
+          return ($a = ($b = self).$define_method, $a._p = (TMP_3 = function(value){var self = TMP_3._s || this;
             if (self['native'] == null) self['native'] = nil;
 if (value == null) value = nil;
-          self['native'][old['$[]']($range(0, -2, false))] = (($a = $scope.Native) == null ? $opal.cm('Native') : $a).$convert(value);
+          self['native'][old['$[]']($range(0, -2, false))] = $scope.Native.$convert(value);
             return value;}, TMP_3._s = self, TMP_3), $a).call($b, new$)
         } else if (($a = as = options['$[]']("as")) !== false && $a !== nil) {
-          return ($a = ($c = self).$define_method, $a._p = (TMP_4 = function(args){var self = TMP_4._s || this, block, $a, $b, $c, $d;
+          return ($a = ($c = self).$define_method, $a._p = (TMP_4 = function(args){var self = TMP_4._s || this, block, $a, $b, $c;
             if (self['native'] == null) self['native'] = nil;
 args = $slice.call(arguments, 0);
             block = TMP_4._p || nil, TMP_4._p = null;
-          if (($a = value = ($b = ($c = (($d = $scope.Native) == null ? $opal.cm('Native') : $d)).$call, $b._p = block.$to_proc(), $b).apply($c, [self['native'], old].concat(args))) !== false && $a !== nil) {
+          if (($a = value = ($b = ($c = $scope.Native).$call, $b._p = block.$to_proc(), $b).apply($c, [self['native'], old].concat(args))) !== false && $a !== nil) {
               return as.$new(value.$to_n())
               } else {
               return nil
             }}, TMP_4._s = self, TMP_4), $a).call($c, new$)
           } else {
-          return ($a = ($d = self).$define_method, $a._p = (TMP_5 = function(args){var self = TMP_5._s || this, block, $a, $b, $c;
+          return ($a = ($d = self).$define_method, $a._p = (TMP_5 = function(args){var self = TMP_5._s || this, block, $a, $b;
             if (self['native'] == null) self['native'] = nil;
 args = $slice.call(arguments, 0);
             block = TMP_5._p || nil, TMP_5._p = null;
-          return ($a = ($b = (($c = $scope.Native) == null ? $opal.cm('Native') : $c)).$call, $a._p = block.$to_proc(), $a).apply($b, [self['native'], old].concat(args))}, TMP_5._s = self, TMP_5), $a).call($d, new$)
+          return ($a = ($b = $scope.Native).$call, $a._p = block.$to_proc(), $a).apply($b, [self['native'], old].concat(args))}, TMP_5._s = self, TMP_5), $a).call($d, new$)
         };
       }
             ;$opal.donate(self, ["$alias_native"]);
     })(self);
 
     $opal.defs(self, '$included', function(klass) {
-      var $a, self = this;
-      return klass.$extend((($a = $scope.Helpers) == null ? $opal.cm('Helpers') : $a));
+      var self = this;
+      return klass.$extend($scope.Helpers);
     });
 
     def.$initialize = function(native$) {
-      var $a, $b, self = this;
-      if (($a = (($b = $scope.Kernel) == null ? $opal.cm('Kernel') : $b)['$native?'](native$)) === false || $a === nil) {
-        (($a = $scope.Kernel) == null ? $opal.cm('Kernel') : $a).$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "the passed value isn't native")};
+      var $a, self = this;
+      if (($a = $scope.Kernel['$native?'](native$)) === false || $a === nil) {
+        $scope.Kernel.$raise($scope.ArgumentError, "the passed value isn't native")};
       return self['native'] = native$;
     };
 
@@ -10216,18 +10216,18 @@ args = $slice.call(arguments, 0);
     };
 
     def.$Native = function(obj) {
-      var $a, $b, self = this;
+      var $a, self = this;
       if (($a = obj == null) !== false && $a !== nil) {
         return nil
       } else if (($a = self['$native?'](obj)) !== false && $a !== nil) {
-        return (($a = ((($b = $scope.Native) == null ? $opal.cm('Native') : $b))._scope).Object == null ? $a.cm('Object') : $a.Object).$new(obj)
+        return ($scope.Native)._scope.Object.$new(obj)
         } else {
         return obj
       };
     };
 
     def.$Array = TMP_6 = function(object, args) {
-      var $a, $b, $c, $d, self = this, $iter = TMP_6._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_6._p, block = $iter || nil;
       args = $slice.call(arguments, 1);
       TMP_6._p = null;
       
@@ -10235,7 +10235,7 @@ args = $slice.call(arguments, 0);
         return [];
       }
       else if (self['$native?'](object)) {
-        return ($a = ($b = (($c = ((($d = $scope.Native) == null ? $opal.cm('Native') : $d))._scope).Array == null ? $c.cm('Array') : $c.Array)).$new, $a._p = block.$to_proc(), $a).apply($b, [object].concat(args)).$to_a();
+        return ($a = ($b = ($scope.Native)._scope.Array).$new, $a._p = block.$to_proc(), $a).apply($b, [object].concat(args)).$to_a();
       }
       else if (object['$respond_to?']("to_ary")) {
         return object.$to_ary();
@@ -10254,13 +10254,13 @@ args = $slice.call(arguments, 0);
     function $Object(){};
     var self = $Object = $klass($base, $super, 'Object', $Object);
 
-    var def = $Object._proto, $scope = $Object._scope, $a, TMP_7, TMP_8, TMP_9, TMP_10;
+    var def = $Object._proto, $scope = $Object._scope, TMP_7, TMP_8, TMP_9, TMP_10;
     def['native'] = nil;
-    self.$include((($a = $scope.Native) == null ? $opal.cm('Native') : $a));
+    self.$include($scope.Native);
 
     $opal.defn(self, '$==', function(other) {
-      var $a, self = this;
-      return self['native'] === (($a = $scope.Native) == null ? $opal.cm('Native') : $a).$try_convert(other);
+      var self = this;
+      return self['native'] === $scope.Native.$try_convert(other);
     });
 
     $opal.defn(self, '$has_key?', function(name) {
@@ -10306,7 +10306,7 @@ args = $slice.call(arguments, 0);
 
     $opal.defn(self, '$[]=', function(key, value) {
       var $a, self = this, native$ = nil;
-      native$ = (($a = $scope.Native) == null ? $opal.cm('Native') : $a).$try_convert(value);
+      native$ = $scope.Native.$try_convert(value);
       if (($a = native$ === nil) !== false && $a !== nil) {
         return self['native'][key] = value;
         } else {
@@ -10334,15 +10334,15 @@ args = $slice.call(arguments, 0);
     });
 
     $opal.defn(self, '$is_a?', function(klass) {
-      var $a, self = this;
-      return klass['$==']((($a = $scope.Native) == null ? $opal.cm('Native') : $a));
+      var self = this;
+      return klass['$==']($scope.Native);
     });
 
     $opal.defn(self, '$kind_of?', def['$is_a?']);
 
     $opal.defn(self, '$instance_of?', function(klass) {
-      var $a, self = this;
-      return klass['$==']((($a = $scope.Native) == null ? $opal.cm('Native') : $a));
+      var self = this;
+      return klass['$==']($scope.Native);
     });
 
     $opal.defn(self, '$class', function() {
@@ -10351,37 +10351,37 @@ args = $slice.call(arguments, 0);
     });
 
     $opal.defn(self, '$to_a', TMP_9 = function(options) {
-      var $a, $b, $c, $d, self = this, $iter = TMP_9._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_9._p, block = $iter || nil;
       if (options == null) {
         options = $hash2([], {})
       }
       TMP_9._p = null;
-      return ($a = ($b = (($c = ((($d = $scope.Native) == null ? $opal.cm('Native') : $d))._scope).Array == null ? $c.cm('Array') : $c.Array)).$new, $a._p = block.$to_proc(), $a).call($b, self['native'], options).$to_a();
+      return ($a = ($b = ($scope.Native)._scope.Array).$new, $a._p = block.$to_proc(), $a).call($b, self['native'], options).$to_a();
     });
 
     $opal.defn(self, '$to_ary', TMP_10 = function(options) {
-      var $a, $b, $c, $d, self = this, $iter = TMP_10._p, block = $iter || nil;
+      var $a, $b, self = this, $iter = TMP_10._p, block = $iter || nil;
       if (options == null) {
         options = $hash2([], {})
       }
       TMP_10._p = null;
-      return ($a = ($b = (($c = ((($d = $scope.Native) == null ? $opal.cm('Native') : $d))._scope).Array == null ? $c.cm('Array') : $c.Array)).$new, $a._p = block.$to_proc(), $a).call($b, self['native'], options);
+      return ($a = ($b = ($scope.Native)._scope.Array).$new, $a._p = block.$to_proc(), $a).call($b, self['native'], options);
     });
 
     return ($opal.defn(self, '$inspect', function() {
       var self = this;
       return "#<Native:" + (String(self['native'])) + ">";
     }), nil);
-  })((($a = $scope.Native) == null ? $opal.cm('Native') : $a), (($a = $scope.BasicObject) == null ? $opal.cm('BasicObject') : $a));
+  })($scope.Native, $scope.BasicObject);
   (function($base, $super) {
     function $Array(){};
     var self = $Array = $klass($base, $super, 'Array', $Array);
 
-    var def = $Array._proto, $scope = $Array._scope, $a, TMP_11, TMP_12;
+    var def = $Array._proto, $scope = $Array._scope, TMP_11, TMP_12;
     def.named = def['native'] = def.get = def.block = def.set = def.length = nil;
-    self.$include((($a = $scope.Native) == null ? $opal.cm('Native') : $a));
+    self.$include($scope.Native);
 
-    self.$include((($a = $scope.Enumerable) == null ? $opal.cm('Enumerable') : $a));
+    self.$include($scope.Enumerable);
 
     def.$initialize = TMP_11 = function(native$, options) {
       var $a, self = this, $iter = TMP_11._p, block = $iter || nil;
@@ -10396,7 +10396,7 @@ args = $slice.call(arguments, 0);
       self.length = ((($a = options['$[]']("length")) !== false && $a !== nil) ? $a : "length");
       self.block = block;
       if (($a = self.$length() == null) !== false && $a !== nil) {
-        return self.$raise((($a = $scope.ArgumentError) == null ? $opal.cm('ArgumentError') : $a), "no length found on the array-like object")
+        return self.$raise($scope.ArgumentError, "no length found on the array-like object")
         } else {
         return nil
       };
@@ -10421,11 +10421,11 @@ args = $slice.call(arguments, 0);
 
     def['$[]'] = function(index) {
       var $a, self = this, result = nil, $case = nil;
-      result = (function() {$case = index;if ((($a = $scope.String) == null ? $opal.cm('String') : $a)['$===']($case) || (($a = $scope.Symbol) == null ? $opal.cm('Symbol') : $a)['$===']($case)) {if (($a = self.named) !== false && $a !== nil) {
+      result = (function() {$case = index;if ($scope.String['$===']($case) || $scope.Symbol['$===']($case)) {if (($a = self.named) !== false && $a !== nil) {
         return self['native'][self.named](index);
         } else {
         return self['native'][index];
-      }}else if ((($a = $scope.Integer) == null ? $opal.cm('Integer') : $a)['$===']($case)) {if (($a = self.get) !== false && $a !== nil) {
+      }}else if ($scope.Integer['$===']($case)) {if (($a = self.get) !== false && $a !== nil) {
         return self['native'][self.get](index);
         } else {
         return self['native'][index];
@@ -10444,9 +10444,9 @@ args = $slice.call(arguments, 0);
     def['$[]='] = function(index, value) {
       var $a, self = this;
       if (($a = self.set) !== false && $a !== nil) {
-        return self['native'][self.set](index, (($a = $scope.Native) == null ? $opal.cm('Native') : $a).$convert(value));
+        return self['native'][self.set](index, $scope.Native.$convert(value));
         } else {
-        return self['native'][index] = (($a = $scope.Native) == null ? $opal.cm('Native') : $a).$convert(value);
+        return self['native'][index] = $scope.Native.$convert(value);
       };
     };
 
@@ -10481,7 +10481,7 @@ args = $slice.call(arguments, 0);
       var self = this;
       return self.$to_a().$inspect();
     }, nil);
-  })((($a = $scope.Native) == null ? $opal.cm('Native') : $a), null);
+  })($scope.Native, null);
   (function($base, $super) {
     function $Numeric(){};
     var self = $Numeric = $klass($base, $super, 'Numeric', $Numeric);
@@ -10620,7 +10620,7 @@ args = $slice.call(arguments, 0);
 
     var def = $Hash._proto, $scope = $Hash._scope, TMP_16;
     def.$initialize = TMP_16 = function(defaults) {
-      var $a, self = this, $iter = TMP_16._p, block = $iter || nil;
+      var self = this, $iter = TMP_16._p, block = $iter || nil;
       TMP_16._p = null;
       
       if (defaults != null) {
@@ -10632,7 +10632,7 @@ args = $slice.call(arguments, 0);
             var value = defaults[key];
 
             if (value && value.constructor === Object) {
-              map[key] = (($a = $scope.Hash) == null ? $opal.cm('Hash') : $a).$new(value);
+              map[key] = $scope.Hash.$new(value);
             }
             else {
               map[key] = self.$Native(defaults[key]);
@@ -10707,7 +10707,7 @@ args = $slice.call(arguments, 0);
 ;
 /* Generated by Opal 0.5.5 */
 (function($opal) {
-  var $a, self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $gvars = $opal.gvars, $hash2 = $opal.hash2;
+  var self = $opal.top, $scope = $opal, nil = $opal.nil, $breaker = $opal.breaker, $slice = $opal.slice, $gvars = $opal.gvars, $hash2 = $opal.hash2;
   $opal.add_stubs(['$new']);
   ;
   ;
@@ -10742,7 +10742,7 @@ args = $slice.call(arguments, 0);
   $gvars["/"] = "\n";
   $gvars[","] = " ";
   $opal.cdecl($scope, 'ARGV', []);
-  $opal.cdecl($scope, 'ARGF', (($a = $scope.Object) == null ? $opal.cm('Object') : $a).$new());
+  $opal.cdecl($scope, 'ARGF', $scope.Object.$new());
   $opal.cdecl($scope, 'ENV', $hash2([], {}));
   $gvars["VERBOSE"] = false;
   $gvars["DEBUG"] = false;

@@ -4,3 +4,4 @@ require('../lib/opal');
 
 scriptPath = require('path').resolve(process.argv[2]);
 require(scriptPath);
+

@@ -20,13 +20,18 @@ Opal.compile = (ruby, options = undefined) -> # Override function for now
   if options and options.klass isnt Opal.Hash
     keys = (key for key, value of options)
     options = Opal.hash2(keys, options)
+  compiler = Opal.Opal.Compiler.$new()
+  source = compiler.$compile(ruby, options)
+
+  for required in compiler.$requires()
+    require required
+
   Opal.Opal.$compile(ruby, options)
 
 for extension in extensions
   require.extensions[extension] = (module, filename) ->
     ruby   = fs.readFileSync("#{filename}").toString()
     source = Opal.compile(ruby, file: filename)
-    # console?.log source
     module._compile(source, filename)
 
 require './opal_node'

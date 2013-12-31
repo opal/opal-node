@@ -82,7 +82,7 @@ end
 
 ## Developing
 
-Start a coffe watcher to keep opal.js in sync with opal.coffee
+Start a coffee watcher to keep opal.js in sync with opal.coffee
 
     coffee -cwo lib/ lib/*.coffee
 

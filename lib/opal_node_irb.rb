@@ -8,5 +8,6 @@ end
 
 NodeRepl.start prompt: 'opal-node> ', useGlobal: true, eval: -> (cmd, context, filename, callback) {
   result = `OpalNode.run(cmd, filename)`
+  result = nil if `#{result} == nil`
   `callback(#{'=> '+result.inspect})`
 }

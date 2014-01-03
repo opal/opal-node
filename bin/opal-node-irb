@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+require('../lib/opal-node')
+OpalNode.require(__dirname+'/../lib/opal_node_irb.rb')

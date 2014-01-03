@@ -24,6 +24,6 @@ $stderr.extend(IO::Writable)
 
 module Kernel
   def require name
-    `require(#{name})`
+    `OpalNode.require(#{name})`
   end
 end

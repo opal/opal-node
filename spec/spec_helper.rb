@@ -20,7 +20,7 @@ RSpec.configure do |c|
   end
 
   def compile_opal_coffee
-    system "coffee -c #{File.expand_path('../../lib/opal.coffee', __FILE__)}"
+    system "coffee -c #{File.expand_path('../../lib/opal-node.coffee', __FILE__)}"
   end
 
   def opal_node path, include_dir = nil

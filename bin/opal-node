@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
-require('../lib/opal');
+require('../lib/opal-node')
+var filename = process.argv[2]
 
-scriptPath = require('path').resolve(process.argv[2]);
-require(scriptPath);
+if (filename.match(/^\./)) {
+  path = require('path')
+  filename = path.resolve(process.cwd(), filename)
+}
 
+OpalNode.require(filename)

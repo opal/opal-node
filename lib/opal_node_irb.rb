@@ -8,5 +8,5 @@ end
 
 NodeRepl.start prompt: 'opal-node> ', useGlobal: true, eval: -> (cmd, context, filename, callback) {
   result = `OpalNode.run(cmd, filename)`
-  `callback(#{result.inspect})`
+  `callback(#{'=> '+result.inspect})`
 }

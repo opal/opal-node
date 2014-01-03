@@ -1,3 +1,5 @@
+class LoadError < ScriptError; end
+
 module IO::Writable
   def puts(*args)
     write args.map { |arg| String(arg) }.join($/)+$/

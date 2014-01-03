@@ -26,6 +26,10 @@ Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 ## Usage
 
 Run with `opal-node app.rb`
+or run the repl: `opal-node-irb`
+
+
+### Installing
 
 Install with NPM: `npm install -g opal`
 or via RVM: `rvm install opal`
@@ -85,6 +89,12 @@ end
 Start a coffee watcher to keep opal.js in sync with opal.coffee
 
     coffee -cwo lib/ lib/*.coffee
+
+
+### Running in development
+
+    NODE_PATH="$NODE_PATH:../lib/" node ./bin/opal-node
+    NODE_PATH="$NODE_PATH:../lib/" node ./bin/opal-node-irb
 
 
 ## Testing

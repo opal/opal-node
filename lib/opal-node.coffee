@@ -19,6 +19,7 @@ vm.runInThisContext(parser, parserFile)
 class OpalNode
   @loaded: {}
   @backtrace: []
+  @node_require: require
 
   @compile: (ruby, options = undefined) -> # Override function for now
     # Options can be Hash or plain JS

@@ -4,7 +4,7 @@ parserFile = "#{__dirname}/../opal/opal-parser.js"
 extensions = ['.opal', '.rb']
 
 fs = require('fs')
-path = require('path')
+__path__ = require('path')
 
 source = fs.readFileSync(sourceFile).toString()
 parser = fs.readFileSync(parserFile).toString()
@@ -17,9 +17,14 @@ vm.runInThisContext(source, sourceFile)
 vm.runInThisContext(parser, parserFile)
 
 class OpalNode
+  @load_path: [__dirname+'/../opal', __dirname]
   @loaded: {}
   @backtrace: []
   @node_require: require
+
+  @run: (ruby, filename)->
+    js = OpalNode.compile(ruby, file: filename)
+    vm.runInThisContext(js, filename)
 
   @compile: (ruby, options = undefined) -> # Override function for now
     # Options can be Hash or plain JS
@@ -27,25 +32,27 @@ class OpalNode
       keys = (key for key, value of options)
       options = Opal.hash2(keys, options)
     compiler = Opal.Opal.Compiler.$new()
-    # console?.log ['compiling with options: ', options]
     source = compiler.$compile(ruby, options)
-    # console?.error compiler.$requires().$inspect()
 
     for required in compiler.$requires()
-      # console?.error ['>>REQUIRE', required]
       OpalNode.require required
-      # console?.error ['<<REQUIRE', required]
 
     Opal.Opal.$compile(ruby, options)
 
   @resolve: (filename)->
     try
       if filename.match(/^\./)
-        filepath = path.resolve(process.cwd(), filename)
-        # console?.error ['@resolve', filename, '>', filepath]
+        filepath = __path__.resolve(process.cwd(), filename)
         require.resolve(filepath)
       else
-        # console?.error ['@resolve', filename, '<<']
+        for path in OpalNode.load_path
+          full_path = __path__.resolve(path, filename)
+          return full_path if fs.existsSync(full_path)
+
+          full_path = full_path.replace(/(\.rb)?$/, '.js')
+          return full_path if fs.existsSync(full_path)
+
+        # If it wasn't found fallback to NodeJS resolver
         require.resolve(filename)
     catch error
       if error.code is 'MODULE_NOT_FOUND' or
@@ -58,12 +65,12 @@ class OpalNode
   @require: (filename) ->
     ruby_filename = filename.replace(/(\.rb)?$/, '.rb')
     full_path = OpalNode.resolve(ruby_filename)
+
     unless full_path
       if filename.match(/\.rb$/)
-        js = OpalNode.compile("raise LoadError, 'cannot load such file -- #{filename}'")
         stack = OpalNode.backtrace
-        context = stack[stack.length-1] || __filename
-        vm.runInThisContext(js, context)
+        file = stack[stack.length-1] || __filename
+        OpalNode.run("raise LoadError, 'cannot load such file -- #{filename}'", file)
       else
         # Fallback to node if there's no ruby file
         return require(filename)
@@ -71,33 +78,19 @@ class OpalNode
     # Check if it has been already loaded
     loaded = OpalNode.loaded[filename]
     OpalNode.backtrace.push(filename)
-    # console?.error ['FILENAME LOADED', filename]
     return false if loaded
 
     ruby = fs.readFileSync("#{full_path}").toString()
-    js   = OpalNode.compile(ruby, file: filename)
-    # console?.error ['FILENAME', filename]
-    # console?.error ['RUBY', ruby]
-    # console?.error ['JS', js]
     OpalNode.loaded[filename] = true
-    # module._compile(source, filename)
-    vm.runInThisContext(js, ruby_filename)
+    if full_path.match(/\.js$/)
+      vm.runInThisContext(ruby, filename)
+    else
+      OpalNode.run(ruby, filename)
+
     OpalNode.backtrace.pop()
 
+global.OpalNode = OpalNode
 
-
-
-# for extension in extensions
-#   require.extensions[extension] = (module, filename) ->
-#     ruby   = fs.readFileSync("#{filename}").toString()
-#     source = Opal.compile(ruby, file: filename)
-#     # console?.error ['FILENAME', filename]
-#     # console?.error ['RUBY', ruby]
-#     # console?.error ['JS', source]
-#     module._compile(source, filename)
-#
 OpalNode.require __dirname + '/opal_node'
 OpalNode.require __dirname + '/file'
 OpalNode.require __dirname + '/dir'
-
-global.OpalNode = OpalNode

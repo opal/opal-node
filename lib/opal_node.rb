@@ -29,3 +29,5 @@ module Kernel
     `OpalNode.require(#{name})`
   end
 end
+
+$: = $LOAD_PATH = `OpalNode.load_path`

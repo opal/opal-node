@@ -30,4 +30,14 @@ module Kernel
   end
 end
 
+ARGV = `process.argv`
+ENV = Object.new
+def ENV.[]= name, value
+  `process.env[#{name.to_s}] = #{value.to_s}`
+end
+
+def ENV.[] name
+  `process.env[#{name}]`
+end
+
 $: = $LOAD_PATH = `OpalNode.load_path`

@@ -4,6 +4,6 @@ class Dir
   end
 
   def self.__glob__
-    @__glob__ ||= `require('glob')`
+    @__glob__ ||= `OpalNode.node_require('glob')`
   end
 end

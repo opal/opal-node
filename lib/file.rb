@@ -4,6 +4,6 @@ class File
   end
 
   def self.__fs__
-    @fs ||= `require('fs')`
+    @fs ||= `OpalNode.node_require('fs')`
   end
 end

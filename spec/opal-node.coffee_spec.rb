@@ -16,14 +16,14 @@ describe 'opal-node' do
 
     it 'with a leading ./' do
       requiring = a_file_with_name 'requiring.rb', and_contents: "require './hello_world.rb'\n"
-      Dir.chdir File.dirname(requiring) do
+      from_dir_of(requiring) do
         opal_node(requiring, File.dirname(requiring)).should eq("hello world!\n")
       end
     end
 
     it 'with explicit extension' do
       requiring = a_file_with_name 'requiring.rb', and_contents: "require './hello_world.rb'\n"
-      Dir.chdir File.dirname(requiring) do
+      from_dir_of(requiring) do
         opal_node(requiring, File.dirname(requiring)).should eq("hello world!\n")
       end
     end

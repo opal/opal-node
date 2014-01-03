@@ -42,6 +42,13 @@ RSpec.configure do |c|
     rb_file = a_file_with_name 'rb_file.rb', and_contents: code
     opal_node(rb_file, File.dirname(rb_file))
   end
+
+  def from_dir_of file
+    pwd = Dir.pwd
+    Dir.chdir File.dirname(file)
+    yield
+    Dir.chdir pwd
+  end
 end
 
 

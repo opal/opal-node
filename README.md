@@ -35,7 +35,7 @@ Install with NPM: `npm install -g opal`
 or via RVM: `rvm install opal`
 
 
-## Example
+## Example ([rack](http://rack.github.io))
 
 
 ```ruby
@@ -59,7 +59,7 @@ http.createServer(function(req, res) {
 ```
 
 
-Here's the (naive) rack-like implementation of `http/server.rb`
+Here's the (naïve) rack-like implementation of `http/server.rb`
 
 ```ruby
 # http/server.rb
@@ -82,6 +82,20 @@ module HTTP
   end
 end
 ```
+
+
+### Example 2 ([express.js](http://expressjs.com) wrapper)
+
+A simple Express.js wrapper example can be found in [`examples/express-wrapper.rb`](https://github.com/opal/opal-node/blob/master/examples/express-wrapper.rb)
+
+```ruby
+Express.new do
+  get '/' do |req, res|
+    res.send 200, 'hulla!'
+  end
+end.listen 3000
+```
+
 
 
 ## Developing

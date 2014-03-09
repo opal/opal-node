@@ -22,7 +22,6 @@ desc "Build all js files to ./build"
 task :build do
   require 'fileutils'
   require 'opal'
-  require 'opal-sprockets'
   env = Sprockets::Environment.new
 
   base_dir = 'opal'

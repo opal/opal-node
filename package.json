@@ -26,7 +26,8 @@
     "url": "git://github.com/opal/opal-node.git"
   },
   "dependencies": {
-    "glob": "latest"
+    "glob": "latest",
+    "js-yaml": "latest"
   },
   "devDependencies": {
     "coffee-script": "latest"

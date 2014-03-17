@@ -28,6 +28,10 @@ module Kernel
   def require name
     `OpalNode.require(#{name})`
   end
+
+  def node_require name
+    `OpalNode.node_require(#{name})`
+  end
 end
 
 ARGV = `process.argv`

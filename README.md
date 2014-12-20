@@ -1,6 +1,19 @@
+
 # Opal for Node.js
 
-[![Build Status](https://secure.travis-ci.org/elia/opal-node.png)](http://travis-ci.org/elia/opal-node)
+---
+
+> **WARNING** 
+> 
+> This project is currently slightly outdated, the current preferred way to use Opal with Node.js is to compile the app and use node to run the compilation result. 
+> 
+> A `nodejs` file is now available directly [in the stdlib](https://github.com/opal/opal/blob/master/stdlib/nodejs.rb) and Node.js is also the default runner for the CLI (see `opal --help` for a list of alternative runners). An example of this can be found in [the `mspec_node` rake task](https://github.com/opal/opal/blob/master/Rakefile#L62-L63).
+
+---
+
+
+
+[![Build Status](https://secure.travis-ci.org/elia/opal-node.svg)](http://travis-ci.org/elia/opal-node)
 
 Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 
@@ -19,7 +32,6 @@ Use Ruby on Node.js for **REAL-WORLD rofl-SCALING**
 > mongodb should be ported to nodejs for improved scalability
 >
 > — <cite>[@RoflscaleTips](https://twitter.com/RoflscaleTips/status/190291005138939904)</cite>
-
 
 
 
